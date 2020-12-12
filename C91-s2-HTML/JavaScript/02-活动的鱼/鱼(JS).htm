@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>会动的鱼</title>
+
+<script>
+    //给一个事件源绑定onkeydown事件
+    document.onkeydown=function(e){
+		var e=e||window.event;
+		var obj=document.getElementById("fish");
+		var num;
+        switch(e.keyCode){   //获取键值
+            case 37:
+				num=parseInt(obj.style.left.replace("px",""));
+				if(num>=10){             
+					obj.style.left=(num-10)+"px"; 
+				};
+				break;
+            
+            case 38:
+				num=parseInt(obj.style.top.replace("px",""));
+				if(num>=10){             
+					obj.style.top=(num-10)+"px"; 
+				};
+				break;
+            
+            case 39:
+				num=parseInt(obj.style.left.replace("px",""));
+				if(num+10<=document.documentElement.clientWidth){ 
+				//window.screen.availWidth、document.documentElement.clientWidth          
+					obj.style.left=(num+10)+"px"; 
+				};
+				break;
+            
+            case 40:
+				num=parseInt(obj.style.top.replace("px",""));
+				if(num+10<=document.body.clientHeight){             
+					obj.style.top=(num+10)+"px"; 
+				};
+				break;   
+        }    
+    }  
+
+    document.onmousemove=function(e){
+		var e=e||window.event;
+        document.getElementById("fish").style.top=(e.clientY-40)+"px";
+        document.getElementById("fish").style.left=(e.clientX-18)+"px";  
+    }  
+
+</script>
+
+</head>
+
+<body>
+	<!--  注意页面元素默认是相对位置定位的，所以要改成绝对位置-->
+	<img style="position:absolute;left:0px;top:0px;" id="fish" src="img/20.gif" width="80" height="80" />
+</body>
+
+</html>

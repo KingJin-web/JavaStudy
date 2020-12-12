@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>歌手信息查询【分页查询】</title>
+    <style type="text/css">
+        div {
+            margin: 10px
+        }
+
+        select, button {
+            height: 24px
+        }
+    </style>
+    <script type="text/javascript"
+            src="../../js/jquery-3.5.1.js"></script>
+    <script type="text/javascript"
+            src="../../js/ajax.js"></script>
+    <script type="text/javascript">
+        //当前页数
+        var page = 1;
+        //一次要翻的页数
+        var page_nums = 10;
+        //总页数
+        var pages = 0;
+
+
+        $(function () {
+            queryComposite()
+            queryCategory()
+        })
+
+        /**
+         * 歌手信息查询
+         * @param name 歌手名
+         * @param category 歌手分类
+         * @param address 歌手地区
+         */
+        function queryPage(name, category, address) {
+
+            if (name == null || name === "") {
+                name = "1";
+            }
+            if (category == null || category === "") {
+                category = "1";
+            }
+            if (address == null || address === "") {
+                address = "1";
+            }
+            console.log(name + category + address);
+            doAjax("../../ssQueryPages.s?page=" + page + "&page_nums=" + page_nums + "&name=" + name +
+                "&category=" + category + "&address=" + address,
+                function (reaponseText) {
+                    var list = JSON.parse(reaponseText);
+                    console.log(list)
+                    var $td = $("#singers tr:nth-child(1)").nextAll().remove();
+                    var $table = $("#singers");
+                    //添加成员（members）、生日（birthday）字段和头像（head）字段的展示
+                    for (var i of list) {
+                        //避免出现 undefined
+                        var a = "<td>" + i.members + "</td>";
+                        if (i.members === "" || i.members === undefined) {
+                            a = "<td>" + "&nbsp;" + "</td>";
+                        }
+                        $table.append("<tr>" +
+                            "<td>" + i.id + "</td>" +
+                            "<td>" + i.name + "</td>" +
+                            "<td>" + i.nation + "</td>" +
+                            "<td>" + i.category + "</td>" +
+                            "<td>" + i.birthday + "</td>" +
+                            a +
+                            "<td>" + "<img style='width: 100px' src=" + "../歌手查询" + i.head + ">" + "</td>" +
+                            "<td>" + "<button onclick='deleteSinger(this.value)' value=" + i.name + " >删除</button>" + "</td>" +
+                            "</tr>");
+                    }
+                    document.getElementById("page").value = page.toString();
+                }
+            );
+
+        }
+
+        function queryCount(name, category, address) {
+
+            if (name == null || name === "") {
+                name = "1";
+            }
+            if (category == null || category === "") {
+                category = "1";
+            }
+            if (address == null || address === "") {
+                address = "1";
+            }
+            doAjax("../../QueryCount.s" + "?name=" + name + "&category=" + category + "&address=" + address,
+                function (reaponseText) {
+                    var count = parseInt(reaponseText);
+                    pages = parseInt((count / page_nums).toString());
+                    console.log("有多少个歌手：" + count)
+                    if (count % page_nums > 0) {
+                        pages++;
+                    }
+                    console.log(pages);
+                    $('#count').html("" + pages);
+                }
+            );
+
+        }
+
+        //查询歌手种类
+        function queryCategory() {
+            doAjax("../../QueryCategory",
+                function (reaponseText) {
+                    var list = JSON.parse(reaponseText);
+                    console.log(list)
+                    var $select = $("#category");
+                    for (var i of list) {
+                        $select.append("<option value= " + i.category + "> " + i.category + "</option>")
+                    }
+                }
+            );
+        }
+
+        //删除歌手
+        function deleteSinger(value) {
+            $.ajax({
+                type: "GET",
+                async: false,
+                url: "../../deleteSinger?name=" + value,
+                dataType: "text",
+                success: function () {
+                    alert("删除成功");
+                    queryComposite();
+
+                },
+                error: function () {
+                    alert('fail');
+                }
+            });
+
+        }
+
+        //组合查询
+        function queryComposite() {
+            //输入端歌手名
+            var inputName = $('#sqName').val();
+            //获取用户选择到的歌手分类
+            var inputCategory = $("#category option:selected").val();
+            //输入的歌手地区
+            var address = $('#address').val();
+            queryCount(inputName, inputCategory, address);
+            queryPage(inputName, inputCategory, address);
+
+        }
+
+        //组合查询
+        function queryComposite2() {
+            //输入端歌手名
+            var inputName = $('#sqName').val();
+            //获取用户选择到的歌手分类
+            var inputCategory = $("#category option:selected").val();
+            //输入的歌手地区
+            var address = $('#address').val();
+            queryPage(inputName, inputCategory, address);
+
+        }
+
+        function pageNum() {
+            var a = $("#page_num option:selected").val();
+            page_nums = parseInt(a);
+            queryComposite2()
+        }
+
+        //上一页
+        function previous() {
+            page -= 1;
+            //避免下一页超出
+            if (page < 1) {
+                page = 1;
+                alert("不能上一页了，到顶了")
+                return;
+            }
+            queryComposite2()
+        }
+
+        //下一页
+        function next() {
+            page += 1;
+            //避免下一页超出
+            if (page > pages) {
+                page = pages;
+                alert("不能下一页了，到底了");
+                return;
+            }
+            queryComposite2()
+        }
+
+        //首页
+        function first() {
+            page = 1;
+            queryComposite2()
+        }
+
+        //最后一页
+        function last() {
+
+            page = pages;
+            queryComposite2()
+        }
+
+        //输入框分页
+        function inputPage() {
+            var str = document.getElementById("page").value;
+            var input_page = parseInt(str);
+            var a = true;
+            if (input_page > pages) {
+                input_page = pages;
+                a = false;
+                alert("不能下一页了，到底了");
+            }
+            if (input_page < 1) {
+                input_page = 1;
+                a = false;
+                alert("不能上一页了，到顶了");
+
+            }
+            if (a) {
+                page = input_page;
+                queryComposite2();
+            }
+            document.getElementById("page").value = input_page;
+        }
+
+        // 表头排序
+        function test(value) {
+
+            //输入端歌手名
+            var inputName = $('#sqName').val();
+            //获取用户选择到的歌手分类
+            var inputCategory = $("#category option:selected").val();
+            //输入的歌手地区
+            var address = $('#address').val();
+            console.log(inputName + inputCategory + address);
+
+            queryPage2(value, inputName, inputCategory, address)
+        }
+
+        /**
+         * 歌手信息查询
+         * @param sort
+         * @param name 歌手名
+         * @param category 歌手分类
+         * @param address 歌手地区
+         */
+        function queryPage2(sort, name, category, address) {
+
+            if (name == null || name === "") {
+                name = "1";
+            }
+            if (category == null || category === "") {
+                category = "1";
+            }
+            if (address == null || address === "") {
+                address = "1";
+            }
+            console.log(name + category + address);
+            doAjax("../../ssQueryPages.s?page=" + page + "&page_nums=" + page_nums + "&name=" + name + "&category=" + category + "&address=" + address,
+                function (reaponseText) {
+                    var list = JSON.parse(reaponseText);
+                    console.log(list)
+                    var $td = $("#singers tr:nth-child(1)").nextAll().remove();
+                    var $table = $("#singers");
+                    //添加成员（members）、生日（birthday）字段和头像（head）字段的展示
+                    for (var i of list) {
+                        //避免出现 undefined
+                        var a = "<td>" + i.members + "</td>";
+                        if (i.members === "" || i.members === undefined) {
+                            a = "<td>" + "&nbsp;" + "</td>";
+                        }
+                        $table.append("<tr>" +
+                            "<td>" + i.id + "</td>" +
+                            "<td>" + i.name + "</td>" +
+                            "<td>" + i.nation + "</td>" +
+                            "<td>" + i.category + "</td>" +
+                            "<td>" + i.birthday + "</td>" +
+                            a +
+                            "<td>" + "<img style='width: 100px' src=" + "../歌手查询" + i.head + ">" + "</td>" +
+                            "<td>" + "<button onclick='deleteSinger(this.value)' value=" + i.name + " >删除</button>" + "</td>" +
+                            "</tr>");
+                    }
+                }
+            );
+            document.getElementById("page").value = page.toString();
+        }
+
+        //获取
+    </script>
+</head>
+<body>
+<div style="text-align: center">
+    歌手：<input id="sqName">
+    分类：<select id="category" style="width:200px">
+    <option value="1">分类选项</option>
+</select>
+    地区：<input id="address">
+    <button onclick="queryComposite()">查询</button>
+</div>
+<table id="singers" border="1" style="width: 100%">
+    <tbody>
+    <tr>
+
+        <th style="width:10%" onclick="test('id')">ID</th>
+        <th style="width:15%" onclick="test('name')">名称</th>
+        <th style="width:10%">地区</th>
+        <th style="width:15%" onclick="test('category')">分类</th>
+        <!--        添加成员（members）、生日（birthday）字段和头像（head）字段的展示-->
+        <th style="width:20%">生日</th>
+        <th style="width:15%">成员</th>
+        <th style="width:10%">头像</th>
+        <th style="width:5%">删除</th>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>香港</td>
+        <td>华语男歌手</td>
+        <td>陈奕迅</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>台湾</td>
+        <td>华语男歌手</td>
+        <td>周杰伦</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>大陆</td>
+        <td>专辑合集</td>
+        <td>中国声音第一季</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>大陆</td>
+        <td>华语女歌手</td>
+        <td>曲婉婷</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>香港</td>
+        <td>华语乐队</td>
+        <td>BEYOND</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>香港</td>
+        <td>华语女歌手</td>
+        <td>邓紫棋</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>台湾</td>
+        <td>华语女歌手</td>
+        <td>阿桑</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td>香港</td>
+        <td>华语女歌手</td>
+        <td>郑秀文</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>大陆</td>
+        <td>华语女歌手</td>
+        <td>庄心妍</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>香港</td>
+        <td>华语女歌手</td>
+        <td>杨千嬅</td>
+    </tr>
+    </tbody>
+</table>
+<div id="pages" name="pages" style="text-align: center;">
+    <select id="page_num" onchange="pageNum()">
+        <option value="10">每页10行</option>
+        <option value="20">每页20行</option>
+        <option value="50">每页50行</option>
+        <option value="100">每页100行</option>
+    </select>
+    <button onclick="first()">首页</button>
+    <button onclick="previous()">上一页</button>
+    <input id="page" value="" type="number" onchange="inputPage()"
+           style="text-align: center; width: 30px"> / 共<span id="count"></span>页
+    <button onclick="next()">下一页</button>
+    <button onclick="last()">尾页</button>
+</div>
+<h4>扩展功能</h4>
+<ol>
+    <li>实现所有的翻页功能
+    <li>实现页内行数设置功能
+    <li>实现所有的组合条件查询，文本输入框条件使用模糊查询，下拉框使用精确查询
+    <li>添加成员（members）、生日（birthday）字段和头像（head）字段的展示
+    <li>实现点击列头（th）实现排序功能
+    <li>在每行最后添加一个“删除”按钮，实现删除功能
+</ol>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #shade {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: gray;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        #shade_table {
+
+            margin-top: 250px;
+            color: red;
+        }
+
+    </style>
+    <script>
+
+        function deleteTable(value){
+            alert(value);
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <button class="btn btn-primary">添加</button>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr value="添加">
+                <td value="姓名">张三</td>
+                <td>18</td>
+                <td>女</td>
+                <td>
+                    <button value="aa" onclick="deleteTable(this.value)" class="btn btn-info">修改</button>
+                    <button class="btn btn-danger">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>李四</td>
+                <td>19</td>
+                <td>男</td>
+                <td>
+                    <button class="btn btn-info">修改</button>
+                    <button class="btn btn-danger">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>王五</td>
+                <td>20</td>
+                <td>男</td>
+                <td>
+                    <button class="btn btn-info">修改</button>
+                    <button class="btn btn-danger">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>李二</td>
+                <td>21</td>
+                <td>男</td>
+                <td>
+                    <button class="btn btn-info">修改</button>
+                    <button class="btn btn-danger">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>egon</td>
+                <td>73</td>
+                <td>女</td>
+                <td>
+                    <button class="btn btn-info">修改</button>
+                    <button class="btn btn-danger">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>alex</td>
+                <td>84</td>
+                <td>女</td>
+                <td>
+                    <button class="btn btn-info">修改</button>
+                    <button class="btn btn-danger">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>alexSB</td>
+                <td>84</td>
+                <td>女</td>
+                <td>
+                    <button class="btn btn-info">修改</button>
+                    <button class="btn btn-danger">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>元日天sb</td>
+                <td>84</td>
+                <td>女</td>
+                <td>
+                    <button class="btn btn-info">修改</button>
+                    <button class="btn btn-danger">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>egonSB</td>
+                <td>73</td>
+                <td>女</td>
+                <td>
+                    <button class="btn btn-info">修改</button>
+                    <button class="btn btn-danger">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>钻石</td>
+                <td>18</td>
+                <td>男</td>
+                <td>
+                    <button class="btn btn-info">修改</button>
+                    <button class="btn btn-danger">删除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+</body>
+</html>

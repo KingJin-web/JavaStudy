@@ -1,0 +1,46 @@
+访问状态管理
+
+HTTP：无状态性
+
+Cookie：浏览器端存储用户少量(4k)数据的技术
+	前端：document.cookie
+		document.cookie = "a=1;mag-age=3600"; // 添加一个cookie
+		console.info(document.cookie); // 输出所有的cookie
+	后端
+		Cookie c = new Cookie(name "a", value "1");
+		c.setMaxAge(); ==> maxAge;
+							path
+							domain;
+							httpXX;
+							...
+			maxAge == 0 表示， 删除该cookie
+		response.addCookie(c); // 响应对象添加cookie
+		request.getCookies();  // 请求对象返回所有的cookie
+
+Session
+	解决问题： 浏览器与服务器连续的交互问题
+			时效性 ==> 有效期 （tomcat 默认 30有效），
+			时序性 ==> 先登录在支付
+
+	过程：
+		1. 当服务器接收到浏览器的第一个请求时， 立即为其生成一个 Session，并保存
+		2. 将 Session 对应的 id 发送给浏览器（会话机制）
+			默认情况下，服务器通过cookie 向浏览器发送 session id
+		3. 当浏览器再次发送请求给服务器是，将会带回  session id
+		4. 服务器根据 session id 获取到 Session 对象
+		5. 将 Session 设置到 请求对象中
+				request.getSession
+				
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+
+
+ServletContext

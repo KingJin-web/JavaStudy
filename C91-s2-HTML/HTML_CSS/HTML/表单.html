@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+</head>
+<body>
+<div>
+    <form action="作业/index.html">
+        <span>账号</span> <input class="keys" style="color: green" id="a">
+        <label id="#a">
+            账号：<input style="color: green">
+        </label><br>
+        <label>
+            密码：<input type="password">
+        </label><br>
+        <label>
+            性别：<input type="radio" name="sex">男<input type="radio" name="sex">女
+        </label><br>
+        <label>
+            爱好：<input type="checkbox" name="like">篮球<input type="checkbox" name="like">游戏<input type="checkbox"
+                                                                                                name="like">电影
+        </label><br>
+        <label>
+            邮箱：<input type="email">
+        </label><br>
+        <label>
+            年龄：<input type="number">
+        </label><br>
+        学历
+        <label>
+            <select name="edu">
+                <option>小学</option>
+                <option>中学</option>
+                <option>高中</option>
+                <option>大学</option>
+            </select>
+        </label><br>
+        <label>
+            自我介绍
+            <textarea id="me" rows="10" cols="50"></textarea>
+        </label><br>
+        <input type="submit" value="注册"> <!--提交按钮-->
+        <input type="button" value="按钮"> <!--普通按钮-->
+        <input type="reset" value="重置"> <!--重置输入-->
+    </form>
+</div>
+</body>
+
+<style type="text/css">
+
+    input {
+        color: red;
+    }
+
+    /* id选择器 只设置一个元素*/
+    #me {
+        font-family: 宋体, serif;
+    }
+    /* 子类选择器 */
+    body>div>form>span{
+        color: orange;
+    }
+
+    /* 后代选择器 */
+    body span{
+        color: green;
+    }
+    /* 属性选择器 */
+    input[type="email"]{
+        border: solid 5px;
+    }
+</style>
+
+<link href="../CSS/表单.css" rel="stylesheet">
+</html>

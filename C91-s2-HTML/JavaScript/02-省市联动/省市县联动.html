@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>省市县联动</title>
+    <style type="text/css">
+        select {
+            width: 100px
+        }
+    </style>
+    <script type="text/javascript" src="js/省市.js"></script>
+    <script type="text/javascript">
+        //对省的下拉框
+        function init() {
+            var options = "";
+            for (var i = 0; i < provinces.length; i++) {
+                options += "<option>" + provinces[i] + "</option>";
+            }
+            sheng.innerHTML = options;
+            var options = "";
+            for (var i = 0; i < citys[0].length; i++) {
+                options += "<option>" + citys[0][i] + "</option>";
+            }
+            shi.innerHTML = options;
+            var options = "";
+            for (var i = 0; i < countys[0][0].length; i++) {
+                options += "<option>" + countys[0][0][i] + "</option>";
+            }
+            xian.innerHTML = options;
+        }
+
+        function selectSheng() {
+            var pIndex = sheng.selectedIndex;
+            console.info(pIndex)
+            var options = "";
+            for (var i = 0; i < citys[pIndex].length; i++) {
+                options += "<option>" + citys[pIndex][i] + "</option>";
+            }
+            shi.innerHTML = options;
+            selectShi();
+        }
+
+        function selectShi() {
+
+            var pIndex = sheng.selectedIndex;
+            //获取当前市的索引
+            var cIndex = shi.selectedIndex;
+            console.info(cIndex)
+            var options = "";
+            for (var i = 0; i < countys[pIndex][cIndex].length; i++) {
+                options += "<option>" + countys[pIndex][cIndex][i] + "</option>";
+            }
+            xian.innerHTML = options;
+        }
+
+        function test() {
+            console.info("sheng.innerHTML")
+            console.info(sheng.innerHTML)
+            console.info("sheng.outerHTML");
+            console.info(sheng.outerHTML);
+            console.info("sheng.innerText");
+            console.info(sheng.innerText)
+
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="main">
+    省:<label for="sheng"></label><select onchange="selectSheng()" id="sheng"></select>
+    市:<label for="shi"></label><select onchange="selectShi()" id="shi"></select>
+    县:<label for="xian"></label><select id="xian"></select><br>
+    <button onclick="test()">测试</button>
+
+</div>
+</body>
+
+</html>

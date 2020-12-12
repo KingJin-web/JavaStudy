@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../js/jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../js/jquery-easyui-1.7.0/themes/icon.css">
+    <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<script type="text/javascript">
+    function fmtcz(value, row, index) {
+        return "<button onclick='del(" + index + ")'>删除</button>"
+    }
+
+    function del(index) {
+        $.messager.confirm('确认对话框', '您确认要删除吗', function (r) {
+            if (r) {
+                var row = $("#table").datagrid('getRows');//
+                var id = row[index].id; //
+
+                var url = "../DeleteSinger";
+                var params = {id: id}; //jQuery 对象传入参数
+                function callback(data) {
+                    $.messager.show({
+                        title: "系统提示",
+                        msg: data,
+                        timeout: 5000,
+                        showType: 'slide'
+                    })
+                    $("#table").datagrid('reload'); //刷新
+                }
+
+                $.post(url, params, callback)
+                console.info(id);
+            }
+        });
+    }
+
+    function edit() {
+        $("#dd").dialog('open');
+    }
+
+    function save() {
+        $('#ff').form('submit', {
+            url:"../CreateSqSinger",
+            success: function(data){
+                $.messager.show({
+                    title: "系统提示",
+                    msg: data,
+                    timeout: 5000,
+                    showType: 'slide'
+                })
+                $("#table").datagrid('reload'); //刷新
+
+            }
+        });
+    }
+</script>
+<body>
+<div id="cc" class="easyui-layout" style="width:600px;height:400px;" data-options="fit:true">
+    <div data-options="region:'north',title:'查询条件',split:true" style="height:100px;">
+        <a id="btn1" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+        <a id="btn2" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="edit()">新增</a>
+    </div>
+    <div data-options="region:'center',title:'查询结果'" style="padding:5px;background:#eee;">
+        <table id="table" class="easyui-datagrid" data-options="
+                        fit:true,
+                        url:'../ssQueryPagesEasyui.s',
+                        fitColumns:true,
+                        singleSelect:true,
+                        pagination:true ">
+            <thead>
+            <tr>
+                <th data-options="field:'id',width:100">编号</th>
+                <th data-options="field:'name',width:100">名字</th>
+                <th data-options="field:'category',width:100">分类</th>
+                <th data-options="field:'nation',width:100">地区</th>
+                <th data-options="field:'zz',width:30,formatter:fmtcz">地区</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<div id="dd" class="easyui-dialog" title="新增歌手" style="width:400px;height:200px;"
+     data-options="iconCls:'icon-save',resizable:true,modal:true,closed:true">
+
+    <form style="text-align: center" id="ff">
+        <input name="name" class="easyui-textbox"  style="margin: 15px ;width:300px" prompt="歌手"><br>
+        <input name="category" class="easyui-textbox"  style="width:300px" prompt="分类"><br>
+        <input name="birthday" class="easyui-textbox"  style="width:300px" prompt="生日"><br>
+        <input name="members" class="easyui-textbox" style="width:300px" prompt="专辑成员"><br>
+        <a id="btn3" href="#" class="easyui-linkbutton"
+           data-options="iconCls:'icon-save',
+           onClick:save">保存</a>
+        <a id="btn4" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+    </form>
+</div>
+</body>
+</html>

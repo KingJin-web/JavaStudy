@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript">
+    function getInput() {
+        var a = document.forms["aa"]["x"].value;
+        var b = document.forms["aa"]["y"].value;
+        if (a === "" || a === null || b === ""|| b === null) {
+
+            alert("请输入要计算的值");
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>
+<body>
+<form name="aa" action="../Homework.s" method="post" onsubmit="return getInput()">
+    X:<input name="x" type="number">
+    运算符 <select name="z" style="width: 100px">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+
+</select>
+    <!--    运算符<input name="x" type="text">-->
+    Y:<input name="y" type="number">
+    <input type="submit" value="提交">
+
+
+</form>
+</body>
+<script type="text/javascript">
+
+</script>
+</html>

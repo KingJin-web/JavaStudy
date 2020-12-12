@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var p = new Promise(function(resolve, reject) {
+			var r = Math.random();
+			if (r > 0.5) {
+				resolve("success");
+			} else {
+				reject("failure");
+			}
+		})
+
+		var p1 = new Promise(function(resolve, reject) {
+			var r = Math.random();
+			if (r > 0.5) {
+				resolve("success");
+			} else {
+				reject("failure");
+			}
+		})
+
+		p.then(function(data) {
+			console.info(data);
+		}, function(data) {
+			console.info(data);
+			return p1;
+		}).then(function(data) {
+			console.info(data);
+		}, function(data) {
+			console.info(data);
+		})
+	</script>
+</html>

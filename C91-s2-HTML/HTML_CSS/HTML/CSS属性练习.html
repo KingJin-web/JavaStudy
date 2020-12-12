@@ -1,0 +1,236 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CSS属性练习</title>
+    <script src="../../js/jquery-3.4.1.min.js"></script>
+    <script src="../../js/vue.min.js"></script>
+    <style type="text/css">
+        body, div {
+            padding: 10px
+        }
+
+        div {
+            border: 1px solid #777;
+        }
+
+        body > div:nth-child(1) {
+            float: left;
+            width: 35%
+        }
+
+        body > div:nth-child(2) {
+            float: right;
+            width: 60%
+        }
+
+        li {
+            padding: 2px
+        }
+
+        li:hover {
+            background-color: #888;
+            color: #fff;
+        }
+
+        li > *:nth-child(2), li > *:nth-child(3) {
+            float: right;
+        }
+
+        li > span {
+            width: 60%
+        }
+
+        li > input {
+            width: 30%
+        }
+
+        h1 {
+            background-color: #eee
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>CSS简介</h1>
+    <p>在Web早期样式和内容是不区分的，比如可以通过&lt;bold&gt;标签来显示加粗字体。随着页面内容的丰富，浏览器性能的提高，内容和样式的耦合使得HTML文件难以理解和维护。CSS的出现正是为了将样式分离到独立的文件中。
+    </p>
+    <p>层叠样式表（Cascading Style Sheets，CSS），又称串样式列表、层次结构式样式表文件，一种用来为结构化文档（如HTML文档或XML应用）添加样式（字体、间距和颜色等）的计算机语言，由W3C定义和维护。
+    </p></div>
+<div id="lx"><h2>请按照要求完成对左边的<font color="blue">标题 (CSS简介)</font>的样式进行修改</h2>
+    <ol>
+        <li><span>将字体为"微软雅黑"</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="font-family:微软雅黑"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体为"宋体"</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="font-family:宋体"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体大小设置为40像素</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="font-size:40px"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体设置为红色,使用英文单词</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="color:red"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体粗细设置为400</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="font-weight:400"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体设置为蓝色,使用 #????? 格式</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="color:#0000ff"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>设置文字居左</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="text-align:left"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>设置文字居右</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="text-align:right"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体设置为紫色(红+蓝)半透明,使用 rgba 函数</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="color:rgba(255,0,255,0.5)"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体大小设置为3em(相对高度)</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="font-size:3em"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体大小设置为20%</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="font-size:20%"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体粗细设置为900</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="font-weight:900"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体大小设置为2cm(厘米)</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="font-size:2cm"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>设置首行缩进为10像素</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="text-indent:10px"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体设置为绿色,使用 #??? 格式</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="color:#0f0"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体粗细设置为lighter</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="font-weight:lighter"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体大小设置为1in(英寸)</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="font-size:1in"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>设置首行缩进为20px</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="text-indent:20px"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体大小设置为15mm(毫米)</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="font-size:15mm"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>设置字间距为5像素</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="letter-spacing:5px"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体大小设置为20px</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="font-size:20px"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体粗细设置为bold</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="font-weight:bold"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体粗细设置为100</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="font-weight:100"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>设置字间距为10px</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="letter-spacing:10px"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>将字体设置为黄色(红+绿),使用 rgb 函数</span>:
+            <img src="../../img/OK.png" width="20px" style="visibility: hidden;"> <input answer="color:rgb(255,255,0)"
+                                                                                         placeholder="请填写样式，例：color:green">
+        </li>
+        <li><span>设置文字居中</span>:
+            <img src="../../img/OK.png" width="37" style="visibility: hidden;"> <input answer="text-align:center"
+                                                                                       placeholder="请填写样式，例：color:green">
+        </li>
+    </ol>
+</div>
+<script type="text/javascript">
+    var qlist = [
+        {name: '将字体设置为红色,使用英文单词', answer: 'color:red', visibility: 'hidden'},
+        {name: '将字体设置为绿色,使用 #??? 格式', answer: 'color:#0f0', visibility: 'hidden'},
+        {name: '将字体设置为蓝色,使用 #????? 格式', answer: 'color:#0000ff', visibility: 'hidden'},
+        {name: '将字体设置为黄色(红+绿),使用 rgb 函数', answer: 'color:rgb(255,255,0)', visibility: 'hidden'},
+        {name: '将字体设置为紫色(红+蓝)半透明,使用 rgba 函数', answer: 'color:rgba(255,0,255,0.5)', visibility: 'hidden'},
+        {name: '将字体为"宋体"', answer: 'font-family:宋体', visibility: 'hidden'},
+        {name: '将字体为"微软雅黑"', answer: 'font-family:微软雅黑', visibility: 'hidden'},
+        {name: '将字体大小设置为20px', answer: 'font-size:20px', visibility: 'hidden'},
+        {name: '将字体大小设置为1in(英寸)', answer: 'font-size:1in', visibility: 'hidden'},
+        {name: '将字体大小设置为2cm(厘米)', answer: 'font-size:2cm', visibility: 'hidden'},
+        {name: '将字体大小设置为15mm(毫米)', answer: 'font-size:15mm', visibility: 'hidden'},
+        {name: '将字体大小设置为3em(相对高度)', answer: 'font-size:3em', visibility: 'hidden'},
+        {name: '将字体大小设置为20%', answer: 'font-size:20%', visibility: 'hidden'},
+        {name: '将字体大小设置为40像素', answer: 'font-size:40px', visibility: 'hidden'},
+        {name: '将字体粗细设置为100', answer: 'font-weight:100', visibility: 'hidden'},
+        {name: '将字体粗细设置为400', answer: 'font-weight:400', visibility: 'hidden'},
+        {name: '将字体粗细设置为900', answer: 'font-weight:900', visibility: 'hidden'},
+        {name: '将字体粗细设置为bold', answer: 'font-weight:bold', visibility: 'hidden'},
+        {name: '将字体粗细设置为lighter', answer: 'font-weight:lighter', visibility: 'hidden'},
+        {name: '设置文字居左', answer: 'text-align:left', visibility: 'hidden'},
+        {name: '设置文字居中', answer: 'text-align:center', visibility: 'hidden'},
+        {name: '设置文字居右', answer: 'text-align:right', visibility: 'hidden'},
+        {name: '设置字间距为5像素', answer: 'letter-spacing:5px', visibility: 'hidden'},
+        {name: '设置字间距为10px', answer: 'letter-spacing:10px', visibility: 'hidden'},
+        {name: '设置首行缩进为20px', answer: 'text-indent:20px', visibility: 'hidden'},
+        {name: '设置首行缩进为10像素', answer: 'text-indent:10px', visibility: 'hidden'},
+    ];
+    qlist.sort((a, b) => {
+        return Math.random() > .5 ? -1 : 1
+    });
+    var lx = new Vue({
+        el: '#lx',
+        data: {
+            qlist: qlist,
+        },
+        methods: {
+            answer: function (q) {
+                if (event.srcElement.value) {
+                    var a1 = event.srcElement.value;
+                    var a2 = q.answer;
+                    a1 = a1.replace(/\s+/g, '');
+                    a2 = a2.replace(/\s+/g, '');
+                    var arr = a1.split(":");
+                    $("h1").css(arr[0], arr[1]);
+                    a1 = a1.toLowerCase();
+                    a2 = a2.toLowerCase();
+                    q.visibility = a1 == a2 ? 'visible' : 'hidden';
+                }
+            },
+            a: function (q) {
+                if (event.altKey) {
+                    event.srcElement.value = q.answer;
+                    this.$options.methods.answer(q);
+                }
+            }
+        }
+    })
+
+</script>
+
+<div class="xl-chrome-ext-bar" id="xl_chrome_ext_{4DB361DE-01F7-4376-B494-639E489D19ED}" style="display: none;">
+    <div class="xl-chrome-ext-bar__logo"></div>
+
+    <a id="xl_chrome_ext_download" href="javascript:;" class="xl-chrome-ext-bar__option">下载视频</a>
+    <a id="xl_chrome_ext_close" href="javascript:;" class="xl-chrome-ext-bar__close"></a>
+</div>
+</body>
+</html>

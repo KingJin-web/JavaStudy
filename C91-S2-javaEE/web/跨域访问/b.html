@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+    //www.wuzhaoqi.top:8080/JavaEE/crossdomain
+    function test(){
+        $.ajax({
+            type : "GET",
+            async : false,
+            url : "http://www.wuzhaoqi.top:8080/JavaEE/crossdomain2?callback=你好 ",
+            dataType : "text",
+            success : function(data) {
+                alert(data);
+            },
+            error : function() {
+                alert('fail');
+            }
+        });
+    }
+
+</script>
+<body>
+<button id="test" onclick="test()" value="test">测试</button>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="../js/jquery-3.5.1.js"></script>
+<body>
+ 在线人数
+<span id="cnt"></span>
+</body>
+<script type="text/javascript" >
+    $.get("../UserCount.s",null,function(data){
+        cnt.innerHTML = data
+    })
+
+</script>
+</html>

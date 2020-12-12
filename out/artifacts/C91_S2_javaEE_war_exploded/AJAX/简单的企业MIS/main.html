@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>企业MIS</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<h2>主页面</h2>
+<span id="name">欢迎：XXX</span>&nbsp;&nbsp;&nbsp;
+<a href="login.html">退出</a><br>
+<a href="conf.html">系统设置</a><br>
+<a href="report.html">财务报表</a><br>
+</body>
+
+<script type="text/javascript">
+	/**
+	 * post 函数就是对 之前 doAjax 做的简单的封装， 添加一个回调函数的参数，其余的代码不变
+	 */
+	var xmlhttp;
+	function post(url, callback) {
+		// 创建 XMLHttpRequest 对象
+		// 浏览器兼容性问题
+		try {
+			xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try {
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e) {
+				try {
+					xmlhttp = new XMLHttpRequest();
+				} catch (e) {
+					alert("浏览器不支持 AJAX！");
+				}
+			}
+		}
+
+		// 回调函数， 当收到服务器返回的数据时，执行的函数
+		xmlhttp.onreadystatechange = callback;
+		xmlhttp.open("post", url, true); // 第三个参数 表示异步执行
+		xmlhttp.send(null);
+	}
+
+	post("../../getLoginedAccount.s",function(){
+		if(xmlhttp.readyState==4 && xmlhttp.status==200){
+			var myName = document.getElementById("name");
+			myName.innerText = "欢迎：" + xmlhttp.responseText;
+		}
+	})
+
+
+
+</script>
+</html>

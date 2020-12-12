@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>消扑克</title>
+    <link href="css/matchgame.css" rel="stylesheet">
+</head>
+<script type="text/javascript" src="../../js/jquery-3.5.1.min.js"></script>
+<body ol>
+<section id="game">
+    <div id="cards">
+        <div class="card" onclick="cg.open(0)"></div>
+        <div class="card" onclick="cg.open(1)"></div>
+        <div class="card" onclick="cg.open(2)"></div>
+        <div class="card" onclick="cg.open(3)"></div>
+        <div class="card" onclick="cg.open(4)"></div>
+        <div class="card" onclick="cg.open(5)"></div>
+        <div class="card" onclick="cg.open(6)"></div>
+        <div class="card" onclick="cg.open(7)"></div>
+        <div class="card" onclick="cg.open(8)"></div>
+        <div class="card" onclick="cg.open(9)"></div>
+        <div class="card" onclick="cg.open(10)"></div>
+        <div class="card" onclick="cg.open(11)"></div>
+    </div>
+    <div id="button">
+        <button onclick="replaceDoc()">重新开始</button>
+    </div>
+    <div id="time">
+
+    </div>
+</section>
+<script type="text/javascript">
+
+    function getCardImg(num) {
+        var f = Math.floor(num / 13);
+        var n = num % 13;
+        f *= 120;
+        n *= 80;
+        return "-" + n + "px -" + f + "px";
+    }
+
+    // var img = getCardImg(45)
+    // $(".card").first().css("background-position", img);
+
+
+    function ClearGame() {
+        this.cards = new Array(12);
+        this.card1 = -1;
+        this.card2 = -1;
+
+        //随机生成 12 张牌
+        this.start = function () {
+            // $.each(this.cards, i => {
+            //     this.cards[i] = Math.floor(Math.random() * 52);
+            //     // var img = getCardImg(this.cards[i]);
+            //     // $(".card").eq(i).css("background-position", img);
+            // })
+
+
+            //i=>{}  ==> function(i){}  箭头函数
+
+            // //复制前6个牌
+            // var c06 = this.cards.slice(0, 6);
+            // //删除后六个
+            // this.cards.slice(6, 6);
+            // $.each(c06, i => {
+            //     this.cards.push(c06[i]);
+            // });
+            //复制前6张牌到后面
+            $.each(this.cards, i => {
+                this.cards[i] = Math.floor(Math.random() * 52);
+            });
+            console.info(this.cards);
+            var c06 = this.cards.slice(0, 6);
+            //删除后6个
+            this.cards.splice(6, 6);
+            $.each(c06, i => {
+                this.cards.push(c06[i]);
+            });
+            
+            console.info(this.cards);
+            $.each(this.cards, i => {
+                var n = Math.floor(Math.random() * 12);
+                var temp = this.cards[i];
+                this.cards[i] = this.cards[n];
+                this.cards[n] = temp;
+            });
+            console.info(this.cards);
+        }
+
+        this.open = function (index) {
+            //翻开
+            if (this.card1 !== -1 && this.card2 !== -1) {
+                alert("骚年点慢点 !")
+                return;
+            }
+            var img = getCardImg(this.cards[index]);
+            $(".card").eq(index).css("background-position", img);
+
+
+            if (this.card1 === -1) {
+                this.card1 = index;
+            } else {
+                this.card2 = index;
+                if (this.card1 === this.card2) {
+                    alert("双击啥呢");
+                    this.card2 = -1;
+                    return;
+                }
+                if (this.cards[this.card1] === this.cards[this.card2]) {
+                    window.setTimeout(() => {
+                        $(".card").eq(this.card1).css("visibility", "hidden");
+                        $(".card").eq(this.card2).css("visibility", "hidden");
+                        this.card1 = -1;
+                        this.card2 = -1;
+                    }, 1000);
+                } else {
+                    window.setTimeout(() => {
+                        $(".card").eq(this.card1).css("background-position", "0 -480px");
+                        $(".card").eq(this.card2).css("background-position", "0 -480px");
+                        this.card1 = -1;
+                        this.card2 = -1;
+                    }, 1000);
+
+                }
+            }
+            console.info(this.cards);
+
+        }
+
+
+        this.display = function () {
+            $.each(this.cards, i => {
+                var img = getCardImg(this.cards[i]);
+                $(".card").eq(i).css("background-position", "img");
+            })
+        }
+
+
+    }
+
+
+    var cg = new ClearGame();
+    cg.start();
+
+
+    function replaceDoc() {
+        location.reload();
+    }
+</script>
+</body>

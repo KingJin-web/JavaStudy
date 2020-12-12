@@ -1,0 +1,351 @@
+@charset "UTF-8";
+
+/* 清空 ul ， li 的内外边距  */
+ul, li {
+    margin: 0px;
+    padding: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+/*页头*/
+header {
+    height: 120px;
+    background-color: #eee;
+    background-image: url(../imgs/headerbg.jpg)
+}
+
+/*页脚*/
+footer {
+    height: 50px;
+    background-color: #ddd;
+    clear: both;
+    margin-top: 60px; /* 产生与主体部分的间距 */
+}
+
+main {
+    width: 1200px;
+    margin: 20px auto; /*左右外边距：自动==》居中*/
+    background-color: #ccc;
+}
+
+.left {
+    float: left;
+    width: 890px;
+    background-color: #bbb
+}
+
+.right {
+    float: right;
+    width: 290px;
+    background-color: #aaa
+}
+
+
+.menu {
+    background-color: #000;
+}
+
+.menu > div {
+    width: 1200px;
+    margin: 0px auto;
+    color: #fff;
+}
+
+.menu > div > * {
+    vertical-align: middle; /*设置内部所有元素垂直居中*/
+}
+
+/* 将菜单 ul + li 修改成行内块   */
+.menu > div > ul, .menu > div li {
+    display: inline-block;
+}
+
+/* :hover 鼠标悬停选择器（伪类选择器的一种）*/
+.menu > div li:hover {
+    background-color: #999;
+}
+
+.menu > div li {
+    padding: 15px
+}
+
+.menu > div li:nth-child(5) {
+    margin-right: 100px
+}
+
+.menu > div input {
+    width: 262px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0px 0px 3px 0px;
+    border-color: #fff;
+    border-style: solid;
+    background-image: url(../imgs/icon/search.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    float: right;
+    margin-top: 10px
+}
+
+/* 推荐文章 */
+.carousel > img {
+    width: 890px;
+}
+
+.carousel {
+    width: 890px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.tuijian > div:nth-child(2) {
+    background-color: #1C2327;
+    color: #fff;
+    padding: 10px
+}
+
+
+/* 小的推荐文章 */
+.small, .small > .carousel, .small > .carousel > img {
+    width: 280px;
+}
+
+.small > .carousel {
+    height: 150px
+}
+
+.small {
+    display: inline-block;
+}
+
+.small:nth-child(2), .small:nth-child(3) {
+    margin-right: 20px
+}
+
+/* 添加 left 内部元素的下外边距， 产生间距效果 */
+.left > div {
+    margin-bottom: 10px
+}
+
+/* 页脚（注脚）*/
+footer > div {
+    width: 1200px;
+    color: #fff;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px; /* 纯文字的垂直居中，要用到该属性 */
+    text-align: left;
+}
+
+footer > div * {
+    vertical-align: middle;
+}
+
+footer > div span {
+    font-weight: bold;
+}
+
+footer {
+    background: #000; /*简写模式*/
+    text-align: center;
+}
+
+
+/*   博客信息板块     */
+.blog-info {
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden; /* 溢出隐藏，实现圆角 */
+}
+
+.blog-info > div:nth-child(1) > img {
+    width: 290px
+}
+
+.blog-info > div:nth-child(2) > img {
+    width: 80px
+}
+
+.blog-info > div:nth-child(2) {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0px 0px 6px 1px #555;
+    margin: -40px auto 0px
+}
+
+.blog-info > div:nth-child(3) {
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #666;
+    width: 250px;
+    margin: 0px auto
+}
+
+.blog-info > div:nth-child(3) > * {
+    vertical-align: middle;
+}
+
+.blog-info > div:nth-child(3) > img {
+    transform: rotate(45deg);
+}
+
+.blog-info > div:nth-child(4) {
+    width: 250px;
+    margin: 0px auto;
+    font-size: 0.8em
+}
+
+.blog-info > div:nth-child(4) > .odd {
+    width: 62px;
+    display: inline-block;
+}
+
+.blog-info > div:nth-child(4) > span {
+    margin: 10px 0px
+}
+
+.blog-info > div:nth-child(5) {
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+}
+
+.blog-info > div:nth-child(5) > span {
+    display: inline-block;
+    margin: 10px;
+}
+
+
+/*修改页面总体背景*/
+.left, .right, body {
+    background-color: #eee
+}
+
+.left > div:nth-child(6) {
+    float: right;
+}
+
+.alist {
+    width: 435px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.alist > div > span {
+    display: inline-block;
+    margin: 10px;
+}
+
+.alist > div > span:nth-child(1) {
+    border-left: 6px #0a93d2 solid;
+    padding-left: 5px;
+}
+
+.alist > div > span:nth-child(2) {
+    float: right;
+    text-decoration: underline;
+
+}
+
+.alist > div > span:nth-child(2):hover {
+    cursor: pointer;
+}
+
+.alist > div {
+    background-color: #dddddd;
+}
+
+/*行分割线*/
+.alist td {
+    border-bottom: 1px dashed #999999;
+    padding: 10px 0;
+    font-size: 0.6em;
+    box-sizing: border-box;
+
+}
+
+.download > div:nth-child(1) {
+    width: 435px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.download > div > img {
+    /*border: 10px solid;*/
+    border-radius: 10px;
+    width: 435px;
+}
+
+.download > div:nth-child(2) {
+
+    width: 435px;
+    display: inline-block;
+}
+
+.win > div:nth-child(3) {
+    margin-left:20px;
+    display: inline-block;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.win > div:nth-child(4) {
+    display: inline-block;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.win > div:nth-child(3) > a {
+    width: 100px;
+    height: 40px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.win > div:nth-child(4) > a {
+    width: 100px;
+    height: 40px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.an1 {
+    /*border: 10px solid;*/
+    background: #111111;
+    color: #eeeeee;
+    border-radius: 10px;
+    display: block;
+}
+
+.an2 {
+    /*border: 10px solid;*/
+    background: #0a93d2;
+    color: #eeeeee;
+    border-radius: 10px;
+    display: block;
+
+}
+.win{
+    margin-right: 10px;
+}
+.win>h3{
+    transform:translateY(-18px);
+}
+.win > div:nth-child(2) {
+    position: relative;
+    border-left: 3px solid #333333;
+    border-right: 3px solid #333333;
+    transform:translateY(-18px);
+    background-color: #EEF0F4;
+}

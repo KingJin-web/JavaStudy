@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+
+	</head>
+	<script src="../js/vue.js" type="text/javascript"></script>
+	<script> Vue.config.productionTip = false</script>
+	<body>
+		<form action="" id="ff">
+			姓名<input v-model="person.name"><br>
+			爱好
+			<input v-model="person.like" type="checkbox" value="读书">读书
+			<input v-model="person.like" type="checkbox" value="手游">手游
+			<input v-model="person.like" type="checkbox" value="篮球">篮球<br>
+			学历
+			<input v-model="person.edu" type="radio" value="高中">高中
+			<input v-model="person.edu" type="radio" value="专科">专科
+			<input v-model="person.edu" type="radio" value="本科">本科<br>
+			专业<select v-model="person.pro">
+				<option>计算机信息管理</option>
+				<option>计算机应用</option>
+				<option>计算机网络</option>
+			</select><br>
+			自我介绍<textarea v-model="person.intro" rows="5" cols="20"></textarea>
+			<br>
+			<button type="button">提交1</button>
+			<span @dblclick="fun1()">提交2</span>
+
+			<div>
+				<div>
+					<div></div>
+				</div>
+			</div>
+		</form>
+	</body>
+	<script type="text/javascript">
+		var v = new Vue({
+			el: '#ff',
+			data: {
+				person: {
+					name: '蔡徐坤',
+					like: ['篮球'],
+					edu: '专科',
+					pro: '计算机网络',
+					intro: '？'
+				},
+				methods: {
+					fun(){
+						
+					},
+					fun1(){
+						
+					}
+				}
+
+			}
+		});
+	</script>
+</html>
