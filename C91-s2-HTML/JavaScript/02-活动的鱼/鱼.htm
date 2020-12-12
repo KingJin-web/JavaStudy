@@ -1,0 +1,120 @@
+<!doctype html>
+<html onmousemove="move(event)" onkeydown="moveKey(event)" onmouseover="windowAddMouseWheel()" lang="">
+<head>
+    <meta charset="utf-8">
+    <title>会动的鱼</title>
+</head>
+
+<body>
+<h1>点击鼠标切换图片</h1>
+<!--  注意页面元素默认是相对位置定位的，所以要改成绝对位置-->
+<img style="position:absolute;left:0;top:0; width: 80px" id="fish" src="img/9.gif" onclick="changeImg()" alt="">
+
+</body>
+<script type="text/javascript">
+    function move(e) {
+        //console.info(e);
+        var x = e.clientX;
+        var y = e.clientY;
+
+        fish.style.left = (x - 12) + "px";
+        fish.style.top = (y - 40) + "px";
+    }
+
+    function moveKey(event) {
+
+        var obj = document.getElementById('fish');
+        var w = document.documentElement.scrollWidth || document.body.scrollWidth;
+        var h = document.documentElement.scrollHeight || document.body.scrollHeight;
+
+        console.info("屏幕大小:", w, h)
+        //图片坐标
+        var x = obj.offsetLeft;
+        var y = obj.offsetTop;
+        console.info("图片坐标", x, y)
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+        //console.info("你按的键盘:" + e.keyCode)
+        if (e && e.keyCode === 40) { //下
+            y = y + 5;
+        }
+        if (e && e.keyCode === 37) { //左
+            x = x - 5;
+        }
+        if (e && e.keyCode === 39) { //右
+            x = x + 5;
+        }
+        if (e && e.keyCode === 38) { // 上
+            y = y - 5;
+        }
+        if (x + 80 >= w) {
+            x = w - 80;
+        }
+        if (x <= -14) {
+            x = -14;
+        }
+        if (y + 80 >= h) {
+            y = h - 80;
+        }
+        if (y <= 0) {
+            y = 0;
+        }
+        console.info(x, y);
+        fish.style.left = x + "px";
+        fish.style.top = y + "px";
+        // console.info(fish.style)
+
+    }
+
+    windowAddMouseWheel();
+
+    function windowAddMouseWheel() {
+
+        var scrollFunc = function (e) {
+            e = e || window.event;
+            if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件
+                if (e.wheelDelta > 0) { //当滑轮向上滚动时
+                    changeImg();
+                }
+                if (e.wheelDelta < 0) { //当滑轮向下滚动时
+                    changeImg();
+                }
+            } else if (e.detail) {  //Firefox滑轮事件
+                if (e.detail > 0) { //当滑轮向上滚动时
+                    changeImg();
+                }
+                if (e.detail < 0) { //当滑轮向下滚动时
+                    changeImg();
+                }
+            }
+        };
+        /*IE、Opera注册事件*/
+        if (document.attachEvent) {
+            document.attachEvent('onmousewheel', scrollFunc);
+
+        }
+        //Firefox使用addEventListener添加滚轮事件
+        if (document.addEventListener) {//firefox
+            document.addEventListener('DOMMouseScroll', scrollFunc, false);
+        }
+        //Safari与Chrome属于同一类型
+        window.onmousewheel = document.onmousewheel = scrollFunc;
+
+
+    }
+    var i = 0;
+    function changeImg() {
+
+
+        i++;
+        if (i > 25) {
+            i = 1;
+        }
+        fish.src = "img/" + i + ".gif";
+        //if (fish.src.indexOf("img/20.gif") >= 0) {
+        //     fish.src = "img/2.gif";
+        // } else {
+        //     fish.src = "img/20.gif";
+        // }
+    }
+</script>
+</html>

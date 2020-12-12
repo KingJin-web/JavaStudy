@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+button {
+	padding: 0px 20px
+}
+
+body {
+	text-align: center;
+	margin: 100px;
+	line-height: 30px
+}

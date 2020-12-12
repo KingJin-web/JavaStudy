@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<script type="text/javascript">
+    function Hero(name, age) {
+        this.name = name;
+        this.age = age;
+        this.play = function () {
+            alert("Happy" + this.name + this.age)
+        }
+
+
+    }
+
+    var cxk = new Hero("蔡徐坤", 19);
+    var wzq = new Hero("吴沼淇", 18);
+    var lh = new Hero("鹿晗");
+
+    cxk.play();
+    wzq.play();
+    lh.play();
+</script>
+<body>
+
+</body>
+</html>

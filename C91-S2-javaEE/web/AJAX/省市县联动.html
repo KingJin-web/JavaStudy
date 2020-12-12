@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>省市县联动</title>
+    <style type="text/css">
+        select {
+            width: 100px
+        }
+    </style>
+    <script type="text/javascript">
+    </script>
+</head>
+<body>
+<div id="main">
+    <h3>AJAX实现省市联动</h3>
+    省:<select id="sheng" name="sheng" onchange="selectSheng()"></select>
+    市:<select id="shi" name="shi" onchange="selectShi()"></select>
+    县:<select id="xian" name="xian"></select>
+</div>
+
+<hr>
+<dl>
+    <dt>要求:
+    <dd>
+        <ol>
+            <li>使用 AJAX 方式从后台获取省市县的数据, 加载到下拉列表选项中
+            <li>在选择 省 和 市 时, 发送 AJAX 请求, 获取对应的 市 和 县 的数据, 加载到对应的下拉列表选项中
+        </ol>
+</dl>
+<dl>
+    <dt>提示: 关于数据返回格式
+    <dd>
+        <ol>
+            <li>可以使用字符串拼接成一个字符串, 例如: "北京,天津,湖南,湖北...", 然后用JS进行字符串解析( split )
+            <li>也可以考虑使用拼接 JSON 格式 字符串, 例如: "['北京','天津','湖南','湖北'....]", 然后用 eval 函数, 或 JSON.parse函数, 将其转换成 JS数组.
+        </ol>
+</dl>
+</body>
+<script type="text/javascript">
+    var pIndex;
+    var cIndex;
+    doAjax("../getSheng",
+        function(result) {
+            var arr = JSON.parse(result);
+            console.info(arr);
+            var x = "";
+            for ( var i in arr) {
+                x += "<option>" + arr[i] + "</option>";
+            }
+            sheng.innerHTML = x;
+            selectSheng();
+        });
+
+    function selectSheng() {
+        pIndex = sheng.selectedIndex;
+        doAjax("../getShi?sheng=" + pIndex,
+            function (result) {
+                var arr = JSON.parse(result);
+                console.info(result)
+                var x = "";
+                //console.info(arr);
+                for (var i in arr) {
+                    x += "<option>" + arr[i] + "</option>";
+                }
+                shi.innerHTML = x;
+
+                selectShi();
+            });
+
+    }
+
+    function selectShi() {
+        pIndex = sheng.selectedIndex;
+        cIndex = shi.selectedIndex;
+        doAjax("../getXian?sheng=" + pIndex + "&shi=" + cIndex,
+            function (result) {
+                var arr = JSON.parse(result);
+                console.info(result)
+                var x = "";
+                //console.info(arr);
+                for (var i in arr) {
+                    x += "<option>" + arr[i] + "</option>";
+                }
+                xian.innerHTML = x;
+
+
+            });
+    }
+
+
+
+    function doAjax(url, callback) {
+        //定义 XMLHttpRequest
+        var xmlhttp;
+        // 创建 XMLHttpRequest 对象
+        // 浏览器兼容性问题
+        if (xmlhttp == null) {
+            try {
+                xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                try {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e) {
+                    try {
+                        xmlhttp = new XMLHttpRequest();
+                    } catch (e) {
+                        alert("浏览器不支持 AJAX！");
+                    }
+                }
+            }
+        }
+
+        // 回调函数， 当收到服务器返回的数据时，执行的函数
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4 && xmlhttp.status == 200) {
+                callback(xmlhttp.responseText);
+            }
+        };
+        xmlhttp.open("post", url, true); // 第三个参数 表示异步执行
+        xmlhttp.send(null);
+    }
+</script>
+</html>

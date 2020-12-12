@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>企业MIS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="">
+<h2>登录页面</h2>
+<form action="main.html">
+    账号：<input id="account"><br>
+    密码：<input id="pwd"><br>
+    验证码：<input id="vcode" placeholder="点击图片更换验证码">
+    <img src="../../VerifyCodeServlet" height="20px"
+         onclick="this.src='../../VerifyCodeServlet?a=' + new Date(); time = 60">
+    <br>
+
+    <button type="button" onclick="login()">登录</button>
+
+    <button formaction="register.html">注册</button>
+
+
+    <div id="CountMsg" class="HotDate">
+
+        <span id="timer">00秒</span>
+    </div>
+</form>
+</body>
+<script type="text/javascript">
+   var time = 60;
+   setInterval(function(){
+       if(time>0){
+            time --;
+            timer.innerHTML = time + "秒";
+       }
+   },1000)
+
+    function login() {
+        var url = "../../login.s?account=" + account.value + "&pwd=" + pwd.value;
+        url += "&vcode=" + vcode.value + "&nowTime=" + new Date().getTime();
+        post(url, function () {
+            // 这里定义的是回调函数， 注意：要判断 2 个状态值
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                alert(xmlhttp.responseText);
+                if (xmlhttp.responseText === 1 || xmlhttp.responseText === "1") {
+                    alert("登录成功！");
+                    location.href = "main.html"
+                } else if (xmlhttp.responseText === -1 || xmlhttp.responseText === "-1") {
+                    alert("验证码错误")
+                } else if (xmlhttp.responseText === -2 || xmlhttp.responseText === "-2") {
+                    alert("验证码已经失效 请重获取")
+                } else {
+                    alert("登录失败！");
+                }
+
+            }
+        });
+
+    }
+
+    function post(url, callback) {
+        try {
+            xmlhttp = new ActiveXObject("Msxm12.XMLHTTP");
+        } catch (e) {
+            try {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+            } catch (e) {
+                try {
+                    xmlhttp = new XMLHttpRequest();
+                    if (xmlhttp.overrideMimeType) {
+                        xmlhttp.overrideMimeType("text/xml");
+                    }
+                } catch (e) {
+
+                }
+            }
+        }
+        xmlhttp.onreadystatechange = callback;
+        xmlhttp.open("post", url, true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send(null);
+    }
+
+
+    var la = document.cookie.replace(/.*loginedAccount=(\w*).*/, "$1");
+    if (la) {
+        console.info(la + "15644646464")
+    }
+    account.value = la;
+</script>
+</html>

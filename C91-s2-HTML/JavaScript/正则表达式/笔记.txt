@@ -1,0 +1,111 @@
+RegExp对象
+	定义
+		语法1： (Perl风格)
+			var  reg = /pattern/[flags]
+		语法2：
+			var  reg = new  RegExp("pattern",["flags "])
+		示例
+			var  reg = new RegExp(“cat”);
+var  regCat  = new RegExp(“cat”,”gi”);
+
+var reg = /cat/;
+var  regCat = /cat/gi;
+
+	方法
+		RegExp对象方法
+			reg.test(str)	检查指定的字符串是否匹配
+				   var data = "CAt"; 
+   var reg = /at/;   
+   alert(reg.test(data));     //output  false
+
+   reg = /at/gi;
+   alert(reg.test(data));     //output  true
+			reg.exec(str)	用正则表达式模式在字符串中运行查找，并返回查找到的第一个条目，包含三个属性 input、index、lastIndex(条目的起始、结束位置)
+				   var str = "a Bat cat,fAt baT  faT";
+   var  reg = /bat/gi;
+   alert(reg.exec(str));       //output  "Bat"
+		String对象相关方法
+			str.match(reg)	使用正则表达式模式对字符串执行查找，并将包含查找的结果作为数组返回
+				   var str = "a Bat cat,fAt baT  faT";
+   var  reg = /bat/gi;
+   alert(str.match(reg));          //output  Bat,baT
+			str.search(reg)	返回与正则表达式查找内容匹配的第一个子字符串的位置
+			str.replace(rgExp, replaceText)	返回根据正则表达式进行文字替换后的字符串的复制,如果要替换所有符合的字符串，需要加上”g”
+			str.split(rgExp)	利用正则分割数组
+	属性
+		global		Boolean值,表示g(全局选项)是否已设置
+		ignoreCase	Boolean值,表示i(忽略大小写选项)是否已设置
+		multiline	Boolean值,表示m(多行模式选项)是否已设置
+		source		正则表达式源字符串形式
+		index		返回字符位置，它是查找字符串中第一个成功匹配的开始位置，只读  (注:index是全局RegExp对象的属性 用法: RegExp.index  )
+		lastIndex	整数，代表下次匹配将会从哪个字符位置开始 (注:lastIndex也可以是全局RegExp对象的属性)
+
+
+简单模式
+	元字符
+		 (   [  {   \  ^  $  |  )  ?  *  +  .
+	特殊字符
+		\t   \n  \r  \f  \a  \e  \b  \v  \0
+	字符类
+		简单类
+			将需要匹配的特定字符放入方括号列出来
+			示例:  匹配“bat”，“cat”，“fat”   
+
+   var str = "a Bat cat,fAt baT  faT, dat, gat";
+   var  reg = /[bcf]at/gi;
+   //alert(str.match(reg));       //output  ” Bat,cat,fAt,baT,faT”
+   while((a=reg.exec(str))!=null){
+       alert(a);
+   }
+		负向类
+			对于要特定排除的字符着重标明出来，采用脱字符号(^)
+			示例:  匹配除了c、f开头的*at单词
+   
+   var str = "a Bat cat,fAt baT  faT";
+   var  reg = /[^cf]at/gi;    //包含at,但不能以c或f开头的单词
+   alert(str.match(reg));       //output  ”Bat,baT”
+		范围类
+			指定字符的范围，“从什么到什么”，以横线(-)b标识，比如  a-z、  1-5
+			示例:
+   
+ var data = "num1,num2,num3,num4,num5,num6";
+ var reg = /num[1-4]/gi;    //匹配num1～num4
+ alert(data.match(reg));   //output “num1,num2,num3,num4”
+
+匹配中文字符的正则表达式： [\u4e00-\u9fa5]
+		组合类
+			由几种其他的类组合而成的字符类 ( 注意：类之间不要有空格;在[]里面不能再嵌套[],不能写成[a-m[^b-e]] )
+			示例: 匹配1-4的数字与字符s   [1-4s]
+   
+ var data = "num1,num2,num3,num4,numa5,num6,nums";
+ var reg = /num[1-4s]/gi;
+ alert(data.match(reg)); //output “num1,num2,num3,num4,nums”
+
+		预定义类
+			对于某些常用的模式，预定义好特定字符来方便指定复杂类
+				.	[^\n\r]	除了换行和回车之外的任意字符
+				\d	[0-9]	数字
+				\D	[^0-9]	非数字字符
+				\s	[  \t\n\x0B\f\r]	空白字符
+				\S	[^  \t\n\x0B\f\r]	非空白字符
+				\w	[a-zA-Z_0-9]	单词字符(所有的字母、所有数字和下划线)
+				\W	[^a-zA-Z_0-9]	非单词字符
+	量词
+		?	出现零次或一次
+		*	出现零次或多次(任意次)
+		+	出现一次或多次(至少出现一次)
+		{n}	一定出现n次
+		{n,m}	至少出现n次但不超过m次
+		{n,}	至少出现n次
+		示例
+			ba?d		bd   、 bad
+ba*d		bd   、 bad   、 baad 、 baaad
+ba+d		bad 、 baad 、 baaad
+ba{0,1}d	bd   、 bad
+b[ae]{1,2}d	bead、 baed、 beed、 baad、 bad、 bed
+		练习
+			解释
+				/\d{6}/
+				/[1-8a-z]{3,6}/
+				/he[lk]{1,2}o/
+				/0[1-4][01]/

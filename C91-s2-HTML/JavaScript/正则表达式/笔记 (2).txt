@@ -1,0 +1,41 @@
+RegExp对象
+	定义
+		语法1： (Perl风格)
+			var  reg = /pattern/[flags]
+		语法2：
+			var  reg = new  RegExp("pattern",["flags "])
+		示例
+			var  reg = new RegExp(“cat”);
+var  regCat  = new RegExp(“cat”,”gi”);
+
+var reg = /cat/;
+var  regCat = /cat/gi;
+
+	方法
+		RegExp对象方法
+			reg.test(str)	检查指定的字符串是否匹配
+				   var data = "CAt"; 
+   var reg = /at/;   
+   alert(reg.test(data));     //output  false
+
+   reg = /at/gi;
+   alert(reg.test(data));     //output  true
+			reg.exec(str)	用正则表达式模式在字符串中运行查找，并返回查找到的第一个条目，包含三个属性 input、index、lastIndex(条目的起始、结束位置)
+				   var str = "a Bat cat,fAt baT  faT";
+   var  reg = /bat/gi;
+   alert(reg.exec(str));       //output  "Bat"
+		String对象相关方法
+			str.match(reg)	使用正则表达式模式对字符串执行查找，并将包含查找的结果作为数组返回
+				   var str = "a Bat cat,fAt baT  faT";
+   var  reg = /bat/gi;
+   alert(str.match(reg));          //output  Bat,baT
+			str.search(reg)	返回与正则表达式查找内容匹配的第一个子字符串的位置
+			str.replace(rgExp, replaceText)	返回根据正则表达式进行文字替换后的字符串的复制,如果要替换所有符合的字符串，需要加上”g”
+			str.split(rgExp)	利用正则分割数组
+	属性
+		global		Boolean值,表示g(全局选项)是否已设置
+		ignoreCase	Boolean值,表示i(忽略大小写选项)是否已设置
+		multiline	Boolean值,表示m(多行模式选项)是否已设置
+		source		正则表达式源字符串形式
+		index		返回字符位置，它是查找字符串中第一个成功匹配的开始位置，只读  (注:index是全局RegExp对象的属性 用法: RegExp.index  )
+		lastIndex	整数，代表下次匹配将会从哪个字符位置开始 (注:lastIndex也可以是全局RegExp对象的属性)

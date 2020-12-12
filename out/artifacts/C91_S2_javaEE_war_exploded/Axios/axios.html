@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<script type="text/javascript" src="../js/axios.js"></script>
+<script type="text/javascript" src="../js/vue.js"></script>
+<body>
+<h3>get</h3>
+<div id="get">
+    num1：<input v-model="num1" type="number"/>
+    +
+    num1：<input v-model="num2" type="number"/> = <span>{{result}}</span>
+    <button @click="add">计算</button>
+</div>
+<h3>post</h3>
+<div id="post">
+    num1：<input v-model="num1" type="number"/>
+    运算符： <select v-model="oper" style="width: 100px">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+    <option value="%">%</option>
+</select>
+    num1<input v-model="num2" type="number"/> = <span>{{result}}</span>
+    <button @click="add">计算</button>
+</div>
+
+
+<h3>文件上传</h3>
+<form id="ff">
+    <img v-bind:src="imgsrc" height="100px">
+    <input type="file" name="imgFile">
+    <button @click.prevent="upload">上传</button>
+</form>
+<script type="text/javascript">
+    var vue2 = new Vue({
+        el: '#ff',
+        data: {
+            imgsrc: "2.jpg"
+        },
+        methods: {
+            upload() {
+                var img = "";
+                var fd = new FormData(ff);
+                let config = {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                };
+                axios.post("../uploadImg.do", fd, config).then(res => {
+                    // this.imgsrc = ".." + res.data;
+                    // img = ".." + res.data;
+                    // this.imgsrc = img;
+
+                    var arr = res.data;
+                    console.info(arr);
+                    alert(arr.msg);
+                    // var interval2 = window.setInterval("openit2()",2000);
+                    // setTimeout(function() {window.clearInterval(interval2);},10000);
+                    this.imgsrc = "../" + arr.path;
+
+                })
+
+            }
+        }
+    });
+</script>
+</body>
+<script type="text/javascript">
+
+
+    var vue = new Vue({
+        el: '#get',
+        data: {
+            num1: 0,
+            num2: 1,
+            oper: "+",
+            result: 0,
+        },
+        methods: {
+            add() {
+                axios.get("../add.do", {
+                    params: {
+                        num1: this.num1,
+                        num2: this.num2,
+                        oper: this.oper,
+                    }
+                }).then((res) => {
+                    this.result = res.data;
+                })
+
+
+            }
+        }
+    });
+    var vue1 = new Vue({
+        el: '#post',
+        data: {
+            num1: 0,
+            num2: 1,
+            oper: "+",
+            result: 0,
+        },
+        methods: {
+            add() {
+                var p = new URLSearchParams();
+                p.append("num1", this.num1);
+                p.append("num2", this.num2);
+                p.append("oper", this.oper);
+                axios.post("../add.do", p)
+                    .then((res) => {
+                        this.result = res.data;
+                    })
+
+
+            }
+        }
+    });
+
+</script>
+</html>

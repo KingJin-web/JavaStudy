@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript">
+    var s = new String();
+    var b = new Boolean();
+    var o = new Object();
+
+    o.name = "张三";
+    o.age = 18;
+    o.play = function () {
+        alert("play" + o.name);
+    }
+
+    //json{} ==> 对象 【】 ==> 数组 分隔元素 :
+    var o = {
+        name: "蔡徐坤",
+        age: 18,
+        play: function () {
+            alert("play" + o.name);
+        }
+
+    }
+    for (var a in o){
+        console.info(a + "=" + o[a])
+    }
+
+    /**
+     * 定义函数方式
+     */
+    function a() {
+
+    }
+    var  a = function (){};
+
+    function jsToJson() {
+        var json = JSON.stringify(o)
+        alert(json)
+    }
+    function jsonToJs1() {
+        var json = '{"name" : "蔡徐坤1","age" : 40, "isHero" : false}';
+        var hero = JSON.parse(json);
+        console.info(hero);
+    }
+    function jsonToJs2() {
+        var jsonScript =  'var hero = {"name" : "蔡徐坤2","age" : 40, "isHero" : false};';
+        eval(jsonScript)
+        console.info(hero);
+    }
+
+
+</script>
+<body>
+<button onclick="o.play()">测试</button>
+
+<button onclick="jsToJson()">js -> JSON</button>
+<button onclick="jsonToJs1()">JSON -> JS 1</button>
+<button onclick="jsonToJs2()">JSON -> JS 1</button>
+
+</body>
+</html>

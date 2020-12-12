@@ -1,0 +1,602 @@
+@charset "utf-8";
+/* 元素初始化 */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* 所有元素内外边距为0*/
+* {
+    margin: 0;
+}
+
+/* 去掉所有列表小圆点 */
+* {
+    list-style-type: none
+}
+
+/* 去掉a下划线 */
+a {
+    text-decoration: none;
+}
+
+/* input 元素   边框为0   outline设置为none*/
+input {
+    padding: 0;
+    outline: none;
+}
+
+/* 全局字体:  12px  #666 */
+body {
+    font-size: 12px;
+    color: #666666;
+}
+
+/* login 类元素
+	高29 背景颜色#f7f7f7 下边框宽度：1px 下边框样式：solid 下边框颜色：#dddddd
+*/
+.login {
+    height: 29px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ddd;
+
+}
+
+/* loginbox 类元素
+	高29 宽1200 
+	水平居中（设置外边距）
+*/
+.loginbox {
+    width: 1200px;
+    height: 29px;
+    margin: 0 auto;
+}
+
+/* loginbox 类元素里面的h3 (左侧欢迎栏)
+	行高29px 向左浮动 
+*/
+.loginbox h3 {
+    line-height: 29px;
+    float: left;
+}
+
+
+/* loginrg 类元素 (右侧我的订单设置) 
+	宽290 高29 行高29px 向右浮动 
+*/
+.loginrg {
+    height: 29px;
+    width: 290px;
+    line-height: 29px;
+    float: right;
+}
+
+/* inlogin 类元素 (登录与未登录)
+	 向左浮动
+*/
+.inlogin {
+    float: left;
+}
+
+/* unlogin 类元素  
+	隐藏, 不占据空间 
+*/
+.unlogin {
+    display: none;
+}
+
+/* inlogin 类元素里面的 a(已登录)
+	颜色orange 
+*/
+.inlogin a {
+    color: orange;
+}
+
+/* unlogin 类元素里面的span  和 mylogin类元素里面的span (未登录)
+	外边框的上下距离0px，左右为10px; 
+*/
+.unlogin span, .mylogin span {
+    margin: 0 10px;
+}
+
+/* unlogin 类元素里面的a在鼠标悬停时  和 mylogin 类元素里面的a鼠标悬停时 (未登录) 
+	颜色设置为 orange; 
+*/
+.unlogin a:hover, .mylogin a:hover {
+    color: orange;
+}
+
+/* search 类元素
+ 	高 90 
+ */
+.search {
+    height: 90px;
+}
+
+/* searchbox 类元素
+	宽1200 高90 
+	居中（使用外边距设置）
+*/
+.searchbox {
+    width: 1200px;
+
+    height: 90px;
+
+    margin: 0 auto;
+}
+
+/* searchbox类元素里面的a(左侧logo) 
+	外边距上29 外边距左17 
+	向左浮动
+*/
+.searchbox a {
+    margin-left: 17px;
+    margin-top: 29px;
+    float: left;
+}
+
+/* searchcar 类元素 (搜索框（div）设置)
+	宽516 高38 外边距左120 外边距上36 向左浮动
+	 边框设置为：1px solid #37ab40
+*/
+.searchcar {
+    width: 616px;
+    height: 40px;
+    border: 1px solid #37ab40;
+    margin-left: 120px;
+    margin-top: 36px;
+    float: left;
+}
+
+/* searchcar类元素里面的 txt类元素  (搜索框搜索栏（input）设置)
+	 宽416 高38 行高38 文本缩进40 
+	背景图：images/search.png, 不重复， 图片位移 12,9
+*/
+.searchcar .txt {
+    width: 516px;
+    height: 38px;
+    line-height: 38px;
+    text-indent: 40px;
+    background: url(../images/search.png) no-repeat 12px 9px;
+
+}
+
+/* searchcar类元素里面的 sub类元素 (搜索框搜索（input）按钮设置)
+	宽100 高39 背景颜色#37ab40 
+	字体颜色：白     字体大小：14      行高39  向右浮动
+*/
+.searchcar .sub {
+    width: 96px;
+    height: 39px;
+    background: #37ab40;
+    font-size: 14px;
+    color: white;
+    line-height: 39px;
+    float: right;
+}
+
+/* buy 类元素(右侧购物车)
+	宽200 高40 右浮动  外边框上36 
+*/
+.buy {
+    width: 200px;
+    height: 40px;
+    float: right;
+    margin-top: 36px;
+}
+
+/* buy 类元素 里面的 a (设置我的购物车)
+	宽158 高38 行高38 字体14 字颜色 #37ab40 缩进 56 
+	 向左浮动   边框 1px solid #dddddd  
+	 背景图  images/buycar.png 不重复   位置偏移 14,10
+	 上外边框 0px   左外边框 0px
+*/
+.buy a {
+
+    /*width: 158px;*/
+    /*height: 38px;*/
+    /*line-height: 38px;*/
+    /*font-size: 14px;*/
+    /*color: #37ab40;*/
+    /*text-indent: 56px;*/
+    /*float:left;*/
+    /*border:1px solid #dddddd;*/
+
+    /*background: url(images/buycar.png) no-repeat 14px 10px;*/
+    float: left;
+    width: 158px;
+    height: 38px;
+    border: 1px solid #dddddd;
+    margin-top: 0;
+    margin-left: 0;
+    color: #37ab40;
+    font-size: 14px;
+    line-height: 38px;
+    background: url(../images/buycar.png) no-repeat 14px 10px;
+    text-indent: 56px;
+}
+
+/* .buy 类元素里面的span (设置购物车商品数量)
+	宽40 高40 背景颜色 #ff8800 字18 字体颜色 白 
+	行高 40 文字居中  向右浮动 
+*/
+.buy span {
+    width: 40px;
+    height: 40px;
+    background: #ff8800;
+    font-size: 18px;
+    color: white;
+    line-height: 40px;
+    text-align: center;
+    float: right;
+}
+
+/* .cate类元素 (全部商品分类最外侧)
+	高40 外边距上26 边框宽度 2 边框样式 solid 边框颜色#37ab40 
+*/
+.cate {
+    height: 40px;
+    margin-top: 26px;
+    border-bottom: 2px solid #37ab40;
+}
+
+/* .catecon类元素
+	宽1200 高40 
+	水平居中（外边距） 
+*/
+.catecon {
+    width: 1200px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+/* .all类元素 (全部商品分类)
+	宽200 高40 行高40 文本居中 字14 字体颜色 白  背景色 #37ab40 向左浮动 
+*/
+.all {
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    background: #37ab40;
+    float: left;
+
+}
+
+/* .catelist 类元素(首页设置)
+	宽215 高40 行高40px 外边距左35 向左浮动 
+*/
+.catelist {
+    width: 215px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 35px;
+    float: left;
+}
+
+/* .catelist 类元素的li
+	向左浮动 
+*/
+.catelist li {
+    float: left;
+}
+
+/* .catelist 类元素里面的 span
+	上下外边距 0 左右外边距 20 
+*/
+.catelist span {
+    margin: 0 20px;
+}
+
+/* .catelist 里面的 a 字体颜色 #666*/
+.catelist a {
+    color: #666666;
+}
+
+/* .slide 类元素
+	高270
+*/
+.slide {
+    height: 270px;
+}
+
+/* .slidecon 类元素
+	宽度1200  高度270   
+	上下外边距0  左右外边距  自动
+*/
+.slidecon {
+    width: 1200px;
+    height: 270px;
+    margin: 0 auto;
+
+}
+
+/* .flist 类元素 (左侧水果列表设置)
+	宽200  高270 向左浮动
+*/
+.flist {
+    width: 200px;
+    height: 270px;
+    float: left;
+}
+
+/* .flist 类元素里面的 li (水果列表)
+	宽198 高44 边框 1px solid #f7f7f7 上边框宽度0 
+	行高44   文本居中   背景图 ：images/sprite.png  不重复    位移 33,9
+*/
+.flist li {
+    width: 198px;
+    height: 44px;
+    border: 1px solid #f7f7f7;
+    border-top: 0;
+    line-height: 44px;
+    text-align: center;
+    background: url(../images/sprite.png) no-repeat 33px 9px;
+}
+
+/* .flist 类元素里面的第2个 li (雪碧图位置设置, 请采用 nth-child选择器)
+	y坐标偏移: -41px 
+*/
+.flist li:nth-child(2) {
+
+    background-position-y: -41px;
+
+}
+
+/* .flist 类元素里面的第3个 li (雪碧图位置设置, 请采用 nth-child选择器)
+	y坐标偏移: -91px
+*/
+.flist li:nth-child(3) {
+
+    background-position-y: -91px;
+
+}
+
+/* .flist 类元素里面的第4个 li (雪碧图位置设置, 请采用 nth-child选择器)
+	y坐标偏移: -141pxpx
+*/
+.flist li:nth-child(4) {
+
+    background-position-y: -141px;
+
+}
+
+/* .flist 类元素里面的第5个 li (雪碧图位置设置, 请采用 nth-child选择器)
+	y坐标偏移: -191px
+*/
+.flist li:nth-child(5) {
+
+    background-position-y: -191px;
+
+}
+
+/* .flist 类元素里面的第6个 li (雪碧图位置设置, 请采用 nth-child选择器)
+	y坐标偏移: -241px
+*/
+.flist li:nth-child(6) {
+
+    background-position-y: -241px;
+
+}
+
+/* .flist 类元素里面的a (食品分类列表)
+	高度44 宽度 198 字体大小 14  向右浮动
+	背景图  images/sprite.png 不重复    偏移170 -291
+*/
+.flist a {
+    width: 198px;
+    height: 44px;
+    font-size: 14px;
+    background: url(../images/sprite.png) no-repeat 170px -291px;
+    float: right;
+
+
+}
+
+/* .slidepic 类元素 (轮播图设置)
+	宽760 高279  向左浮动     隐藏内容溢出部分     绝对定位
+*/
+.slidepic {
+    width: 760px;
+    height: 279px;
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+
+/* .slist 类元素 (轮播图)
+	宽760*4 高270
+*/
+.slist {
+    width: 3040px;
+    height: 270px;
+}
+
+/* .slist 类元素里面的li (轮播图)
+	向左浮动
+*/
+.slist li {
+
+    float: left;
+}
+
+/* .lfbtu 类元素 (左右按钮)
+	宽25高25 绝对定位   底边距 123  左边距 12  鼠标光标样式：手型（pointer）
+	背景图 images/sprite.png  不重复   偏移  0, -350
+*/
+.lfbtu {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    bottom: 123px;
+    left: 12px;
+    cursor: pointer;
+    background: url(../images/sprite.png) no-repeat 0 -350px;
+}
+
+/* .rgbtu 类元素 (左右按钮)
+	宽25高25 绝对定位   底边距 123  左边距 12  鼠标光标样式：手型（pointer）
+	背景图 images/sprite.png  不重复   偏移  0, -400
+*/
+.rgbtu {
+    width: 25px;
+    height: 25px;
+    background: url(../images/sprite.png) no-repeat 0 -400px;
+    position: absolute;
+    bottom: 123px;
+    right: 12px;
+    cursor: pointer;
+
+}
+
+/* .rd 类元素 (小圆点设置)
+	高度11 宽度760  绝对定位  下边距 19  左边距 0  文本居中
+*/
+.rd {
+    height: 11px;
+    width: 760px;
+    position: absolute;
+    bottom: 19px;
+    left: 0;
+    text-align: center;
+
+}
+
+/* .rd 类元素里面的li (小圆点设置)
+	高度11 宽度11 行内块级元素
+*/
+.rd li {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+
+}
+
+/* .active类元素
+	背景色 greenyellow
+*/
+.active {
+
+    background: greenyellow;
+
+}
+
+/* .rgpic 类元素 (右侧广告)
+	消除行间距设置父元素字体大小为0
+*/
+.rgpic {
+    font-size: 0px;
+}
+
+/* .foods 类元素
+	高335 外边距上25
+*/
+.foods {
+    height: 335px;
+    margin-top: 25px;
+}
+
+/* .foodscon类元素
+	宽度1200  高度 335
+	水平居中（外边距）
+*/
+.foodscon {
+    width: 1200px;
+    height: 335px;
+    margin: 0 auto;
+}
+
+/* .fhead 类元素 (上面文字)
+	 宽度1200  高度 29   下边框宽度 2 下边框样式  solid  下边框颜色  #37ab40
+*/
+.fhead {
+    width: 1200px;
+    height: 29px;
+    border-bottom: 2px solid #37ab40;
+}
+
+/* .fheada 类元素 (海鲜水产)
+	字体大小16px  字体颜色  #37ab40 字体加粗   向左浮动  右外边距20px
+*/
+.fheada {
+    font-size: 16px;
+    margin-right: 20px;
+    color: #37ab40;
+    font-weight: bold;
+    float: left;
+}
+
+/* .fheadlist 类元素里面的li
+	高29  行高29  左外边距10  向左浮动
+*/
+.fheadlist li {
+    height: 29px;
+    line-height: 29px;
+    float: left;
+    margin-left: 10px;
+}
+
+
+/* .fheadlista 类元素 (更多设置)
+	高29  行高29   向右浮动
+*/
+.fheadlista {
+    height: 29px;
+    line-height: 29px;
+    float: right;
+
+}
+
+/* .lfad 类元素 (左侧广告)
+	宽200  高300  向左浮动
+*/
+.lfad {
+    width: 200px;
+    height: 300px;
+    float: left;
+}
+
+/* .foodslist 类元素 (右侧列表产品)
+	宽1000  高300  向左浮动
+*/
+.foodslist {
+    width: 1000px;
+    height: 300px;
+    float: left;
+}
+
+/* .foodslist 类元素里面的 li
+	宽249  高299  向左浮动   文本居中     左边框 和 下边框 ： 宽1  实线    颜色 #666666
+*/
+.foodslist li {
+    width: 249px;
+    height: 299px;
+    border-bottom: 1px solid #666666;
+    border-right: 1px solid #666666;
+    text-align: center;
+    float: left;
+}
+
+/* .foodslist 类元素里面的h5 (基围虾设置) 字体大小 14 高50 行高 50  下外边距 10 */
+.foodslist h5 {
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 10px;
+}
+
+/* .foodslist 类元素里面的 div
+	字体大小20 字体颜色  红    字体加粗    高35 行高 35  上外边距 17
+*/
+.foodslist div {
+
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
+    height: 35px;
+    line-height: 35px;
+    margin-top: 17px;
+}
+

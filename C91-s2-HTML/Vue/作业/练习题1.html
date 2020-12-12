@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8">
+		<title>课堂练习题</title>
+	</head>
+
+	<body>
+		<script src="../../js/vue.js" type="text/javascript"></script>
+		<fieldset id="E01">
+			<legend v-once>{{leg}}</legend>
+			<ul>
+				<li>{{name1}}</li>
+				<li>{{name2}}</li>
+				<li>{{name3}}</li>
+			</ul>
+		</fieldset>
+		<script type="text/javascript">
+			var v = new Vue({
+				el: '#E01',
+				data: {
+					leg: "水泊梁山",
+					name1: "鲁智深",
+					name2: "宋江",
+					name3: "武松",
+
+
+				}
+			});
+
+			/**
+			 1.在legend中写入 "水泊梁山", 并且让其内容不可改变
+			 2.在三个 li 中 写入三个水浒英雄的名字
+			 */
+		</script>
+
+		<fieldset id="E02">
+			<legend v-cloak>{{leg}}</legend>
+			<ul>
+				<li v-html="name1"></li>
+				<li v-html="name1"></li>
+				<li v-html="name1"></li>
+			</ul>
+		</fieldset>
+		<script type="text/javascript">
+			/**
+     1.在legend中写入 "水泊梁山" 并加上"斗篷"
+     2.给每个li中添加一个按钮, 每个按钮上显示一个水浒英雄的名字
+     */
+			var v2 = new Vue({
+
+				el: '#E02',
+				data: {
+					leg: "水泊梁山",
+					name1: "<button>鲁智深</button>",
+					name2: "<button>宋江</button>",
+					name3: "<button>宋江</button>",
+				}
+			});
+		</script>
+
+
+		<fieldset id="E03">
+			<legend>练习题3: 计算属性</legend>
+			<dl>
+				<dt></dt>
+				<dd>力量:{{add.power}}</dd>
+				<dd>智力:{{add.intel}}</dd>
+				<dd>敏捷:{{add.agile}}</dd>
+				<dd>综合战力:{{result}}</dd>
+			</dl>
+		</fieldset>
+		<script type="text/javascript">
+			var heroe = {
+				name: "花和尚鲁智深",
+				power: 98,
+				intel: 76,
+				agile: 73
+			};
+			var v3 = new Vue({
+				el: '#E03',
+				data: {
+					add: heroe
+				},
+				computed: {
+					result() {
+						return heroe.power + heroe.agile + heroe.intel;
+					}
+				}
+			})
+			/**
+			 1. 将 heroe 对象的值设置到 dl 中
+			 3. 第 4 个 dd 使用计算属性算出其综合战力值 = 力量 + 智力 + 敏捷
+			 */
+		</script>
+
+
+		<fieldset id="E04">
+
+			<legend>练习题4: 样式设置</legend>
+			<div class="cls1">
+				<img :src="lzs.url" style="width: 120px;"><br> <span>{{lzs.name}}</span>
+			</div>
+			<div v-bind:class="classa">
+				<img :src="sj.url" style="width: 120px;"><br> <span>{{sj.name}}</span>
+			</div>
+			<div v-bind:class="classa">
+				<img :src="ws.url" style="width: 120px; "><br> <span>{{ws.name}}</span>
+			</div>
+		</fieldset>
+		<script type="text/javascript">
+			/**
+			 1. img 中添加水浒英雄的图片, 并且使用属性设定高度为100px
+			 2. 给 div 设置: 宽度120px + 文字居中 + 边框 + 行内块 + 内边距5px
+			 3. 给 span 添加英雄名字
+			*/
+			var v4 = new Vue({
+				el: '#E04',
+				data: {
+					lzs: {
+						url: "a.jpg",
+						name: "鲁智深",
+					},
+					sj: {
+						url: "a.jpg",
+						name: "宋江",
+					},
+					ws: {
+						url: "a.jpg",
+						name: "武松",
+					},
+					classa: "cls1"
+
+				}
+			})
+		</script>
+
+
+
+		}
+		<style type="text/css">
+			[v-cloak]{
+				display: none;
+			}
+			.cls1 {
+				width: 120px;
+				text-align: center;
+				padding: 5px;
+				display:block;
+			}
+
+			.text {
+				color: red;
+				text-align: center;
+			}
+
+			.border {
+				border: 2px solid blue;
+			}
+
+
+
+			.size {
+				width: 150px;
+				height: 150px;
+				padding: 5px;
+				display: inline-block;
+				margin: 5px;
+				padding: 5px;
+			}
+		</style>
+
+
+		<fieldset id="E05">
+			<legend>练习题5: class属性</legend>
+			<div id="div1" v-bind:class="d1">
+				<img width="100px" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3602787553,827902630&fm=26&gp=0.jpg">
+				<br> 关注样式
+			</div>
+			<div id="div2" v-bind:class="d2">
+				<img width="100px" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3602787553,827902630&fm=26&gp=0.jpg">
+				<br> 关注样式
+			</div>
+			<div id="div3" v-bind:class="d3">
+				<img width="100px" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3602787553,827902630&fm=26&gp=0.jpg">
+				<br> 关注样式
+			</div>
+		</fieldset>
+		<script type="text/javascript">
+			/**
+			 1. 将 .size 样式应用到 div1 上 ( 数组方式)
+			 2. 将 .border .size 样式应用到 div2 上 ( 对象方式)
+			 2. 将 .border .text .size 样式应用到 div3 上 ( 计算属性方式)
+			 */
+			var v5 = new Vue({
+				el: "#E05",
+				data: {
+					d1: 'size',
+					d2: ["border", "size"],
+					d3: ["border", "size", "text"]
+
+				}
+			})
+		</script>
+
+
+	</body>
+</html>

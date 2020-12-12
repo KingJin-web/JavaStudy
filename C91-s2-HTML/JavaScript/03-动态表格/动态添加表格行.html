@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <STYLE type="text/css">
+        .myInput {
+            BORDER: 1px solid;
+        }
+    </STYLE>
+</HEAD>
+
+<BODY>
+购买清单
+<INPUT name="button" type="button" onclick="add()" value="添加">
+<INPUT name="button" type="button" onclick="cut()" value="删除">
+
+<TABLE width="276" border="1" id="myTable">
+    <TR>
+        <TD width="136">购买物品</TD>
+        <TD width="124"> 数 量</TD>
+    </TR>
+    <TR>
+        <TD>U盘</TD>
+        <TD>2</TD>
+    </TR>
+    <TR>
+        <TD>Q笔</TD>
+        <TD>3</TD>
+    </TR>
+</TABLE>
+
+</BODY>
+<script type="text/javascript">
+    function add() {
+        var options = "";
+        options += myTable.innerHTML + "<TR><TD><input></TD><TD><input></TD></TR>";
+        myTable.innerHTML = options;
+        var str = "<TR><TD><input></TD><TD><input></TD></TR>";
+        //console.info(str.length);
+    }
+
+    function cut() {
+        var table = document.getElementById("myTable");
+        var len = table.rows.length;
+        if (len < 1) {
+            alert("都删完了，你删个锤子");
+            return ;
+        }
+        //console.info(len);
+        table.deleteRow(len - 1);
+    }
+
+</script>
+</HTML>
+

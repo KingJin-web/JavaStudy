@@ -1,0 +1,137 @@
+TD {
+	FONT-SIZE: 12px; LINE-HEIGHT: 150%
+}
+.border1 {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid
+}
+A:link {
+	COLOR: #0058b0; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: #0062c4; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.classlinkclass:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; TEXT-DECORATION: underline
+}
+A.classlinkclass:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; TEXT-DECORATION: underline
+}
+A.classlinkclass:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.classlinkclass:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.c2:link,A.c2:visited,A.c2:active,A.c2:hover{
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ff0000; TEXT-DECORATION: underline
+}
+#r1 {
+	FONT-SIZE: 14px; COLOR: #ff0000; 
+}
+.bg1 {
+	BACKGROUND-COLOR: #f2f5fb
+}
+.bg2 {
+	BACKGROUND-COLOR: #eaeaea
+}
+.list1 {
+	BORDER-RIGHT: 1px; BORDER-TOP: 1px; BORDER-LEFT: 1px; BORDER-BOTTOM: #999999 1px dashed
+}
+/*
+.nav-line {
+	BACKGROUND-COLOR: #0055aa
+}*/
+.nav-line-foot {
+	BACKGROUND-COLOR: #dadada
+}
+BODY {
+	MARGIN-TOP: 0px; FONT-SIZE: 12px; MARGIN-BOTTOM: 0px; LINE-HEIGHT: 150%
+}
+.input-text {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #333333 1px solid; BORDER-LEFT: #333333 1px solid; BORDER-BOTTOM: #cccccc 1px solid
+}
+.input-button {
+	BORDER-RIGHT: #333333 1px solid; BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #333333 1px solid
+}
+.table-title {
+	border:solid #ADDFF7;border-width:0 0 1px 0;BACKGROUND-COLOR: #f0f8ff;
+}
+.mtl {font-weight:bold;}
+.box {border:1px solid #ADDFF7;margin-bottom:8px;}
+.more {padding-right:10px;}
+.more a,.more a:visited {TEXT-DECORATION: none}
+.btxt {margin:6px 1px}
+/*.btxt a,.btxt a:visited {TEXT-DECORATION: none}*/
+.ts {border:1px solid #addff7;font-weight:bold;padding-left:10px;}
+.bs {border:1px solid #addff7;border-top:0;padding:5px 0 5px 3px;}
+.item-title {
+	FONT-WEIGHT: bold; COLOR: #009300
+}
+
+.list-line {
+	BORDER-BOTTOM: #cccccc 1px dashed
+}
+.bg-fleet {
+	height:26px;line-height:26px;BACKGROUND: #eef7ff url(menubg.gif) repeat-x;color:#fff;
+}
+.bg-fleet a,.bg-fleet a:visited {color:#fff;TEXT-DECORATION: none}
+.line-head {
+	BORDER-BOTTOM: #005ab4 2px solid
+}
+.title-strong {
+	FONT-WEIGHT: bold
+}
+.highlight {
+	FONT-WEIGHT: bold; COLOR: #ff0000
+}
+.underline {
+	TEXT-DECORATION: underline
+}
+.input-text {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #333333 1px solid; BORDER-LEFT: #333333 1px solid; COLOR: #333333; BORDER-BOTTOM: #cccccc 1px solid
+}
+.input-button {
+	BORDER-RIGHT: #333333 1px solid; BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #333333 1px solid
+}
+.title {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #000000
+}
+.title h1{
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #000000
+}
+/*
+.so {
+	BORDER-RIGHT: #00509f 1px solid; BORDER-TOP: #00509f 1px solid; MARGIN-TOP: 3px; MARGIN-BOTTOM: 3px; BORDER-LEFT: #00509f 1px solid; WIDTH: 980px; BORDER-BOTTOM: #00509f 1px solid
+}
+*/
+.so {background:url(menubg2.gif) repeat-x;margin-bottom:10px;}
+#top123 {
+	width:768px;
+	height:60px;
+	text-align: center;
+	margin:0 auto;
+	clear:both;
+}
+#free {
+	width:640px;
+	height:40px;
+	text-align: left;
+	margin:0 auto;
+	clear:both;
+}
+img{border:0px}
+#top {width:980px;margin:0 auto;background:url(menubg2.gif) repeat-x;border-bottom:1px solid #ddd;padding:0 10px;height:28px;line-height:28px;}
+#top form {margin:0;padding:0;}
+#top span {float:right;}
+#tl {border:1px solid #ADDFF7;margin-right:10px;height:100%;overflow:hidden;}
+#tl #tab1_div_0,#tl #tab1_div_1,#tl #tab1_div_2 {padding:10px 0 0 6px;}
+#tab {margin:0;height:26px;background:#E1F3FD url(tab.gif) repeat-x 0 bottom;}
+#tab li {float:left;border-right:1px solid #ADDFF7;padding:0 15px;height:26px;line-height:26px;}
+#tab .curr {font-weight:bold;background:#fff;height:26px;cursor: pointer;font-size:14px;}
+#tab .curr span {display:block;}

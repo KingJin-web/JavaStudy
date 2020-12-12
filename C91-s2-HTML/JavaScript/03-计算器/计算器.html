@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+</head>
+<script type="text/javascript">
+    function Cal() {
+        this.display = "";
+
+        this.number1 = 0;
+        this.number2 = 0;
+        this.operator = ""; //+ - * /
+        this.result = 0; //结果
+
+
+        this.number = function (num) {
+            var str = String(res.innerText);
+            if (str.indexOf(".") < 0) {
+                this.display = this.display * 10 + Number(num);
+            } else {
+                this.display = this.display + String(num);
+            }
+        }
+        //按下 =
+        this.comput = function () {
+            switch (this.operator) {
+                case "+":
+                    //加法
+                    this.number2 = parseFloat(this.display);
+                    //this.result = this.number1 + this.number2;
+                    this.result = accAdd(this.number1, this.number2);
+                    return;
+                case "-":
+                    this.number2 = parseFloat(this.display);
+                    //this.result = this.number1 - this.number2;
+                    this.result = accSub(this.number1, this.number2);
+                    return;
+                case "*":
+                    this.number2 = parseFloat(this.display);
+                    //this.result = this.number1 * this.number2;
+                    this.result = accMul(this.number1, this.number2);
+                    return;
+                case "/":
+                    this.number2 = parseFloat(this.display);
+                    //this.result = this.number1 / this.number2;
+                    this.result = accDiv(this.number1, this.number2);
+                    return;
+            }
+        }
+
+        //按下 + - * /
+        this.operate = function (open) {
+            this.operator = open;
+            this.number1 = this.display;
+            this.display = 0;
+        }
+
+        this.c = function () {
+            this.number1 = 0;
+            this.number2 = 0;
+            this.operator = ""; //+ - * /
+            this.result = 0; //结果
+            this.display = 0;
+        }
+
+        //下面这一坨是为了避免 浮点数运算的误差 https://blog.csdn.net/qq_38128179/article/details/89181805
+        /**
+         ** 加法函数，用来得到精确的加法结果
+         ** 说明：javascript的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的加法结果。
+         ** 调用：accAdd(arg1,arg2)
+         ** 返回值：arg1加上arg2的精确结果
+         **/
+        function accAdd(arg1, arg2) {
+            var r1, r2, m, c;
+            try {
+                r1 = arg1.toString().split(".")[1].length;
+            } catch (e) {
+                r1 = 0;
+            }
+            try {
+                r2 = arg2.toString().split(".")[1].length;
+            } catch (e) {
+                r2 = 0;
+            }
+            c = Math.abs(r1 - r2);
+            m = Math.pow(10, Math.max(r1, r2));
+            if (c > 0) {
+                var cm = Math.pow(10, c);
+                if (r1 > r2) {
+                    arg1 = Number(arg1.toString().replace(".", ""));
+                    arg2 = Number(arg2.toString().replace(".", "")) * cm;
+                } else {
+                    arg1 = Number(arg1.toString().replace(".", "")) * cm;
+                    arg2 = Number(arg2.toString().replace(".", ""));
+                }
+            } else {
+                arg1 = Number(arg1.toString().replace(".", ""));
+                arg2 = Number(arg2.toString().replace(".", ""));
+            }
+            return (arg1 + arg2) / m;
+        }
+
+        //给Number类型增加一个add方法，调用起来更加方便。
+        Number.prototype.add = function (arg) {
+            return accAdd(arg, this);
+        };
+
+        /**
+         ** 减法函数，用来得到精确的减法结果
+         ** 说明：javascript的减法结果会有误差，在两个浮点数相减的时候会比较明显。这个函数返回较为精确的减法结果。
+         ** 调用：accSub(arg1,arg2)
+         ** 返回值：arg1加上arg2的精确结果
+         **/
+        function accSub(arg1, arg2) {
+            var r1, r2, m, n;
+            try {
+                r1 = arg1.toString().split(".")[1].length;
+            } catch (e) {
+                r1 = 0;
+            }
+            try {
+                r2 = arg2.toString().split(".")[1].length;
+            } catch (e) {
+                r2 = 0;
+            }
+            m = Math.pow(10, Math.max(r1, r2)); //last modify by deeka //动态控制精度长度
+            n = (r1 >= r2) ? r1 : r2;
+            return ((arg1 * m - arg2 * m) / m).toFixed(n);
+        }
+
+        // 给Number类型增加一个mul方法，调用起来更加方便。
+        Number.prototype.sub = function (arg) {
+            return accMul(arg, this);
+        };
+
+        /**
+         ** 乘法函数，用来得到精确的乘法结果
+         ** 说明：javascript的乘法结果会有误差，在两个浮点数相乘的时候会比较明显。这个函数返回较为精确的乘法结果。
+         ** 调用：accMul(arg1,arg2)
+         ** 返回值：arg1乘以 arg2的精确结果
+         **/
+        function accMul(arg1, arg2) {
+            var m = 0,
+                s1 = arg1.toString(),
+                s2 = arg2.toString();
+            try {
+                m += s1.split(".")[1].length;
+            } catch (e) {
+            }
+            try {
+                m += s2.split(".")[1].length;
+            } catch (e) {
+            }
+            return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
+        }
+
+        // 给Number类型增加一个mul方法，调用起来更加方便。
+        Number.prototype.mul = function (arg) {
+            return accMul(arg, this);
+        };
+
+        /**
+         ** 除法函数，用来得到精确的除法结果
+         ** 说明：javascript的除法结果会有误差，在两个浮点数相除的时候会比较明显。这个函数返回较为精确的除法结果。
+         ** 调用：accDiv(arg1,arg2)
+         ** 返回值：arg1除以arg2的精确结果
+         **/
+        function accDiv(arg1, arg2) {
+            var t1 = 0,
+                t2 = 0,
+                r1, r2;
+            try {
+                t1 = arg1.toString().split(".")[1].length;
+            } catch (e) {
+            }
+            try {
+                t2 = arg2.toString().split(".")[1].length;
+            } catch (e) {
+            }
+            with (Math) {
+                r1 = Number(arg1.toString().replace(".", ""));
+                r2 = Number(arg2.toString().replace(".", ""));
+                return (r1 / r2) * pow(10, t2 - t1);
+            }
+        }
+
+        //给Number类型增加一个div方法，调用起来更加方便。
+        Number.prototype.div = function (arg) {
+            return accDiv(this, arg);
+        };
+
+
+    }
+
+
+    var cal = new Cal();
+    //按键音效
+    var mp3 = "7571.mp3";
+    var mp3 = new Audio(mp3);
+
+
+    //按下数字
+    function onNumber(e) {
+        mp3.play();
+        var btn = e.srcElement;
+        var num = parseInt(btn.innerText);
+        cal.number(num);
+        res.innerText = cal.display;
+    }
+
+    //按下运算符
+    function onOperate(e) {
+        mp3.play();
+        var btn = e.srcElement;
+        var operat = btn.innerText; //获取按的运算符
+        cal.operate(operat);
+        res.innerText = 0;
+
+    }
+
+    //按 =
+    function onComput() {
+        //按键音效
+        var mp31 = "2862.mp3";
+        var mp31 = new Audio(mp31);
+        mp31.play();
+        cal.comput()
+        console.info(cal.number1 + " " + cal.operator + " " + cal.number2 + "=" + cal.result);
+        res.innerText = cal.result;
+        cal.display = cal.result;
+        cal.number2 = 0;
+    }
+
+    //按下 c
+    function C() {
+        mp3.play();
+        cal.c();
+        res.innerText = cal.result;
+    }
+
+    // 按下<-
+    function fun() {
+        mp3.play();
+        var str = String(cal.display);
+        //判断 如果字符串
+        if (str.length === 1) {
+            cal.display = 0;
+            res.innerText = 0;
+        } else if (str !== "0") {
+            str = str.substr(0, str.length - 1);
+            var num = parseFloat(str);
+            cal.display = num;
+            res.innerText = num;
+        } else {
+
+        }
+    }
+
+    function XiaoShuDian() {
+        mp3.play();
+        var num = parseInt(res.innerText);
+        var str = String(num);
+        if ((str.split(".").length - 1) >= 1) {
+            alert("小数点点多了")
+        } else {
+            str = str + "."
+        }
+        cal.display = str;
+        res.innerText = str;
+    }
+
+    //按下正负数转换
+    function no() {
+        mp3.play();
+        var num = parseFloat(res.innerText);
+        //正负数转换
+        if (num < 0) {
+            num = Math.abs(num);
+        } else if (num >= 0) {
+            num = -num;
+        }
+        cal.display = num;
+        res.innerText = num;
+
+    }
+
+</script>
+
+
+<body>
+<table style="border: 1px solid #000;">
+    <tr>
+        <td colspan="4" id="res">0</td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="C()">C</button>
+        </td>
+        <td>
+            <button onclick="no()">+/-</button>
+        </td>
+        <td>
+            <button onclick="fun()">&lt;-</button>
+        </td>
+        <td>
+            <button onclick="onOperate(event)">/</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="onNumber(event)">7</button>
+        </td>
+        <td>
+            <button onclick="onNumber(event)">8</button>
+        </td>
+        <td>
+            <button onclick="onNumber(event)">9</button>
+        </td>
+        <td>
+            <button onclick="onOperate(event)">*</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="onNumber(event)">4</button>
+        </td>
+        <td>
+            <button onclick="onNumber(event)">5</button>
+        </td>
+        <td>
+            <button onclick="onNumber(event)">6</button>
+        </td>
+        <td>
+            <button onclick="onOperate(event)">-</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="onNumber(event)">1</button>
+        </td>
+        <td>
+            <button onclick="onNumber(event)">2</button>
+        </td>
+        <td>
+            <button onclick="onNumber(event)">3</button>
+        </td>
+        <td>
+            <button onclick="onOperate(event)">+</button>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button onclick="onNumber(event)">0</button>
+        </td>
+        <td>
+            <button onclick="XiaoShuDian()">.</button>
+        </td>
+        <td>
+            <button onclick="onComput()">=</button>
+        </td>
+    </tr>
+</table>
+</body>
+<style type="text/css">
+    td {
+        width: 50px;
+        height: 40px;
+        text-align: center;
+    }
+
+    #res {
+        border: 1px solid #aaa;
+        text-align: right;
+        font-size: 1.5em;
+        padding: 0px 5px
+    }
+
+    button {
+        width: 100%;
+        height: 100%;
+        font-weight: bold;
+        font-size: 1.2em;
+        color: #444
+    }
+
+    table {
+        margin: 50px auto
+    }
+</style>
+</html>        

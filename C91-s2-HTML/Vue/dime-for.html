@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+	</head>
+	<script type="text/javascript" src="../js/vue.js"></script>
+
+	<body>
+		<div id="tab">
+			<table  border="1" style="width: 70%;">
+				<tr>
+					<th>序号</th>
+					<th>名称</th>
+					<th>型号</th>
+					<th>价格</th>
+					<th>数量</th>
+					<th>总价</th>
+				</tr>
+				<tr v-for="(p,i) in pros">
+					<td>{{i+1}}</td>
+					<td>{{p.name}}</td>
+					<td>{{p.mode}}</td>
+					<td>{{p.price}}</td>
+					<td>
+						<button @click="p.counts--">-</button>
+						{{p.counts}}
+
+						<button @click="p.counts++">+</button>
+					</td>
+					<td>{{p.counts * p.price}}</td>
+				</tr>
+				<tr>
+					<td colspan="5">合计</td>
+					<td>{{addAll}}</td>
+				</tr>
+			</table>
+			<button @click="add">增加</button>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		function Product(name, mode, price, counts) {
+			this.name = name;
+			this.mode = mode;
+			this.price = price;
+			this.counts = counts;
+		}
+		var pros = [new Product("vivo", "X50", 4999, 99),
+			new Product("oppo", "R15", 3999, 13),
+			new Product("小米", "10pro", 4999, 14)
+		]
+		var v = new Vue({
+			el: '#tab',
+			data: {
+				pros: pros,
+			},
+			methods: {
+				add(){
+					var p = new Product("Redmi", "K30pro", 3999, 12);
+					console.info(p);
+					this.pros.push(p);
+				}
+			},
+		
+
+			computed: {
+				addAll() {
+					var add1 = 0;
+					for (var i of this.pros) {
+						add1 += i.price * i.counts;
+
+					}
+					console.info(add1);
+					return add1;
+				}
+			}
+		});
+	</script>
+
+</html>

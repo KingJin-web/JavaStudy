@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>表单提交</h3>
+<form action="../../Upload.s" method="post" enctype="multipart/form-data">
+    <input type="file" name="myFile">
+    <button>上传</button>
+</form>
+<script type="text/javascript" src="../../js/jquery-3.5.1.js"></script>
+<h3>AJAX 提交</h3>
+<form id="ff" enctype="multipart/form-data">
+    <input type="file" name="myFile">
+    <button type="button" onclick="Upload()">上传</button>
+</form>
+<script type="text/javascript">
+
+    function Upload() {
+        var fileData = new FormData(ff);
+        $.ajax({
+            url: "../../Upload.s",
+            type: "POST",
+            data: fileData,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                alert(data);
+            }
+        });
+    }
+
+</script>
+
+<h3>AJAX 提交</h3>
+<form id="headForm" enctype="multipart/form-data">
+    <img src="" alt="" id="headimg" style="height:180px;width:120px;color:#6666">
+    <input type="file" name="myFile">
+    <button type="button" onclick="UploadImg()">上传</button>
+</form>
+<script type="text/javascript">
+
+    function UploadImg() {
+        var fileData = new FormData(headForm);
+        $.ajax({
+            url: "../../Upload.s",
+            type: "POST",
+            data: fileData,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                var arr = JSON.parse(data);
+
+                headimg.src = "../.." + arr.path;
+                alert(arr.msg);
+            }
+        });
+    }
+
+</script>
+
+</body>
+</html>

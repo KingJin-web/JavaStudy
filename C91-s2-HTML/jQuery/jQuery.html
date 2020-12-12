@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="../js/jquery-3.5.1.js"></script>
+<style>
+    .cls {
+        border: 5px blue solid;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+
+        var arr = [100, 200, 300];
+        jQuery.each(arr, function (i) {
+            console.info(arr[[i]]);
+        });
+
+        $("li").eq(2).css("border", "5px black solid");
+        console.info($("li").parent());
+        console.info($("li").parents());
+
+        console.info($("#m").next().text());
+        console.info($("#m").prev().text());
+        //属性操作
+        console.info($("#title").attr("align"));
+        console.info($("#title").prop("align"));
+
+        console.info($(`#title`).attr("notatter"));
+        console.info($("#title").prop("notatter"));
+
+        console.info($("#title").prop("class"));
+
+        $("#title").addClass("sty1");
+        $("#title").addClass("sty2");
+
+        $("#title").removeClass("test");
+        console.info($("#title").prop("class"));
+
+
+
+
+    });
+</script>
+<body>
+
+<h2 class="test" align="left" id="title" notatter="test">什么是 jQuery ？</h2>
+<p>jQuery是一个JavaScript函数库。</p>
+<p>jQuery是一个轻量级的"写的少，做的多"的JavaScript库。</p>
+<p>jQuery库包含以下功能：</p>
+<ul>
+    <li>HTML 元素选取</li>
+    <li>HTML 元素操作</li>
+    <li id="m">CSS 操作</li>
+    <li>HTML 事件函数</li>
+    <li>JavaScript 特效和动画</li>
+    <li>HTML DOM 遍历和修改</li>
+    <li>AJAX</li>
+    <li>Utilities</li>
+
+</ul>
+<button onclick="appendText()">追加文本</button>
+<button onclick="appendDiv()">追加div</button><br>
+<button onclick='$("#title").toggleClass("cls") ;console.info($("#title").prop("class"));' >切换 class</button>
+</body>
+
+
+<script type="text/javascript">
+    $("li").css("background-color", "red");
+
+    var jt = $(title);
+    jt.css("color", "red")
+    var dt = jt[0];
+    dt.style.backgroundColor = "blue";
+    dt.style["background-color"] = "green";
+
+    function appendText() {
+        var txt1 = "<p>文本-1。</p>";              // 使用 HTML 标签创建文本
+        var txt2 = $("<p></p>").text("文本-2。");  // 使用 jQuery 创建文本
+        var txt3 = document.createElement("p");
+        txt3.innerHTML = "文本-3。";               // 使用 DOM 创建文本 text with DOM
+        $("body").append(txt1, txt2, txt3);        // 追加新元素
+    }
+
+    function appendDiv() {
+        var txt1 = "<div style=\"background-color:#FFA500;\">" +
+            "<h1 style=\"margin-bottom:0;\">主要的网页标题</h1></div>";              // 使用 HTML 标签创建文本
+        var txt2 = $("<div style=\"background-color:#FFD700;height:200px;width:100px;float:left;\"></div>").text("<b>菜单</b><br>\n" +
+            "HTML<br>\n" +
+            "CSS<br>\n" +
+            "JavaScript");
+        var txt3 = " <div id=\"content\" style=\"background-color:#EEEEEE;height:200px;width:400px;float:left;\">\n" +
+            "            内容在这里</div>";
+        //var txt3 = document.createElement("p");
+        //txt3.innerHTML = "文本-3。";
+        $("body").append(txt1, txt2, txt3);        // 追加新元素
+    }
+</script>
+</html>

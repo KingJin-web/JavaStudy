@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>论坛--登录</title>
+<link rel="stylesheet" type="text/css" href="style/style.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+</head>
+
+<body>
+	<div id="main">
+		<div>
+			<div>
+				<img src="image/logo.gif">
+			</div>
+			<div class="h">
+				<span>
+					您尚未 <a href="login.html">登录</a> &nbsp;| &nbsp; <a href="reg.html">注册</a> |
+				</span>
+			</div>
+		</div>
+		<br>
+		<div>
+			&gt;&gt;<b><a href="index.html">论坛首页</a></b>
+		</div>
+		<div align="center" class="t">
+			<form name="loginForm" action="" method="post">
+				<br>
+				<label>用户名</label>
+				<input tabindex="1" type="text" maxlength="20" size="35" name="uName" class="input">
+				<br>
+				<label>密 码</label>
+				<input tabindex="2" type="password" maxlength="20" size="35" name="uPass" class="input">
+				<br>
+				<input tabindex="6" type="button" value="登 录" class="btn">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

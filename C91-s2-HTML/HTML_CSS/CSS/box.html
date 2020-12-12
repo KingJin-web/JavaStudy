@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div > div {
+            width: 300px;
+            height: 200px;
+            background-color: blue;
+            border-width: 5px;
+            border-style: inset;
+            border-color: green;
+            margin: 10px;
+            overflow: hidden; /* 内容溢出设置hidden 表示隐藏溢出的内容*/
+            /*内边距和外边距的宽度设置*/
+            /* padding-left: 28px;padding-top: 20px; */
+            padding: 10px 20px 30px 40px; /*上右下左*/
+            padding: 18px 20px; /*上下10左右20 */
+            padding: 10px 20px 30px;/* 上10左右20 下 30*/
+            border-radius: 5px
+        }
+        /*序号选择器 选择第二个div*/
+        div>div:nth-child(2){
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div>
+        <input type="submit" value="测试">
+
+    </div>
+    <div></div>
+</div>
+</body>
+</html>

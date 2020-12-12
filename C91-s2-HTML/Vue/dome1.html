@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script src="../js/vue.js" type="text/javascript"></script>
+	<style type="text/css">
+		[v-clock] {
+			display: none;
+		}
+
+		.cls1 {
+			width: 100px;
+			height: 100px;
+			display: inline-block;
+		}
+
+		.cls2 {
+			background-color: red;
+		}
+
+		.cls3 {
+			border: 2px blue solid;
+		}
+	</style>
+
+	<body>
+		<h1 id="a">{{ title }}</h1>
+		<div id="t">
+			<h1 v-text="title+ ', 你好中国'"></h1>
+			<h1 v-html="htmlcode"></h1>
+			<h1 v-once v-text="title"></h1>
+			<a v-bind:href="url">百度</a><br>
+
+			<div class="cls1 cls2 cls3"></div>
+
+
+			<div v-bind:class="clsarr" class="cls3"></div>
+			<div v-bind:class="clsobj"></div>
+
+			<div v-bind:class="clsfn()"></div>
+
+			<div v-bind:style="{width:'80px',height:'80px',background:'green'}"></div>
+
+			<pre>
+				你好{{title}}
+			</pre>
+
+			<input :value="num1" /> + <input :value="num2" /> = <span>{{result}}</span>
+
+			<div style="height: 400px;"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var titleContent = "hello world";
+		var a = new Vue({ //转入json对象
+			el: "#a",
+			data: {
+				title: titleContent,
+				htmlcode: "<a href='#'>text</a>"
+			}
+		});
+		setTimeout(function() {
+			var vue = new Vue({
+				el: "#t",
+				data: {
+					title: titleContent,
+					htmlcode: "<a href='#'>text</a>",
+					url: "https://www.baidu.com",
+					clsarr: ['cls1', 'cla2'],
+					clsobj: {
+						cls1: true,
+						cls2: false,
+						cls3: true
+					},
+
+					num1: 0,
+					num2: 0
+				},
+				methods: {
+					clsfn() {
+						return {
+							cls1: true,
+							cls2: false,
+							cls3: true
+						};
+					}
+				},
+				computed: {
+					result() {
+						
+						return this.num1 + this.num2;
+					}
+				}
+			});
+		}, 0);
+	</script>
+</html>

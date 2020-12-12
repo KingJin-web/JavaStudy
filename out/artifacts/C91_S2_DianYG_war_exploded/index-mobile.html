@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="zh-CN">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <meta name="renderer" content="webkit"> 
+  <meta name="applicable-device" content="pc,mobile"> 
+  <meta name="keywords" content="电影港手机版"> 
+  <meta name="description" content="电影港手机版 "> 
+  <title>电影港手机版</title> 
+  <link href="https://www.dygang.org/skin/dygang/css/style.css" rel="stylesheet"> 
+  <link rel="canonical" href="http://www.dygang.net"> 
+  <script src="https://www.dygang.org/skin/dygang/js/jquery-1.4.4.min.js"></script> 
+  <script src="https://www.dygang.org/skin/dygang/js/common.js"></script> 
+  <script src="https://www.dygang.org/skin/dygang/js/jquery.lazyload.js"></script> 
+  <!--[if lt IE 9]>
+<script src="https://www.dygang.org/skin/dygang/js/html5shiv.min.js"></script>
+<script src="https://www.dygang.org/skin/dygang/js/respond.min.js"></script>
+<![endif]--> 
+  <script src="https://www.dygang.org/skin/dygang/js/jquery.superslide.js" type="text/javascript"></script> 
+ </head> 
+ <body> 
+  <!--/头部--> 
+  <div class="header-all"> 
+   <div class="top clearfix"> 
+    <ul class="logo"> 
+     <a href="https://www.dygang.org/"> <img src="https://www.dygang.org/skin/dygang/images/logo.png" title="电影港手机版"> </a> 
+    </ul> 
+    <ul class="top-nav"> 
+     <li><a class="now" rel="nofollow" href="https://www.dygang.org/">首页</a></li> 
+     <li class="" _t_nav="topnav-1"><a href="https://www.dygang.org/dy/"> 电影<i class="sjbgs"></i><i class="sjbgx"></i> </a></li> 
+     <li class="" _t_nav="topnav-20"><a href="https://www.dygang.org/dsj/"> 电视剧<i class="sjbgs"></i><i class="sjbgx"></i> </a></li> 
+     <li class="" _t_nav="topnav-31"><a href="https://www.dygang.org/zyjm/">综艺节目</a></li> 
+     <script src="https://www.dygang.org/e/member/login/loginjs.php"></script> 
+    </ul>  
+    <ul class="search so"> 
+     <form action="https://www.dygang.org/e/search/index.php" method="post"> 
+      <input type="text" id="wd" name="keyboard" class="input" onblur="if(this.value==''){ this.value='请输入影片或演员名';this.style.color='#cfcdcd';}" onfocus="if(this.value=='请输入影片或演员名'){this.value='';this.style.color='';}" value="请输入影片或演员名"> 
+      <input type="submit" name="submit" class="imgbt" value=""> 
+      <input type="hidden" value="title,zhuyan" name="show"> 
+      <input type="hidden" value="1" name="tempid"> 
+     </form> 
+    </ul> 
+    <ul class="nav-qt aa"> 
+     <!-- <li class="bb">
+	  <a href="#" onclick="window.external.AddFavorite(&quot;https://www.dygang.org/&quot;,&quot;电影港手机版&quot;)"><i class="jl"></i>加入收藏</a>
+      </li>--> 
+     <li class="bb"><strong class="ma"><i class="mabg"></i>app下载</strong> 
+      <div class="cc maw"> 
+       <img src="res/skin/dygang/images/weixin.jpg"> 
+       <p>微信扫一扫用微信观看</p> 
+      </div> 
+      <!--<li class="bb member"><strong class="ma"><i class="mbbg"></i></strong><div class="cc mbp"></div> </li>--> </li>
+    </ul> 
+    <ul class="sj-search"> 
+     <li class="sbtn2"><i class="sjbg-search"></i></li> 
+    </ul> 
+    <ul class="sj-nav"> 
+     <li class="sbtn1"><i class="sjbg-nav"></i></li> 
+    </ul> 
+    <ul class="sj-navhome"> 
+     <li><a href="https://www.dygang.org/"> <i class="sjbg-home"></i> </a></li> 
+    </ul> 
+   </div> 
+   <!--分类子目录--> 
+   <div class="nav-down clearfix"> 
+    <div id="topnav-1" class="nav-down-1" style="display: none;" _t_nav="topnav-1"> 
+     <div class="nav-down-2 clearfix"> 
+      <ul> 
+       <li><a href="https://www.dygang.org/dy/bangumi/">动作片</a></li> 
+       <li><a href="https://www.dygang.org/dy/tvplay/">喜剧片</a></li> 
+       <li><a href="https://www.dygang.org/dy/aqp/">爱情片</a></li> 
+       <li><a href="https://www.dygang.org/dy/khp/">科幻片</a></li> 
+       <li><a href="https://www.dygang.org/dy/jqp/">剧情片</a></li> 
+       <li><a href="https://www.dygang.org/dy/kbp/">恐怖片</a></li> 
+       <li><a href="https://www.dygang.org/dy/zzp/">战争片</a></li> 
+       <li><a href="https://www.dygang.org/dy/jlp/">纪录片</a></li> 
+       <li><a href="https://www.dygang.org/dy/donghuapian/">动画片</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+    <div id="topnav-20" class="nav-down-1" style="display: none;" _t_nav="topnav-20"> 
+     <div class="nav-down-2 clearfix"> 
+      <ul> 
+       <li><a href="https://www.dygang.org/dsj/dlj/">国剧</a></li> 
+       <li><a href="https://www.dygang.org/dsj/rhj/">日韩剧</a></li> 
+       <li><a href="https://www.dygang.org/dsj/omj/">欧美剧</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+    <!--手机版导航--> 
+    <div id="sj-nav-1" class="nav-down-1 sy1 sj-noover" style="display: none;" _s_nav="sj-nav-1"> 
+     <div class="nav-down-2 sj-nav-down-2 clearfix"> 
+      <ul> 
+       <li><a href="https://www.dygang.org/dy/">电影</a></li> 
+       <li><a href="https://www.dygang.org/dy/bangumi/">动作片</a></li> 
+       <li><a href="https://www.dygang.org/dy/tvplay/">喜剧片</a></li> 
+       <li><a href="https://www.dygang.org/dy/aqp/">爱情片</a></li> 
+       <li><a href="https://www.dygang.org/dy/khp/">科幻片</a></li> 
+       <li><a href="https://www.dygang.org/dy/jqp/">剧情片</a></li> 
+       <li><a href="https://www.dygang.org/dy/kbp/">恐怖片</a></li> 
+       <li><a href="https://www.dygang.org/dy/zzp/">战争片</a></li> 
+       <li><a href="https://www.dygang.org/dy/jlp/">纪录片</a></li> 
+       <li><a href="https://www.dygang.org/dy/donghuapian/">动画片</a></li> 
+       <li><a href="https://www.dygang.org/dsj/">电视剧</a></li> 
+       <li><a href="https://www.dygang.org/dsj/dlj/">国剧</a></li> 
+       <li><a href="https://www.dygang.org/dsj/rhj/">日韩剧</a></li> 
+       <li><a href="https://www.dygang.org/dsj/omj/">欧美剧</a></li> 
+       <li><a href="https://www.dygang.org/zyjm/">综艺节目</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+    <div id="sj-nav-search" class="nav-down-1 sy2 sj-noover" style="display: none;" _t_nav1="sj-nav-search"> 
+     <div class="nav-down-2 sj-nav-down-search clearfix"> 
+      <form action="https://www.dygang.org/e/search/index.php" method="post"> 
+       <input type="text" id="wd" name="keyboard" class="input" onblur="if(this.value==''){ this.value='请输入影片或演员名';this.style.color='#cfcdcd';}" onfocus="if(this.value=='请输入影片或演员名'){this.value='';this.style.color='';}" value="请输入影片或演员名"> 
+       <input type="submit" name="submit" class="imgbt" value="搜 索"> 
+       <input type="hidden" value="title,zhuyan" name="show"> 
+       <input type="hidden" value="1" name="tempid"> 
+      </form> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="topone clearfix"></div> 
+  <div class="leaveNavInfo"></div>  
+  <div class="main"></div> ﻿ 
+  <script src="js/12.js"></script> 
+  <div class="channel-focus"> 
+   <div class="channel-silder layout"> 
+    <ul class="channel-silder-cnt"> 
+     <li class="channel-silder-panel"><a class="channel-silder-img" target="_blank" href="https://www.dygang.org/dsj/omj/6204.html"> <img src="https://tu.66vod.net/2019/1249.jpg" title="权力的游戏[第八季全]"> </a> 
+      <div class="channel-silder-intro"> 
+       <div class="channel-silder-title"> 
+        <h2> <a target="_blank" href="https://www.dygang.org/dsj/omj/6204.html" title="权力的游戏[第八季全]"> 权力的游戏[第八季全] </a> </h2> 
+        <span> </span> 
+       </div> 
+       <ul class="channel-silder-info"> 
+        <li class="long"><label>主演：</label> <span> </span></li> 
+        <li>类型：<span> </span></li> 
+        <li>导演：<span> </span></li> 
+        <li>年份：<span> </span></li> 
+        <li>时间：<span> 2019-05-27 </span></li> 
+       </ul> 
+       <p class="channel-silder-desc"> 剧情：<span> ◎译 名 权力的游戏 第七季/冰与火之歌：权力的游戏/王座游戏 ◎片 名 Game of Thrones Season 7 ◎年 代 2017 ◎产 地 美国 ◎类 别 剧情/奇幻/冒 ..</span> </p> 
+       <a class="channel-silder-play" target="_blank" href="https://www.dygang.org/dsj/omj/6204.html" title="观看《权力的游戏[第八季全]》">马上观看</a> 
+      </div></li> 
+     <li class="channel-silder-panel"><a class="channel-silder-img" target="_blank" href="https://www.dygang.org/dy/bangumi/5689.html"> <img src="https://tu.66vod.net/2019/1433.jpg" title="选美小姐2019"> </a> 
+      <div class="channel-silder-intro"> 
+       <div class="channel-silder-title"> 
+        <h2> <a target="_blank" href="https://www.dygang.org/dy/bangumi/5689.html" title="选美小姐2019"> 选美小姐2019 </a> </h2> 
+        <span> 正片 </span> 
+       </div> 
+       <ul class="channel-silder-info"> 
+        <li class="long"><label>主演：</label> <span> </span></li> 
+        <li>类型：<span> </span></li> 
+        <li>导演：<span> </span></li> 
+        <li>年份：<span> </span></li> 
+        <li>时间：<span> 2019-04-27 </span></li> 
+       </ul> 
+       <p class="channel-silder-desc"> 剧情：<span> ◎译 名 选美小姐/双面蝶 ◎片 名 Miss Bala ◎年 代 2019 ◎产 地 墨西哥/美国 ◎类 别 动作/剧情/惊悚 ◎语 言 英语 ◎字 幕 中字 ◎IMDb评 ..</span> </p> 
+       <a class="channel-silder-play" target="_blank" href="https://www.dygang.org/dy/bangumi/5689.html" title="观看《选美小姐2019》">马上观看</a> 
+      </div></li> 
+    </ul> 
+    <ul class="channel-silder-nav"> 
+     <li><a target="_blank" href="https://www.dygang.org/dsj/omj/6204.html"> <img class="lazy" data-original="https://tu.66vod.net/2019/1249.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="权力的游戏[第八季全]"> </a></li> 
+     <li><a target="_blank" href="https://www.dygang.org/dy/bangumi/5689.html"> <img class="lazy" data-original="https://tu.66vod.net/2019/1433.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="选美小姐2019"> </a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <script type="text/javascript">
+		jQuery(".channel-silder").slide({
+			titCell : ".channel-silder-nav li",
+			mainCell : ".channel-silder-cnt",
+			delayTime : 800,
+			triggerTime : 0,
+			interTime : 5000,
+			pnLoop : false,
+			autoPage : false,
+			autoPlay : true
+		});
+	</script> 
+  <div class="main"> 
+   <!--首页推荐--> 
+   <div class="index-tj clearfix"> 
+    <div class="index-tj-l"> 
+     <h3 class="title index-color clearfix"> <span class="hitkey"> <a href="https://www.dygang.org/dy/donghuapian/5132.html"> 斗罗大陆动画版 </a> <a href="https://www.dygang.org/dsj/omj/6188.html"> 杀死伊芙[第三季全] </a> <a href="https://www.dygang.org/dsj/omj/6023.html"> 西部世界[第三季全] </a> <a href="https://www.dygang.org/dy/khp/6459.html"> 哈利·波特与死亡圣器(下)[高清] </a> <a href="https://www.dygang.org/dy/donghuapian/6800.html"> 灵笼 </a> <a href="https://www.dygang.org/dsj/omj/7234.html"> 罪恶黑名单[第七季19] </a> </span>推荐影视: </h3> 
+     <ul> 
+      <li class="p2 m1 "><a class="link-hover" href="https://www.dygang.org/dy/donghuapian/9599.html" title="姜子牙"> <img class="lazy" data-original="https://inews.gtimg.com/newsapp_bt/0/12561740269/1000.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="姜子牙"> <span class="video-bg"></span><span class="lzbz"> <p class="name">姜子牙</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+      <li class="p2 m1 "><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9558.html" title="在一起"> <img class="lazy" data-original="https://tu.66vod.net/2020/3797.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="在一起"> <span class="video-bg"></span><span class="lzbz"> <p class="name">在一起</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+      <li class="p2 m1 "><a class="link-hover" href="https://www.dygang.org/dy/donghuapian/5132.html" title="斗罗大陆动画版"> <img class="lazy" data-original="https://tu.66vod.net/2018/5241.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="斗罗大陆动画版"> <span class="video-bg"></span><span class="lzbz"> <p class="name">斗罗大陆动画版</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> </i> </p> </a></li> 
+      <li class="p2 m1 "><a class="link-hover" href="https://www.dygang.org/dy/donghuapian/9061.html" title="元龙[全集]"> <img class="lazy" data-original="https://tu.66vod.net/2020/2540.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="元龙[全集]"> <span class="video-bg"></span><span class="lzbz"> <p class="name">元龙[全集]</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+      <li class="p2 m1 "><a class="link-hover" href="https://www.dygang.org/dy/jlp/9587.html" title="孤注一掷：巴西国家队"> <img class="lazy" data-original="https://tu.66vod.net/2020/3844.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="孤注一掷：巴西国家队"> <span class="video-bg"></span><span class="lzbz"> <p class="name">孤注一掷：巴西国家队</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+      <li class="p2 m1 mmr0 pmr0"><a class="link-hover" href="https://www.dygang.org/dy/bangumi/9576.html" title="急先锋"> <img class="lazy" data-original="https://inews.gtimg.com/newsapp_bt/0/12533898409/1000.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="急先锋"> <span class="video-bg"></span><span class="lzbz"> <p class="name">急先锋</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+      <li class="p2 m1 "><a class="link-hover" href="https://www.dygang.org/dy/jqp/9559.html" title="夺冠"> <img class="lazy" data-original="https://inews.gtimg.com/newsapp_bt/0/12540784977/1000.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="夺冠"> <span class="video-bg"></span><span class="lzbz"> <p class="name">夺冠</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+      <li class="p2 m1 "><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9492.html" title="C9特工"> <img class="lazy" data-original="https://tu.66vod.net/2020/3662.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="C9特工"> <span class="video-bg"></span><span class="lzbz"> <p class="name">C9特工</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+      <li class="p2 m1 "><a class="link-hover" href="https://www.dygang.org/dy/jqp/9583.html" title="科米的规则"> <img class="lazy" data-original="https://tu.66vod.net/2020/3849.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="科米的规则"> <span class="video-bg"></span><span class="lzbz"> <p class="name">科米的规则</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+      <li class="p2 m1 "><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9500.html" title="凤唳九天"> <img class="lazy" data-original="https://tu.66vod.net/2020/3688.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="凤唳九天"> <span class="video-bg"></span><span class="lzbz"> <p class="name">凤唳九天</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+      <li class="p2 m1 "><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9411.html" title="长安诺"> <img class="lazy" data-original="https://inews.gtimg.com/newsapp_bt/0/12443640964/1000.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="长安诺"> <span class="video-bg"></span><span class="lzbz"> <p class="name">长安诺</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+      <li class="p2 m1 mmr0 pmr0"><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9574.html" title="小大夫"> <img class="lazy" data-original="https://tu.66vod.net/2020/3847.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="小大夫"> <span class="video-bg"></span><span class="lzbz"> <p class="name">小大夫</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     </ul> 
+    </div> 
+    <div class="index-tj-r"> 
+     <h3 class="title index-color">随便看看</h3> 
+     <ul> 
+      <li><a href="https://www.dygang.org/dy/jqp/2960.html" title="看不见的客人"> <span class="bz"> </span> 
+        <gm class="gs">
+          01 
+        </gm> <span class="az"> 看不见的客人 </span> </a></li> 
+      <li><a href="https://www.dygang.org/dy/jqp/1707.html" title="胜负未决的战斗"> <span class="bz"> </span> 
+        <gm class="gs">
+          02 
+        </gm> <span class="az"> 胜负未决的战斗 </span> </a></li> 
+      <li><a href="https://www.dygang.org/dy/khp/3800.html" title="死侍"> <span class="bz"> </span> 
+        <gm class="gs">
+          03 
+        </gm> <span class="az"> 死侍 </span> </a></li> 
+      <li><a href="https://www.dygang.org/dsj/dlj/5328.html" title="初婚2018[全集]"> <span class="bz"> </span> 
+        <gm class="gs">
+          04 
+        </gm> <span class="az"> 初婚2018[全集] </span> </a></li> 
+      <li><a href="https://www.dygang.org/dy/kbp/3194.html" title="时间上的家"> <span class="bz"> </span> 
+        <gm class="gs">
+          05 
+        </gm> <span class="az"> 时间上的家 </span> </a></li> 
+      <li><a href="https://www.dygang.org/dsj/dlj/5451.html" title="国民大生活[全集]"> <span class="bz"> </span> 
+        <gm class="gs">
+          06 
+        </gm> <span class="az"> 国民大生活[全集] </span> </a></li> 
+      <li><a href="https://www.dygang.org/dsj/dlj/7270.html" title="明月照我心[全集]"> <span class="bz"> 正片 </span> 
+        <gm class="gs">
+          07 
+        </gm> <span class="az"> 明月照我心[全集] </span> </a></li> 
+      <li><a href="https://www.dygang.org/dy/bangumi/4405.html" title="龙之心4：心火之战"> <span class="bz"> </span> 
+        <gm class="gs">
+          08 
+        </gm> <span class="az"> 龙之心4：心火之战 </span> </a></li> 
+      <li><a href="https://www.dygang.org/dy/bangumi/7555.html" title="第一滴血5"> <span class="bz"> 正片 </span> 
+        <gm class="gs">
+          09 
+        </gm> <span class="az"> 第一滴血5 </span> </a></li> 
+      <li><a href="https://www.dygang.org/dsj/dlj/7155.html" title="激情的岁月[全集]"> <span class="bz"> 正片 </span> 
+        <gm class="gs">
+          10 
+        </gm> <span class="az"> 激情的岁月[全集] </span> </a></li> 
+     </ul> 
+    </div> 
+   </div> 
+   <div class="index-area clearfix"> 
+    <h1 class="title index-color"> <span class="hitkey kp"> <li><a href="https://www.dygang.org/dy/jqp/2079.html"> 乌娜 </a></li> <li><a href="https://www.dygang.org/dy/tvplay/1608.html"> 翻滚吧姐妹 </a></li> <li><a href="https://www.dygang.org/dy/tvplay/1607.html"> 小镇车神之五菱漂移 </a></li> <li><a href="https://www.dygang.org/dy/tvplay/1606.html"> 硬核 </a></li> <li><a href="https://www.dygang.org/dy/tvplay/1605.html"> 西虹市首富 </a></li> <li><a href="https://www.dygang.org/dy/tvplay/1604.html"> 恶棍成长记 </a></li> <a href="https://www.dygang.org/dy/">更多»</a> </span> <a href="https://www.dygang.org/dy/"> 电影 </a> </h1> 
+    <ul> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/donghuapian/9599.html" title="姜子牙"> <img class="lazy" data-original="https://inews.gtimg.com/newsapp_bt/0/12561740269/1000.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="姜子牙"> <span class="video-bg"></span><span class="lzbz"> <p class="name">姜子牙</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/bangumi/9598.html" title="碟中谍1-6合集"> <img class="lazy" data-original="https://tu.66vod.net/2018/3455.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="碟中谍1-6合集"> <span class="video-bg"></span><span class="lzbz"> <p class="name">碟中谍1-6合集</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/donghuapian/9419.html" title="穿书自救指南[全集]"> <img class="lazy" data-original="https://tu.66vod.net/2020/3431.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="穿书自救指南[全集]"> <span class="video-bg"></span><span class="lzbz"> <p class="name">穿书自救指南[全集]</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/donghuapian/5132.html" title="斗罗大陆动画版"> <img class="lazy" data-original="https://tu.66vod.net/2018/5241.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="斗罗大陆动画版"> <span class="video-bg"></span><span class="lzbz"> <p class="name">斗罗大陆动画版</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/donghuapian/9061.html" title="元龙[全集]"> <img class="lazy" data-original="https://tu.66vod.net/2020/2540.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="元龙[全集]"> <span class="video-bg"></span><span class="lzbz"> <p class="name">元龙[全集]</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/jqp/9595.html" title="人鱼缚"> <img class="lazy" data-original="https://tu.66vod.net/2020/3887.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="人鱼缚"> <span class="video-bg"></span><span class="lzbz"> <p class="name">人鱼缚</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/jqp/9594.html" title="福岛50死士"> <img class="lazy" data-original="https://tu.66vod.net/2020/3882.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="福岛50死士"> <span class="video-bg"></span><span class="lzbz"> <p class="name">福岛50死士</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/jqp/9593.html" title="真假天才"> <img class="lazy" data-original="https://tu.66vod.net/2020/3837.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="真假天才"> <span class="video-bg"></span><span class="lzbz"> <p class="name">真假天才</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/jlp/9588.html" title="金曲大解密"> <img class="lazy" data-original="https://tu.66vod.net/2020/3884.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="金曲大解密"> <span class="video-bg"></span><span class="lzbz"> <p class="name">金曲大解密</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/jlp/9587.html" title="孤注一掷：巴西国家队"> <img class="lazy" data-original="https://tu.66vod.net/2020/3844.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="孤注一掷：巴西国家队"> <span class="video-bg"></span><span class="lzbz"> <p class="name">孤注一掷：巴西国家队</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/bangumi/9586.html" title="东北往事：我叫刘海柱"> <img class="lazy" data-original="https://tu.66vod.net/2020/3307.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="东北往事：我叫刘海柱"> <span class="video-bg"></span><span class="lzbz"> <p class="name">东北往事：我叫刘海柱</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/aqp/9585.html" title="辉夜大小姐想让我告白：天才们的恋爱头脑战"> <img class="lazy" data-original="https://tu.66vod.net/2020/3883.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="辉夜大小姐想让我告白：天才们的恋爱头脑战"> <span class="video-bg"></span><span class="lzbz"> <p class="name">辉夜大小姐想让我告白：天才们的恋爱头脑战</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/aqp/9584.html" title="临时奶爸"> <img class="lazy" data-original="https://tu.66vod.net/2020/3850.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="临时奶爸"> <span class="video-bg"></span><span class="lzbz"> <p class="name">临时奶爸</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/bangumi/9576.html" title="急先锋"> <img class="lazy" data-original="https://inews.gtimg.com/newsapp_bt/0/12533898409/1000.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="急先锋"> <span class="video-bg"></span><span class="lzbz"> <p class="name">急先锋</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/jqp/9559.html" title="夺冠"> <img class="lazy" data-original="https://inews.gtimg.com/newsapp_bt/0/12540784977/1000.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="夺冠"> <span class="video-bg"></span><span class="lzbz"> <p class="name">夺冠</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/jqp/9583.html" title="科米的规则"> <img class="lazy" data-original="https://tu.66vod.net/2020/3849.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="科米的规则"> <span class="video-bg"></span><span class="lzbz"> <p class="name">科米的规则</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/khp/9582.html" title="马克思和秘密之房"> <img class="lazy" data-original="https://tu.66vod.net/2020/3871.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="马克思和秘密之房"> <span class="video-bg"></span><span class="lzbz"> <p class="name">马克思和秘密之房</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/kbp/9581.html" title="布朗克斯大战吸血鬼"> <img class="lazy" data-original="https://tu.66vod.net/2020/3845.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="布朗克斯大战吸血鬼"> <span class="video-bg"></span><span class="lzbz"> <p class="name">布朗克斯大战吸血鬼</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/jlp/9580.html" title="迪克 约翰逊已死"> <img class="lazy" data-original="https://tu.66vod.net/2020/3839.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="迪克 约翰逊已死"> <span class="video-bg"></span><span class="lzbz"> <p class="name">迪克 约翰逊已死</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/jqp/9579.html" title="非常真相"> <img class="lazy" data-original="https://tu.66vod.net/2020/3872.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="非常真相"> <span class="video-bg"></span><span class="lzbz"> <p class="name">非常真相</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/jqp/9578.html" title="异色国度"> <img class="lazy" data-original="https://tu.66vod.net/2020/3846.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="异色国度"> <span class="video-bg"></span><span class="lzbz"> <p class="name">异色国度</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/jqp/9577.html" title="沉默的海湾"> <img class="lazy" data-original="https://tu.66vod.net/2020/3841.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="沉默的海湾"> <span class="video-bg"></span><span class="lzbz"> <p class="name">沉默的海湾</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/donghuapian/7821.html" title="武庚纪"> <img class="lazy" data-original="https://inews.gtimg.com/newsapp_bt/0/10898456298/1000.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="武庚纪"> <span class="video-bg"></span><span class="lzbz"> <p class="name">武庚纪</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/donghuapian/9213.html" title="民调局异闻录"> <img class="lazy" data-original="https://tu.66vod.net/2020/2914.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="民调局异闻录"> <span class="video-bg"></span><span class="lzbz"> <p class="name">民调局异闻录</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+    </ul> 
+   </div> 
+   <div class="index-area clearfix"> 
+    <h1 class="title index-color"> <span class="hitkey kp"> <li><a href="https://www.dygang.org/dsj/dlj/5317.html"> 青春警事[全集] </a></li> <li><a href="https://www.dygang.org/dsj/dlj/5316.html"> 我和两个他[全集] </a></li> <li><a href="https://www.dygang.org/dsj/dlj/5315.html"> 爱国者[全集] </a></li> <li><a href="https://www.dygang.org/dsj/dlj/5314.html"> 猎毒人[全集] </a></li> <li><a href="https://www.dygang.org/dsj/dlj/5313.html"> 钟馗捉妖记[全集] </a></li> <li><a href="https://www.dygang.org/dsj/dlj/5312.html"> 宫心计2 </a></li> <a href="https://www.dygang.org/dsj/">更多»</a> </span> <a href="https://www.dygang.org/dsj/"> 电视剧 </a> </h1> 
+    <ul> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/rhj/9298.html" title="邪恶之花[全集]"> <img class="lazy" data-original="https://tu.66vod.net/2020/3103.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="邪恶之花[全集]"> <span class="video-bg"></span><span class="lzbz"> <p class="name">邪恶之花[全集]</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/omj/9597.html" title="足球教练[第一季全]"> <img class="lazy" data-original="https://tu.66vod.net/2020/3886.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="足球教练[第一季全]"> <span class="video-bg"></span><span class="lzbz"> <p class="name">足球教练[第一季全]</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/omj/9596.html" title="行尸走肉：外面的世界[第一季01]"> <img class="lazy" data-original="https://tu.66vod.net/2020/3885.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="行尸走肉：外面的世界[第一季01]"> <span class="video-bg"></span><span class="lzbz"> <p class="name">行尸走肉：外面的世界[第一季01]</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9445.html" title="亲爱的，你在哪里"> <img class="lazy" data-original="https://inews.gtimg.com/newsapp_bt/0/12471657477/1000.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="亲爱的，你在哪里"> <span class="video-bg"></span><span class="lzbz"> <p class="name">亲爱的，你在哪里</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9393.html" title="亲爱的自己"> <img class="lazy" data-original="https://inews.gtimg.com/newsapp_bt/0/12465706254/1000.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="亲爱的自己"> <span class="video-bg"></span><span class="lzbz"> <p class="name">亲爱的自己</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9458.html" title="偷心画师"> <img class="lazy" data-original="https://inews.gtimg.com/newsapp_bt/0/12441948315/1000.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="偷心画师"> <span class="video-bg"></span><span class="lzbz"> <p class="name">偷心画师</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9552.html" title="完美先生和差不多小姐"> <img class="lazy" data-original="https://rpg.pic-imges.com/pic/upload/vod/2020-09/1601296888.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="完美先生和差不多小姐"> <span class="video-bg"></span><span class="lzbz"> <p class="name">完美先生和差不多小姐</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9558.html" title="在一起"> <img class="lazy" data-original="https://tu.66vod.net/2020/3797.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="在一起"> <span class="video-bg"></span><span class="lzbz"> <p class="name">在一起</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9517.html" title="约定期间爱上你"> <img class="lazy" data-original="https://rpg.pic-imges.com/pic/upload/vod/2020-09/1601009066.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="约定期间爱上你"> <span class="video-bg"></span><span class="lzbz"> <p class="name">约定期间爱上你</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9457.html" title="心动的瞬间"> <img class="lazy" data-original="https://inews.gtimg.com/newsapp_bt/0/12466144370/1000.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="心动的瞬间"> <span class="video-bg"></span><span class="lzbz"> <p class="name">心动的瞬间</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/omj/6152.html" title="神偷卡门[第1-3季全]"> <img class="lazy" data-original="https://tu.66vod.net/2019/0122.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="神偷卡门[第1-3季全]"> <span class="video-bg"></span><span class="lzbz"> <p class="name">神偷卡门[第1-3季全]</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/omj/9592.html" title="怪物乐园[第一季04]"> <img class="lazy" data-original="https://tu.66vod.net/2020/3881.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="怪物乐园[第一季04]"> <span class="video-bg"></span><span class="lzbz"> <p class="name">怪物乐园[第一季04]</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/omj/9591.html" title="十月节风云[全集]"> <img class="lazy" data-original="https://tu.66vod.net/2020/3843.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="十月节风云[全集]"> <span class="video-bg"></span><span class="lzbz"> <p class="name">十月节风云[全集]</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/omj/9590.html" title="早安，维罗妮卡[全集]"> <img class="lazy" data-original="https://tu.66vod.net/2020/3842.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="早安，维罗妮卡[全集]"> <span class="video-bg"></span><span class="lzbz"> <p class="name">早安，维罗妮卡[全集]</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/omj/9589.html" title="艾米丽在巴黎[全集]"> <img class="lazy" data-original="https://tu.66vod.net/2020/3838.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="艾米丽在巴黎[全集]"> <span class="video-bg"></span><span class="lzbz"> <p class="name">艾米丽在巴黎[全集]</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/dlj/5672.html" title="爱回家之开心速递"> <img class="lazy" data-original="https://tu.66vod.net/2016/2967.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="爱回家之开心速递"> <span class="video-bg"></span><span class="lzbz"> <p class="name">爱回家之开心速递</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/omj/7215.html" title="行尸走肉[第十季全]"> <img class="lazy" data-original="https://tu.66vod.net/2019/4147.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="行尸走肉[第十季全]"> <span class="video-bg"></span><span class="lzbz"> <p class="name">行尸走肉[第十季全]</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9492.html" title="C9特工"> <img class="lazy" data-original="https://tu.66vod.net/2020/3662.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="C9特工"> <span class="video-bg"></span><span class="lzbz"> <p class="name">C9特工</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/omj/9375.html" title="异星灾变[第一季全]"> <img class="lazy" data-original="https://tu.66vod.net/2020/3331.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="异星灾变[第一季全]"> <span class="video-bg"></span><span class="lzbz"> <p class="name">异星灾变[第一季全]</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9405.html" title="三嫁惹君心"> <img class="lazy" data-original="https://inews.gtimg.com/newsapp_bt/0/12447283448/1000.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="三嫁惹君心"> <span class="video-bg"></span><span class="lzbz"> <p class="name">三嫁惹君心</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9500.html" title="凤唳九天"> <img class="lazy" data-original="https://tu.66vod.net/2020/3688.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="凤唳九天"> <span class="video-bg"></span><span class="lzbz"> <p class="name">凤唳九天</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9516.html" title="风犬少年的天空"> <img class="lazy" data-original="https://tu.66vod.net/2020/3735.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="风犬少年的天空"> <span class="video-bg"></span><span class="lzbz"> <p class="name">风犬少年的天空</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9411.html" title="长安诺"> <img class="lazy" data-original="https://inews.gtimg.com/newsapp_bt/0/12443640964/1000.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="长安诺"> <span class="video-bg"></span><span class="lzbz"> <p class="name">长安诺</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dsj/dlj/9574.html" title="小大夫"> <img class="lazy" data-original="https://tu.66vod.net/2020/3847.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="小大夫"> <span class="video-bg"></span><span class="lzbz"> <p class="name">小大夫</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+    </ul> 
+   </div> 
+   <div class="index-area clearfix"> 
+    <h4 class="title index-color">猜你喜欢</h4> 
+    <ul> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/tvplay/1526.html" title="憨豆特工3"> <img class="lazy" data-original="https://tu.66vod.net/2018/5399.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="憨豆特工3"> <span class="video-bg"></span><span class="lzbz"> <p class="name">憨豆特工3</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/jqp/8523.html" title="残忍的心"> <img class="lazy" data-original="https://tu.66vod.net/2020/1047.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="残忍的心"> <span class="video-bg"></span><span class="lzbz"> <p class="name">残忍的心</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/jqp/1861.html" title="告诉我是怎么死的"> <img class="lazy" data-original="http://tu1.66vod.net/xintu/bbb/5xdpf2n40do.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="告诉我是怎么死的"> <span class="video-bg"></span><span class="lzbz"> <p class="name">告诉我是怎么死的</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/bangumi/8830.html" title="天使降临"> <img class="lazy" data-original="https://tu.66vod.net/2020/1561.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="天使降临"> <span class="video-bg"></span><span class="lzbz"> <p class="name">天使降临</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/jqp/2011.html" title="啦啦队之舞"> <img class="lazy" data-original="http://tu.pp63.org/2017/3864.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="啦啦队之舞"> <span class="video-bg"></span><span class="lzbz"> <p class="name">啦啦队之舞</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> </i> </p> </a></li> 
+     <li class="p1 m1"><a class="link-hover" href="https://www.dygang.org/dy/khp/7377.html" title="超凡蜘蛛侠2"> <img class="lazy" data-original="https://tu.66vod.net/2019/4642.jpg" src="https://www.dygang.org/skin/dygang/images/load.gif" alt="超凡蜘蛛侠2"> <span class="video-bg"></span><span class="lzbz"> <p class="name">超凡蜘蛛侠2</p> <p class="actor"></p> <p class="actor"></p> <p class="actor">/</p> </span> <p class="other"> <i> 正片 </i> </p> </a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <!--结束-->  
+  <div class="ylink clearfix">
+   友情连接：
+  </div> 
+  <!--/底部--> 
+  <div class="footer clearfix"> 
+   <p>免责声明:本站所有视频均来自互联网收集而来，版权归原创者所有，如果侵犯了你的权益，请在上方导航栏相关区域通知我们，我们会及时删除侵权内容，谢谢合作。</p> Copyright © 2019-2026 [电影港手机版] 鲁ICP备12345678号 
+   <script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? "https://"
+					: "http://");
+			document
+					.write(unescape("%3Cspan id='cnzz_stat_icon_1277378824'%3E%3C/span%3E%3Cscript src='"
+							+ cnzz_protocol
+							+ "s96.cnzz.com/z_stat.php%3Fid%3D1277378824' type='text/javascript'%3E%3C/script%3E"));
+		</script> 
+   <!--本站统计结束---> 
+  </div> 
+  <div class="gotop"> 
+   <a class="gotopbg" href="javascript:;" title="返回顶部"></a> 
+  </div>  
+ </body>
+</html>
