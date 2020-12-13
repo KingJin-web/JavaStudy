@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>论坛--登录</title>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <script type="text/javascript" src="js/axios.js"></script>
+</head>
+
+<body>
+<div id="main">
+    <div>
+        <div>
+            <img src="image/logo.gif">
+        </div>
+        <div class="h">
+				<span>
+					您尚未 <a href="login.html">登录</a> &nbsp;| &nbsp; <a href="reg.html">注册</a> |
+				</span>
+        </div>
+    </div>
+    <br>
+    <div>
+        &gt;&gt;<b><a href="index.html">论坛首页</a></b>
+    </div>
+    <div align="center" class="t">
+        <form name="loginForm" action="" method="post">
+            <br>
+            <label>标题</label>
+            <input v-model="params.title" tabindex="1" type="text" maxlength="20" size="35" name="uName" class="input">
+            <br>
+            <label>内容</label>
+            <textarea v-model="params.content" cols="30" rows="5"
+                      style="margin: 0px; width: 257px; height: 89px;"></textarea>
+            <br>
+            <input tabindex="6" @click="post" type="button" value="发 帖" class="btn">
+        </form>
+        <script type="text/javascript">
+            var vue = new Vue({
+                el: "form",
+                data: {
+                    params: {
+                        title: "",
+                        content: "",
+                        boardid: ""
+                    }
+
+                },
+                methods: {
+                    post() {
+                        var search = location.search;
+                        var items = search.split(new RegExp("="));
+                        console.log(items);
+                        var bid = items[1];
+                        this.params.boardid = bid;
+                        var postParams = new URLSearchParams();
+                        for (var field in this.params) {
+                            postParams.append(field, this.params[field]);
+                        }
+                        var url = "topic.s?op=add";
+                        axios.post(url, postParams).then(res => {
+
+                        })
+                    }
+                }
+            });
+        </script>
+    </div>
+</div>
+</body>
+</html>

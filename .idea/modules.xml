@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/C91-S2-BBS/C91-S2-BBS.iml" filepath="$PROJECT_DIR$/C91-S2-BBS/C91-S2-BBS.iml" />
       <module fileurl="file://$PROJECT_DIR$/C91-S2-DianYG/C91-S2-DianYG.iml" filepath="$PROJECT_DIR$/C91-S2-DianYG/C91-S2-DianYG.iml" />
       <module fileurl="file://$PROJECT_DIR$/C91-S2-javaEE/C91-S2-javaEE.iml" filepath="$PROJECT_DIR$/C91-S2-javaEE/C91-S2-javaEE.iml" />
       <module fileurl="file://$PROJECT_DIR$/C91-S2-register/C91-S2-register.iml" filepath="$PROJECT_DIR$/C91-S2-register/C91-S2-register.iml" />

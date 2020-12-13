@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="C91-S2-BBS:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/C91_S2_BBS_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="C91-S2-BBS/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="C91-S2-BBS" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

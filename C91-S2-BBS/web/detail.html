@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <TITLE>论坛--看贴</TITLE>
+    <Link rel="stylesheet" type="text/css" href="style/style.css"></Link>
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <script type="text/javascript" src="js/axios.js"></script>
+</HEAD>
+
+<BODY>
+<DIV>
+    <IMG src="image/logo.gif">
+</DIV>
+
+<!--      用户信息、登录、注册        -->
+
+<DIV class="h">
+    您尚未　<a href="login.html">登录</a>
+    &nbsp;| &nbsp; <A href="reg.html">注册</A> |
+</DIV>
+
+<!--      主体        -->
+<DIV><br/>
+    <!--      导航        -->
+    <DIV id="main">
+        &gt;&gt;<B><a href="index.html">论坛首页</a></B>&gt;&gt;
+        <B><a href="list.html">灌水乐园</a></B>
+    </DIV>
+    <br/>
+    <!--      回复、新帖        -->
+    <DIV>
+        <A href="post.html"><IMG src="image/reply.gif" border="0" id=td_post1></A>
+        <A href="post.html"><IMG src="image/post.gif" border="0" id=td_post2></A>
+    </DIV>
+    <!--         翻 页         -->
+    <DIV>
+        <a href="detail.html">上一页</a>|
+        <a href="detail.html">下一页</a>
+    </DIV>
+    <!--      本页主题的标题        -->
+    <DIV>
+        <TABLE cellSpacing="0" cellPadding="0" width="100%">
+            <TR>
+                <TH class="h">本页主题: 灌水</TH>
+            </TR>
+            <TR class="tr2">
+                <TD>&nbsp;</TD>
+            </TR>
+        </TABLE>
+    </DIV>
+
+    <!--      主题        -->
+
+    <DIV class="t" v-for="t in list">
+        <TABLE style="BORDER-TOP-WIDTH: 0px; TABLE-LAYOUT: fixed" cellSpacing="0" cellPadding="0" width="100%">
+            <TR class="tr1">
+                <TH style="width: 20%">
+                    <B>{{t.nume}}</B><BR/>
+                    <img :src="'image/head/' + t.head" alt=""/><BR/>
+                    注册:{{t.regtime}}<BR/>
+                </TH>
+                <TH>
+                    <H4>{{t.title}}</H4>
+                    <DIV v-html="t.content"></DIV>
+                    <DIV class="tipad gray">
+                        发表：{{t.publishtime}} &nbsp;
+                        最后修改:{{t.modifytime}}
+                    </DIV>
+                </TH>
+            </TR>
+        </TABLE>
+    </DIV>
+</DIV>
+<script type="text/javascript">
+    var vue = new Vue({
+        el: "#mian",
+        data: {
+            list: []
+        },
+        created() {
+            var search = location.search;
+            var items = search.split(new RegExp("="));
+            console.log(items);
+            var id = items[1];
+            //var url = "topic.s?op=queryByBid&bid=" + bid;
+            var url = "topic.s?op=selectByBidWithReply&id=" + id;
+            axios.get(url).then(res => {
+                this.list = res.data;
+            })
+
+
+        }
+    });
+</script>
+
+<!--      声明        -->
+<BR>
+<CENTER class="gray">源辰信息</CENTER>
+</BODY>
+</HTML>
+
