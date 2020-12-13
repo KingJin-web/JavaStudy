@@ -21,8 +21,9 @@ public class UploadServlet extends HttpServlet {
         resp.setCharacterEncoding("utf-8");
         req.setCharacterEncoding("utf-8");
         Part part = req.getPart("headimg");
+
+        String filename=  part.getSubmittedFileName();
         String cd = part.getHeader("Content-Disposition");
-        String filename = cd.substring(cd.lastIndexOf("=") + 2, cd.length() - 1);
         String webPath = "/headimgs/" + filename;
         ServletContext sc = req.getServletContext();
 

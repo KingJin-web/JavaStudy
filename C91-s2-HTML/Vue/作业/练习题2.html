@@ -29,7 +29,7 @@
         <dd>
             <!-- v-on 添加事件   v-bind ==> : -->
             <button v-on:click="count1++">点击</button>
-        <dt>鼠标点双击次数:
+        <dt>鼠标点双击次数:{{ count2 }}
         <dd>
             <!-- v-on ==> @ -->
             <button @dblclick="countDbl()">点击</button>
@@ -44,11 +44,12 @@
         el: "#E01",
         data: {
             count1: 0,
+            count2: 0,
         },
         // method : 方法 函数
         methods: {
             countDbl() {
-                // 请参考单击事件实现
+                this.count2++
             }
         }
     });
