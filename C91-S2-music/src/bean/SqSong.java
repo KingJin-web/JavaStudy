@@ -1,4 +1,4 @@
-package com.yc.demo.example.sq.bean;
+package bean;
 
 public class SqSong {
     private Integer id;
