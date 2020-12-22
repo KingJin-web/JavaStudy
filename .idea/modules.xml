@@ -5,9 +5,11 @@
       <module fileurl="file://$PROJECT_DIR$/C91-S2-BBS/C91-S2-BBS.iml" filepath="$PROJECT_DIR$/C91-S2-BBS/C91-S2-BBS.iml" />
       <module fileurl="file://$PROJECT_DIR$/C91-S2-DianYG/C91-S2-DianYG.iml" filepath="$PROJECT_DIR$/C91-S2-DianYG/C91-S2-DianYG.iml" />
       <module fileurl="file://$PROJECT_DIR$/C91-S2-javaEE/C91-S2-javaEE.iml" filepath="$PROJECT_DIR$/C91-S2-javaEE/C91-S2-javaEE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/C91-S2-music/C91-S2-music.iml" filepath="$PROJECT_DIR$/C91-S2-music/C91-S2-music.iml" />
       <module fileurl="file://$PROJECT_DIR$/C91-S2-register/C91-S2-register.iml" filepath="$PROJECT_DIR$/C91-S2-register/C91-S2-register.iml" />
       <module fileurl="file://$PROJECT_DIR$/C91-s2-HTML/C91-s2-HTML.iml" filepath="$PROJECT_DIR$/C91-s2-HTML/C91-s2-HTML.iml" />
       <module fileurl="file://$PROJECT_DIR$/C91-S2-user/C91-s2-user.iml" filepath="$PROJECT_DIR$/C91-S2-user/C91-s2-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DB_curriculum_design/DB_curriculum_design.iml" filepath="$PROJECT_DIR$/DB_curriculum_design/DB_curriculum_design.iml" />
       <module fileurl="file://$PROJECT_DIR$/dygangWeb/dygangWeb.iml" filepath="$PROJECT_DIR$/dygangWeb/dygangWeb.iml" />
     </modules>
   </component>

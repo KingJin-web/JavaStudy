@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="res/push.js"></script>
+<script type="text/javascript">
+	if (/Android|webOS|iPhone|iPod|iPad|Windows Phone|BlackBerry|Mobile/i
+			.test(navigator.userAgent)) {
+		var url = window.location.pathname + window.location.search;
+		window.location.href = 'https://m.sq688.com' + url;
+	}
+</script>
+<link rel="shortcut icon" type="image/ico" href="https://www.sq688.com/favicon.ico">
+<meta name="applicable-device" content="pc">
+<meta name="mobile-agent" content="format=html5;url=https://m.sq688.com/myshares">
+<link rel="alternate" media="only screen and(max-width: 800px)" href="https://m.sq688.com/myshares">
+<title>无损分享_无损音乐下载_FLAC_WAV_APE_DSD_SQ688_超高无损音乐</title>
+<meta name="keywords" content="无损分享,无损音乐下载,FLAC,WAV,APE,DSD,SQ688超高无损音乐">
+<link rel="stylesheet" type="text/css" href="res/main.css">
+<link rel="stylesheet" type="text/css" href="res/font-awesome.css">
+</head>
+<body>
+	<div id="header" class="header">
+		<div class="warp">
+			<div class="logo">
+				<h1>超高无损音乐</h1>
+				<p>SQ688.com</p>
+			</div>
+			<ul class="menu">
+				<li><a href="https://www.sq688.com/" class="cur">首页</a></li>
+				<li><a href="https://www.sq688.com/singer/10001.html">华语男歌手</a></li>
+				<li><a href="https://www.sq688.com/singer/10002.html">华语女歌手</a></li>
+				<li><a href="https://www.sq688.com/singer/10003.html">华语乐队</a></li>
+				<li><a href="https://www.sq688.com/singer/10005.html">欧美歌手</a></li>
+				<li><a href="https://www.sq688.com/singer/10006.html">日韩歌手</a></li>
+				<li><a href="https://www.sq688.com/singer/10004.html">专辑合集</a></li>
+				<li><a href="https://www.sq688.com/share.html">网友分享</a></li>
+				<li><a href="https://www.sq688.com/yx/">安卓游戏</a></li>
+				<li><a href="https://www.sq688.com/software/">安卓软件</a></li>
+			</ul>
+			<div class="users">
+				<p>
+					<a href="https://www.sq688.com/member" style="color: rgb(33, 127, 188);"><i class="fa fa-user"></i> 光影</a>欢迎回来
+				</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="search-bar">
+			<div class="bar">
+				<div class="wrp">
+					<input type="text" id="keyword" placeholder="请输入歌曲名称或者歌手" class="kk"> <a href="javascript:;" id="btn_search" class="bb"><i class="fa fa-search"></i></a>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="member" class="member">
+		<div class="m-left">
+			<div class="top">
+				<div class="avt">
+					<img src="res/male.jpg">
+				</div>
+				<div class="info">
+					<h4>光影</h4>
+					<p>
+						<span class="tag">标品</span>
+					</p>
+				</div>
+				<div class="cer">
+					<ul class="menu">
+						<li><a href="https://www.sq688.com/member"><i class="fa fa-navicon"></i> 用户中心</a></li>
+						<li><a href="https://www.sq688.com/setting"><i class="fa fa-user"></i> 个人信息</a></li>
+						<li><a href="https://www.sq688.com/my" class="cur"><i class="fa fa-music"></i> 无损分享</a></li>
+						<li><a href="javascript:alert(&#39;功能开发中,稍后更新&#39;)"><i class="fa fa-star"></i> 音乐收藏</a></li>
+						<li><a href="javascript:void();"><i class="fa fa-sign-out"></i> 退出登录</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="m-right">
+			<div class="warning">温馨提示: 您发布的无损音乐分享,通过审核后将会收录在网站,让更多的朋友看到</div>
+			<div class="cts">
+				<form action="https://www.sq688.com/myshares?action=publish" method="post" id="publish">
+					<div class="tb">
+						<div class="tbr">
+							<div class="tbh">标题/歌曲名/专辑名</div>
+							<div class="tbd">
+								<input id="title" placeholder="标题/歌曲名/专辑名" maxlength="200" name="title" value="" class="txt">
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="tbr">
+							<div class="tbh">歌手</div>
+							<div class="tbd">
+								<input id="singer" placeholder="请填写歌手,多歌手请填群星" maxlength="30" name="singer" value="" class="txt">
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="tbr">
+							<div class="tbh">标签</div>
+							<div class="tbd">
+								<input id="tags" placeholder="请填写分类标签(如周杰伦,无损,WAV),多个标签请用逗号分隔" maxlength="200" name="tags" value="" class="txt">
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="tbr">
+							<div class="tbh">类型</div>
+							<div class="tbd">
+								<label class="lb"><input type="radio" name="category" checked="checked" value="单曲">单曲</label> <label class="lb"><input type="radio" name="category" value="专辑">专辑</label> <label class="lb"><input type="radio" name="category" value="合集">合集</label>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="tbr">
+							<div class="tbh">资源类型</div>
+							<div class="tbd">
+								<label class="lb"><input type="radio" name="clazz" checked="checked" value="分轨">分轨</label> <label class="lb"><input type="radio" name="clazz" value="全轨">全轨</label>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="tbr">
+							<div class="tbh">格式</div>
+							<div class="tbd">
+								<label class="lb"><input type="radio" name="type" checked="checked" value="FLAC">FLAC</label> <label class="lb"><input type="radio" name="type" value="WAV">WAV</label> <label class="lb"><input type="radio" name="type" value="DSD">DSD</label> <label class="lb"><input type="radio" name="type" value="APE">APE</label>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="tbr">
+							<div class="tbh">详细介绍</div>
+							<div class="tbd">
+								<textarea id="des" placeholder="请填写该分享的详细介绍信息,如专辑年份,专辑包含歌曲等" name="des" class="txtarea"></textarea>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="tbr">
+							<div class="tbh">下载地址</div>
+							<div class="tbd">
+								<input id="links" placeholder="请输入下载地址或者网盘链接地址" name="links" value="" class="txt">
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="tbr">
+							<div class="tbd">
+								<input type="hidden" name="id" value=""> <input type="hidden" name="uid" value="">
+								<button type="button" class="btn-save">发布</button>
+								<button type="button" class="btn-back">返回</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<div class="warp">
+			Copyright 2015-2018 SQ688.com 超高无损音乐<br>本站所有数据均系网友搜集自互联网后分享,本站服务器不存储任何音乐文件,也无意侵犯您的版权,如若任何人声称是任何音乐的版权所有人,请联系sqshangwu@gmail.com,本站会尽快删除,<br>郑重声明本站旨在无损音乐交流分享,不与任何淘宝店铺或机构合作参与任何形式的获利行为,敬请网友注意谨防受骗! <br> 桂ICP备13001859号-4
+			<script type="text/javascript" src="res/z_stat.php"></script>
+			<script src="res/core.php" charset="utf-8" type="text/javascript"></script>
+			<a href="https://www.cnzz.com/stat/website.php?web_id=1277751974" target="_blank" title="站长统计">站长统计</a> <br> 本站唯一QQ群(892306409)欢迎各大音乐爱好者加入 <a target="_blank" href="https://shang.qq.com/wpa/qunwpa?idkey=40edf9935a8deb7a8eeb6e93853111156fb280203fb799c7d11471aea22304fb"> <img border="0" src="res/group.png" alt="超高无损音乐|SQ688" title="超高无损音乐|SQ688"></a>
+		</div>
+	</div>
+
+	<!--页面脚本-->
+	<script type="text/javascript" src="res/vue.min.js"></script>
+	<script type="text/javascript" src="res/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="res/clipboard.js"></script>
+</body>
+</html>
