@@ -14,11 +14,15 @@
     <link rel="shortcut icon" type="image/ico" href="https://www.sq688.com/favicon.ico">
     <meta name="applicable-device" content="pc">
     <meta name="mobile-agent" content="format=html5;url=https://m.sq688.com/register">
-    <link rel="alternate" media="only screen and(max-width: 800px)" href="https://m.sq688.com/register">
+    <link rel="alternate" media="only screen and(max-width: 800px)" href="register.html">
     <title>用户注册_无损音乐下载_FLAC_WAV_APE_DSD_SQ688_超高无损音乐</title>
     <meta name="keywords" content="用户注册,无损音乐下载,FLAC,WAV,APE,DSD,SQ688超高无损音乐">
     <link rel="stylesheet" type="text/css" href="res/main.css">
     <link rel="stylesheet" type="text/css" href="res/font-awesome.css">
+    <script type="text/javascript" src="js/axios.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+
 </head>
 <body>
 <div id="header" class="header">
@@ -35,9 +39,7 @@
             <li><a href="https://www.sq688.com/singer/10005.html">欧美歌手</a></li>
             <li><a href="https://www.sq688.com/singer/10006.html">日韩歌手</a></li>
             <li><a href="https://www.sq688.com/singer/10004.html">专辑合集</a></li>
-            <li><a href="https://www.sq688.com/share.html">网友分享</a></li>
-            <li><a href="https://www.sq688.com/yx/">安卓游戏</a></li>
-            <li><a href="https://www.sq688.com/software/">安卓软件</a></li>
+            <li><a href="share.html">网友分享</a></li>
         </ul>
         <div class="users">
             <a href="https://www.sq688.com/login"><i class="fa fa-sign-in"></i> 登录</a> / <a
@@ -54,30 +56,56 @@
         </h2>
         <div class="input">
             <div class="textfiled">
-                <i class="fa fa-user ii"></i> <input type="text" maxlength="50" placeholder="请输入用户名称">
+                <i class="fa fa-user ii"></i> <input v-model="name" type="text" maxlength="50" placeholder="请输入用户名称">
                 <div class="msg">
                     <!---->
                 </div>
             </div>
             <div class="textfiled">
-                <i class="fa fa-lock ii"></i> <input type="password" maxlength="25" placeholder="请输入用户密码">
+                <i class="fa fa-lock ii"></i> <input v-model="pwd" type="password" maxlength="25" placeholder="请输入用户密码">
                 <div class="msg">
                     <!---->
                 </div>
             </div>
             <div class="textfiled">
-                <i class="fa fa-tag ii"></i> <input type="text" maxlength="30" placeholder="请输入昵称">
+                <i class="fa fa-tag ii"></i> <input v-model="email" type="text" maxlength="30" placeholder="请输入邮箱">
+                <button style="width: 100px ;height: 10px; left: auto;font-size: 50%;text-align:center;">获取验证码</button>
+                <i class="fa fa-tag ii"></i><input type="text" maxlength="30" placeholder="请输入验证码">
                 <div class="msg">
                     <!---->
                 </div>
             </div>
             <div class="textfiled">
-                <button>注册</button>
-                <a href="https://www.sq688.com/login" class="login">用户登录</a>
+                <button @click="register">注册</button>
+                <a href="login.html" class="login">用户登录</a>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    const vue = new Vue({
+        el: '#sign',
+        data: {
+            name: "",
+            pwd: "",
+            email: "",
+        },
+        methods: {
+            register() {
+                let url = "user.do?op=register";
+                axios.get(url, {
+                    params: {
+                        name: this.name,
+                        pwd: this.pwd,
+                        email: this.email,
+                    }
+                }).then((res) => {
+                    this.result = res.data;
+                })
+            }
+        }
+    });
+</script>
 
 <div class="footer">
     <div class="warp">
