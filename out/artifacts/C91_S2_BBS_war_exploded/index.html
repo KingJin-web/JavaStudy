@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<TITLE>论坛</TITLE>
+	<Link rel="stylesheet" type="text/css" href="style/style.css"/>
+	<script type="text/javascript" src="js/vue.min.js"></script>
+	<script type="text/javascript" src="js/axios.js"></script>
+</HEAD>
+
+<BODY>
+
+<DIV>
+	<IMG src="image/logo.gif">
+</DIV>
+<!--      用户信息、登录、注册        -->
+
+<DIV class="h">
+	您尚未　<a href="login.html">登录</a>
+	&nbsp;| &nbsp; <A href="reg.html">注册</A> |
+</DIV>
+
+<!--      主体        -->
+<DIV class="t">
+	<TABLE cellSpacing="0" cellPadding="0" width="100%">
+		<TR class="tr2" align="center">
+			<TD colSpan="2">论坛</TD>
+			<TD style="WIDTH: 10%;">主题</TD>
+			<TD style="WIDTH: 30%">最后发表</TD>
+		</TR>
+		<template v-for="board in list" v-if="board.parentid==0">
+			<!--       主版块       -->
+
+			<TR class="tr3">
+				<TD colspan="4">{{board.boardname}}</TD>
+			</TR>
+			<!--       子版块       -->
+
+			<TR class="tr3" v-for="subboard in list" v-if="subboard.parentid == board.id">
+				<TD width="5%">&nbsp;</TD>
+				<TH align="left">
+					<IMG src="image/board.gif">
+					<A :href="'list.html?bid='+subboard.id">{{subboard.boardname}}</A>
+				</TH>
+				<TD align="center">{{subboard.cnt}}</TD>
+				<TH>
+				<SPAN>
+					<A href="detail.html">{{subboard.title}}</A>
+				</SPAN>
+					<BR/>
+					<SPAN>{{subboard.uname}}</SPAN>
+					<SPAN class="gray">[ {{subboard.publishtime}} ]</SPAN>
+				</TH>
+			</TR>
+		</template>
+
+	</TABLE>
+	<script type="text/javascript">
+		var v = new Vue({
+			el: "table",
+			data: {
+				list: []
+			},
+			created() {
+				axios.get("board.s?op=query").then(res => {
+					this.list = res.data;
+				})
+			}
+		});
+	</script>
+</DIV>
+
+<BR/>
+<CENTER class="gray">源辰信息</CENTER>
+</BODY>
+</HTML>

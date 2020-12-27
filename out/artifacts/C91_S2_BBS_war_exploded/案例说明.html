@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<base target="_blank">
+<title>案例说明</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+</head>
+<body>
+	<div id="main">
+		<h3>案例说明</h3>
+		<p>
+			BBS多用于大型公司或中小型企业，开 放给客户交流的平台，对于初识网络的新人来讲，BBS - 就是用于在网络上交流的地方. <a href="index(演示).html">功能演示</a>
+		</p>
+		<h3>基本功能</h3>
+		<ol>
+			<li>注册
+			<li>登录
+			<li>帖子查询
+			<li>查看帖子
+			<li>发表帖子
+		</ol>
+		<h3>扩展功能</h3>
+		<ol>
+			<li>回复帖子
+			<li>发表和回复时,使用富文本编辑器 <a href="https://blog.csdn.net/sinat_31986807/article/details/79667543">CKEditor</a>. 
+			<li>分页查询
+			<li>组合条件查询
+			<li>过滤器判断用户登录
+			<li>快捷登录
+			<li>验证码(登录,注册)
+			<li>用户上传自定义头像
+		</ol>
+		<h3>原型文件说明</h3>
+		<ol class="olt">
+			<li v-for="f in files"><label>
+					<a :href="f.name">{{f.name}}</a>
+				</label> <label>{{f.desc}}</label></li>
+		</ol>
+		<h3>
+			演示接口说明 ( 注意: 登录相关功能由于涉及<a href="https://www.jianshu.com/p/8fa2acd103ea">跨域</a>问题, 无法正常演示, 仅供参考 )
+		</h3>
+		<div id="api">
+			<fieldset v-for=" a in apis">
+				<legend v-html="a.name"></legend>
+				示例地址:<a :href="a.href">{{a.href}}</a><br>
+				<span v-if="a.args.length>0">参数说明:</span>
+				<ol v-if="a.args.length>0" class="olt">
+					<li v-for="arg in a.args"><label style="width: 15%" v-html="arg.ename"></label> <label style="width: 20%" v-html="arg.cname"></label> <label v-html="arg.desc"></label></li>
+				</ol>
+			</fieldset>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function Api(name, href) {
+			let baseURL = "http://"+location.hostname+":1113/"
+			this.name = name;
+			this.href = baseURL + href;
+			this.args = [];
+			for (var i = 2; i < arguments.length; i++) {
+				var arr = arguments[i].split("|");
+				this.args.push({
+					ename : arr[0],
+					cname : arr[1],
+					desc : arr[2]
+				});
+			}
+		}
+		function File(name, desc) {
+			this.name = name;
+			this.desc = desc;
+		}
+		var vue = new Vue(
+				{
+					el : "#main",
+					data : {
+						apis : [
+								new Api("首页板块数据查询", "queryIndex"),
+								new Api(
+										"分页查询指定板块的帖子",
+										"topic/query?boardid=5&page=1&count=true",
+										"boardid | 板块ID  | 要查看的板块的id, 对应 tbl_board 表的 id 字段",
+										"page | 页数 |  分页查询第几页, 第一页是 page=1",
+										"count | 生成总页数   | 固定值为 true"),
+								new Api("查询指定帖子和全部的回帖(跟帖)", "topic/get?id=1",
+										"id | 帖子ID | 要查看的帖子的id, 对应 tbl_topic 表的 id 字段"),
+								new Api("注册用户 ( POST请求 ) ", "user/add",
+										"uname | 用户名 | 不解释",
+										"upass | 密码 | 不解释",
+										"reupass | 确认密码 | 不解释",
+										"gender | 性别 | 1:女   2:男",
+										"head | 头像 | 头像图片名"),
+								new Api('用户登录', "user/login",
+										"uname | 用户名 | 不解释", "upass | 密码 | 不解释"),
+								new Api("用户退出 ( 无返回结果 )", "user/logout"),
+								new Api('获取当前登录的用户对象', "getLoginedUser"), ],
+						files : [ new File("index.html", "首页"),
+								new File("list.html", "子板块的帖子查询页面"),
+								new File("detail.html", "帖子详情页面"),
+								new File("login.html", "登录页面"),
+								new File("reg.html", "注册页面"),
+								new File("BBS.sql", "数据库脚本"),]
+					}
+				});
+	</script>
+</body>
+<style type="text/css">
+#server-api>li {
+	margin-bottom: 20px
+}
+
+ol {
+	margin-top: 1px;
+	margin-bottom: 1px
+}
+
+.olt {
+	display: table;
+	width: 95%;
+}
+
+.olt>li {
+	display: table-row;
+}
+
+.olt>li:hover {
+	background-color: #ddd
+}
+
+.olt>li>label {
+	display: table-cell;
+}
+
+h3 {
+	margin-bottom: 5px
+}
+
+h3+*:hover {
+	background-color: #eee
+}
+
+a {
+	text-decoration: none;
+	display: inline-block;
+	padding: 0px 5px
+}
+
+a:hover {
+	background-color: #fd9
+}
+</style>
+</html>

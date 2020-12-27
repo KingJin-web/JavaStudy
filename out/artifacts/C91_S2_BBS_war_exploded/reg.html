@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>论坛--注册</title>
+<link rel="stylesheet" type="text/css" href="style/style.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+</head>
+<body>
+	<div id="main">
+		<div>
+			<div>
+				<img src="image/logo.gif">
+			</div>
+			<div class="h">
+				<span>
+					您尚未 <a href="login.html">登录</a> &nbsp;| &nbsp; <a href="reg.html">注册</a> |
+				</span>
+			</div>
+		</div>
+		<br>
+		<div>
+			&gt;&gt;<b><a href="index.html">论坛首页</a></b>
+		</div>
+		<div align="center" class="t">
+			<form name="regForm" action="" method="post">
+				<br>
+				<label>用户名</label>
+				<input tabindex="1" tryp="text" maxlength="20" size="35" name="uName" class="input">
+				<br>
+				<label>密 码</label>
+				<input tabindex="2" type="password" maxlength="20" size="35" name="uPass" class="input">
+				<br>
+				<label>重复密码</label>
+				<input tabindex="3" type="password" maxlength="20" size="35" name="uPass1" class="input">
+				<br>
+				<label>性别</label>
+				<span style="width: 248px; display: inline-block; margin: 5px;">
+					女
+					<input type="radio" name="gender" value="1">
+					男
+					<input type="radio" name="gender" value="2">
+				</span>
+				<br />
+				<fieldset style="display: inline-block; margin: 5px;">
+					<legend> 请选择头像 </legend>
+					<img src="image/head/1.gif">
+					<input type="radio" name="head" value="1.gif">
+					<img src="image/head/2.gif">
+					<input type="radio" name="head" value="2.gif">
+					<img src="image/head/3.gif">
+					<input type="radio" name="head" value="3.gif">
+					<img src="image/head/4.gif">
+					<input type="radio" name="head" value="4.gif">
+					<img src="image/head/5.gif">
+					<input type="radio" name="head" value="5.gif">
+					<br> <img src="image/head/6.gif">
+					<input type="radio" name="head" value="6.gif">
+					<img src="image/head/7.gif">
+					<input type="radio" name="head" value="7.gif">
+					<img src="image/head/8.gif">
+					<input type="radio" name="head" value="8.gif">
+					<img src="image/head/9.gif">
+					<input type="radio" name="head" value="9.gif">
+					<img src="image/head/10.gif">
+					<input type="radio" name="head" value="10.gif">
+					<br> <img src="image/head/11.gif">
+					<input type="radio" name="head" value="11.gif">
+					<img src="image/head/12.gif">
+					<input type="radio" name="head" value="12.gif">
+					<img src="image/head/13.gif">
+					<input type="radio" name="head" value="13.gif">
+					<img src="image/head/14.gif">
+					<input type="radio" name="head" value="14.gif">
+					<img src="image/head/15.gif">
+					<input type="radio" name="head" value="15.gif">
+				</fieldset>
+				<br>
+				<input tabindex="4" type="button" value="注 册" class="btn">
+			</form>
+		</div>
+		<div class="gray" style="text-align: center;">
+			<a href="http://www.hyycinfo.com" target="_blank">源辰信息</a>
+		</div>
+	</div>
+</body>
+</html>
