@@ -18,9 +18,28 @@ public class UserBiz {
         Utils.checkNull(sqMember.getPwd(), "请输入密码");
         Utils.isEmail(sqMember.getEmail(), "请输入合法邮箱");
         try {
-
             userDao.register(sqMember);
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
+     * 发送验证码
+     * @param email 收件人
+     * @param name 用户名
+     * @param vcode 验证码
+     * @throws BizException
+     */
+    public void SendMail(String email, String name, int vcode) throws BizException {
+
+        Utils.nameIsUse(name);
+        Utils.isEmail(email, "请输入合法邮箱");
+        EmailHelper emailHelper = new EmailHelper();
+        try {
+            emailHelper.email(email, vcode, name);
+        } catch (MessagingException | GeneralSecurityException e) {
             e.printStackTrace();
         }
 
@@ -67,18 +86,7 @@ public class UserBiz {
         return sqMember;
     }
 
-    public void SendMail(String email, String name, int vcode) throws BizException {
-        Utils.isEmail(email, "请输入合法邮箱");
-        Utils.nameIsUse(name);
 
-        EmailHelper emailHelper = new EmailHelper();
-        try {
-            emailHelper.email(email, vcode, name);
-        } catch (MessagingException | GeneralSecurityException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     /**
      * 修改用户信息

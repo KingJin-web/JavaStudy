@@ -2,6 +2,7 @@ package dao;
 
 import bean.SqMember;
 import common.util.DBHelper;
+import common.util.Utils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,8 +11,9 @@ public class UserDao {
 
     public void register(SqMember sqMember) throws SQLException {
 
-        String sql = "insert into sq_member value (null,?,?,null,?,null,null,null,null,now()) ";
-        DBHelper.update(sql, sqMember.getName(), sqMember.getPwd(), sqMember.getEmail());
+        String sql = "insert into sq_member value (null,?,?,?,null,?,null,null,null,null,now()) ";
+        DBHelper.update(sql, sqMember.getName(), Utils.generateName(),
+                sqMember.getPwd(), sqMember.getEmail());
     }
 
     public int login(SqMember sqMember) throws SQLException {
@@ -27,6 +29,7 @@ public class UserDao {
 
     /**
      * 查询用户名注册人数
+     *
      * @param name
      * @return
      * @throws SQLException
@@ -63,11 +66,12 @@ public class UserDao {
 
     /**
      * UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
+     *
      * @param sqMember
      * @throws SQLException
      */
     public void updateById(SqMember sqMember) throws SQLException {
         String sql = "update sq_member set nickname = ? , phone=? , email =? , qq=? where id = ?";
-        DBHelper.update(sql, sqMember.getNickname() ,sqMember.getPhone(), sqMember.getEmail(), sqMember.getQq(), sqMember.getId());
+        DBHelper.update(sql, sqMember.getNickname(), sqMember.getPhone(), sqMember.getEmail(), sqMember.getQq(), sqMember.getId());
     }
 }

@@ -8,8 +8,8 @@ import java.security.GeneralSecurityException;
 import java.util.Properties;
 
 public class EmailHelper {
-   private final String STMP = "smtp码";
-   private final String guilt = "发件人邮箱";
+    private final String STMP = "vhsxfwpexsdmjjeg";
+    private final String guilt = "jinpeng.qmail@qq.com";
 
     /**
      * 漏洞类型：邮箱 SMTP 信息泄露

@@ -32,14 +32,40 @@ public class UserServlet extends BaseServlet {
         sqMember.setName(req.getParameter("name"));
         sqMember.setPwd(req.getParameter("pwd"));
         sqMember.setEmail(req.getParameter("email"));
+        String vcode1 = req.getParameter("vcode1");
+        String vcode2 = String.valueOf(req.getSession().getAttribute("vcode2"));
 
-        try {
-            biz.InsertUser(sqMember);
-            write(resp, "注册成功");
-        } catch (BizException e) {
-            write(resp, e.getMessage());
+        if (vcode1.equals(vcode2)) {
+            try {
+                biz.InsertUser(sqMember);
+                write(resp, "注册成功 !");
+            } catch (BizException e) {
+                e.printStackTrace();
+                write(resp, e.getMessage());
+            }
+        } else {
+            write(resp, "验证码输入错误，请重新输入 !");
         }
 
+
+    }
+
+    public void setVcode(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String email = req.getParameter("email");
+        String name = req.getParameter("name");
+        int vcode = (int) ((Math.random() * 9 + 1) * 100000);//生成验证码
+
+        System.out.println(vcode);
+        HttpSession session = req.getSession();
+        session.setAttribute("vcode2", vcode);
+        try {
+            biz.SendMail(email, name, vcode);
+            write(resp, "发送成功");
+        } catch (BizException e) {
+            e.printStackTrace();
+            write(resp, e.getMessage());
+        }
+        System.out.println(vcode + email);
     }
 
     /**
@@ -84,22 +110,6 @@ public class UserServlet extends BaseServlet {
 
     }
 
-    public void setVcode(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String email = req.getParameter("email");
-        String name = req.getParameter("name");
-        int vcode = (int) ((Math.random() * 9 + 1) * 100000);//生成验证码
-
-        System.out.println(vcode);
-        HttpSession session = req.getSession();
-        session.setAttribute("vcode", vcode);
-        try {
-            biz.SendMail(email, name, vcode);
-        } catch (BizException e) {
-            e.printStackTrace();
-            write(resp, e.getMessage());
-        }
-        System.out.println(vcode + email);
-    }
 
     public void changeUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         SqMember sqMember = new SqMember();
