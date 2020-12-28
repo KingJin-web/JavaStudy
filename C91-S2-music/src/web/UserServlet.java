@@ -17,6 +17,14 @@ import java.io.IOException;
 public class UserServlet extends BaseServlet {
     private final UserBiz biz = new UserBiz();
 
+    /**
+     * 注册账号
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     public void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         SqMember sqMember = new SqMember();
@@ -26,12 +34,20 @@ public class UserServlet extends BaseServlet {
 
         try {
             biz.InsertUser(sqMember);
+            write(resp, "注册成功");
         } catch (BizException e) {
             write(resp, e.getMessage());
         }
-        write(resp, "注册成功");
+
     }
 
+    /**
+     * 登录
+     *
+     * @param req
+     * @param resp
+     * @throws IOException
+     */
     public void userLogin(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         SqMember sqMember = new SqMember();
         sqMember.setName(req.getParameter("name"));
@@ -47,6 +63,13 @@ public class UserServlet extends BaseServlet {
 
     }
 
+    /**
+     * 查询用户信息
+     *
+     * @param req
+     * @param resp
+     * @throws IOException
+     */
     public void queryUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         String name = String.valueOf(req.getSession().getAttribute("name"));
@@ -59,5 +82,31 @@ public class UserServlet extends BaseServlet {
             write(resp, e.getMessage());
         }
 
+    }
+
+    public void setVcode(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String vcode = req.getParameter("vcode");
+        String email = req.getParameter("email");
+
+        try {
+            biz.SendMail(email, vcode);
+        } catch (BizException e) {
+            write(resp, e.getMessage());
+        }
+        System.out.println(vcode + email);
+    }
+
+    public void changeUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        SqMember sqMember = new SqMember();
+        sqMember.setName(req.getParameter("name"));
+        sqMember.setPhone(req.getParameter("phone"));
+        sqMember.setEmail(req.getParameter("email"));
+        sqMember.setQq(req.getParameter("qq"));
+
+        try {
+            biz.change(sqMember);
+        } catch (BizException e) {
+            e.printStackTrace();
+        }
     }
 }

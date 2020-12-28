@@ -25,6 +25,21 @@ public class UserDao {
         }, sqMember.getName(), sqMember.getPwd()).get(0);
     }
 
+    /**
+     * id: 0,
+     * name: "",
+     * phone: "",
+     * email: "",
+     * qq: "",
+     * head: "",
+     * rank: "",
+     * glod: "",
+     * create_time: ""
+     *
+     * @param name
+     * @return
+     * @throws SQLException
+     */
     public SqMember selectByName(String name) throws SQLException {
         String sql = "select * from sq_member where name = ?";
         return DBHelper.selectListBean(sql, SqMember.class, name).get(0);

@@ -13,7 +13,8 @@ public class UserBiz {
     public void InsertUser(SqMember sqMember) throws BizException {
         Utils.checkNull(sqMember.getName(), "请输入用户名");
         Utils.checkNull(sqMember.getPwd(), "请输入密码");
-        Utils.checkNull(sqMember.getEmail(), "请输入邮箱");
+        Utils.isEmail(sqMember.getEmail(), "请输入合法邮箱");
+
         try {
             userDao.register(sqMember);
         } catch (SQLException e) {
@@ -52,6 +53,24 @@ public class UserBiz {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        assert sqMember != null;
+        sqMember.setPwd("");
         return sqMember;
+    }
+
+    public void SendMail(String email, String vcode) throws BizException {
+        Utils.isEmail(email, "请输入合法邮箱");
+    }
+
+    /**
+     * 修改用户信息
+     * @param sqMember
+     */
+    public void change(SqMember sqMember) throws BizException {
+        Utils.checkNull(sqMember.getName(),"");
+        Utils.isPhone(sqMember.getPhone());
+        Utils.isEmail(sqMember.getEmail(),"");
+        Utils.isQq(sqMember.getQq());
+
     }
 }
