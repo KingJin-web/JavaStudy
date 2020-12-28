@@ -7,7 +7,10 @@ public class SqMember {
 
     private String name;
 
+    private String nickname;
+
     private String pwd;
+
 
     private String phone;
 
@@ -37,6 +40,14 @@ public class SqMember {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getPwd() {

@@ -3,17 +3,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="res/push.js"></script>
-    <script type="text/javascript">
-        if (/Android|webOS|iPhone|iPod|iPad|Windows Phone|BlackBerry|Mobile/i
-            .test(navigator.userAgent)) {
-            var url = window.location.pathname + window.location.search;
-            window.location.href = 'https://m.sq688.com' + url;
-        }
-    </script>
     <link rel="shortcut icon" type="image/ico" href="https://www.wuzhaoqi.top/web/favicon.ico">
     <meta name="applicable-device" content="pc">
-    <meta name="mobile-agent" content="format=html5;url=https://m.sq688.com/setting">
-    <link rel="alternate" media="only screen and(max-width: 800px)" href="https://m.sq688.com/setting">
+    <meta name="mobile-agent" content="format=html5;url=setting.html">
+    <link rel="alternate" media="only screen and(max-width: 800px)" href="setting.html">
     <title>个人信息_无损音乐下载_FLAC_WAV_APE_DSD_SQ688_超高无损音乐</title>
     <meta name="keywords" content="个人信息,无损音乐下载,FLAC,WAV,APE,DSD,SQ688超高无损音乐">
     <link rel="stylesheet" type="text/css" href="res/main.css">
@@ -21,7 +14,7 @@
     <script type="text/javascript" src="js/axios.js"></script>
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
-    <script type="text/javascript" src="res/clipboard.js"></script>
+    <script type="text/javascript" src="js/Popup.js"></script>
 </head>
 <body>
 <div id="main">
@@ -43,7 +36,7 @@
             </ul>
             <div class="users">
                 <p>
-                    <a href="member.html" style="color: rgb(33, 127, 188);" v-text="user.name"><i
+                    <a href="member.html" style="color: rgb(33, 127, 188);" v-text="user.nickname"><i
                             class="fa fa-user"></i>
                     </a>欢迎回来
                 </p>
@@ -65,10 +58,10 @@
         <div class="m-left">
             <div class="top">
                 <div class="avt">
-                    <img src="res/male.jpg">
+                    <img :src="user.head">
                 </div>
                 <div class="info">
-                    <h4 v-text="user.name"></h4>
+                    <h4 v-text="user.nickname"></h4>
                     <p>
                         <span class="tag">标品</span>
                     </p>
@@ -89,55 +82,51 @@
                 <i class="leline"></i>个人信息
             </div>
             <div class="cts">
-                <form action="https://www.sq688.com/setting?action=save" method="post">
-                    <div class="tb">
-                        <div class="tbr">
-                            <div class="tbh">昵称</div>
-                            <div class="tbd">
-                                <input placeholder="请填写昵称" name="nickname" v-model="user.name" class="txt">
-                            </div>
-                            <div class="clear"></div>
+                <div class="tb">
+                    <div class="tbr">
+                        <div class="tbh">昵称</div>
+                        <div class="tbd">
+                            <input placeholder="请填写昵称" name="nickname" v-model="user.nickname" class="txt">
                         </div>
-                        <div class="tbr">
-                            <div class="tbh">手机</div>
-                            <div class="tbd">
-                                <input placeholder="请填写手机号码" name="phone" v-model="user.phone" class="txt">
-                            </div>
-                            <div class="clear"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="tbr">
+                        <div class="tbh">手机</div>
+                        <div class="tbd">
+                            <input placeholder="请填写手机号码" name="phone" v-model="user.phone" class="txt">
                         </div>
-                        <div class="tbr">
-                            <div class="tbh">邮箱</div>
-                            <div class="tbd">
-                                <input placeholder="请填写电子邮箱" name="email" v-model="user.email" class="txt">
-                            </div>
-                            <div class="clear"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="tbr">
+                        <div class="tbh">邮箱</div>
+                        <div class="tbd">
+                            <input placeholder="请填写电子邮箱" name="email" v-model="user.email" class="txt">
                         </div>
-                        <div class="tbr">
-                            <div class="tbh">QQ</div>
-                            <div class="tbd">
-                                <input placeholder="请填写QQ好嘛" name="qq" v-model="user.qq" class="txt">
-                            </div>
-                            <div class="clear"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="tbr">
+                        <div class="tbh">QQ</div>
+                        <div class="tbd">
+                            <input placeholder="请填写QQ好嘛" name="qq" v-model="user.qq" class="txt">
                         </div>
-                        <div class="tbr">
-                            <div class="tbd">
-                                <button  class="btn-save">保存</button>
-                                <div class="clear"></div>
-                            </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="tbr">
+                        <div class="tbd">
+                            <button class="btn-save" @click="changeUser">保存</button>
+                            <div class="clear"></div>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
     <div class="footer">
         <div class="warp">
-            Copyright 2015-2020  超高无损音乐<a href="https://beian.miit.gov.cn/#/Integrated/index" >
-            <span >湘ICP备2020019542号-1</span></a><br>
+            Copyright 2015-2020 超高无损音乐<a href="https://beian.miit.gov.cn/#/Integrated/index">
+            <span>湘ICP备2020019542号-1</span></a><br>
         </div>
     </div>
-
-
 </div>
 <script type="text/javascript">
     var na = new Vue({
@@ -146,6 +135,7 @@
             user: {
                 id: 0,
                 name: "",
+                nickname: "",
                 pwd: "",
                 phone: "",
                 email: "",
@@ -156,24 +146,31 @@
                 create_time: ""
             }
         },
+        methods: {
+            changeUser() {
+
+                const url = "user.do?op=changeUser"
+
+                axios.get(url, {
+                    params: {
+                        id: this.user.id,
+                        nickname: this.user.nickname,
+                        email: this.user.email,
+                        qq: this.user.qq,
+                        phone: this.user.phone,
+                    }
+                }).then((res) => {
+                    alertSave(res.data)
+                });
+            }
+        },
         created() {
             var url = "user.do?op=queryUser"
             axios.get(url).then((res) => {
                 this.user = res.data;
-
             });
         },
-        methods: {
-            changeUser() {
-                var url = "user.do?op=changeUser"
-                axios.get(url,
 
-                ).then((res) => {
-                    this.user = res.data;
-
-                });
-            }
-        }
 
     })
 </script>

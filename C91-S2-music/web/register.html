@@ -31,7 +31,6 @@
     <div class="warp">
         <div class="logo">
             <h1>超高无损音乐</h1>
-            <p>SQ688.com</p>
         </div>
         <ul class="menu">
             <li><a href="https://www.sq688.com/" class="cur">首页</a></li>
@@ -128,7 +127,7 @@
                         email: this.email,
                     }
                 }).then((res) => {
-                    myAlert(res.data, "login.html", "注册成功")
+                    alertLayer(res.data, "login.html", "注册成功");
                 })
             }
         }
@@ -137,8 +136,8 @@
 
 <div class="footer">
     <div class="warp">
-        Copyright 2015-2020  超高无损音乐<a href="https://beian.miit.gov.cn/#/Integrated/index" >
-        <span >湘ICP备2020019542号-1</span></a><br>
+        Copyright 2015-2020 超高无损音乐<a href="https://beian.miit.gov.cn/#/Integrated/index">
+        <span>湘ICP备2020019542号-1</span></a><br>
     </div>
 </div>
 

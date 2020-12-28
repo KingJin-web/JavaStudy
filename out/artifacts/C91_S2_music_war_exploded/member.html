@@ -37,7 +37,7 @@
             </ul>
             <div class="users">
                 <p>
-                    <a href="member.html" style="color: rgb(33, 127, 188);" v-text="user.name"><i
+                    <a href="member.html" style="color: rgb(33, 127, 188);" v-text="user.nickname"><i
                             class="fa fa-user"></i>
                     </a>欢迎回来
                 </p>
@@ -59,10 +59,10 @@
         <div class="m-left">
             <div class="top">
                 <div class="avt">
-                    <img src="res/male.jpg">
+                    <img :src="user.head">
                 </div>
                 <div class="info">
-                    <h4 v-text="user.name"></h4>
+                    <h4 v-text="user.nickname"></h4>
                     <p>
                         <span class="tag">标品</span>
                     </p>
@@ -187,8 +187,8 @@
 
     <div class="footer">
         <div class="warp">
-            Copyright 2015-2020  超高无损音乐<a href="https://beian.miit.gov.cn/#/Integrated/index" >
-            <span >湘ICP备2020019542号-1</span></a><br>
+            Copyright 2015-2020 超高无损音乐<a href="https://beian.miit.gov.cn/#/Integrated/index">
+            <span>湘ICP备2020019542号-1</span></a><br>
         </div>
     </div>
 
@@ -200,6 +200,7 @@
             user: {
                 id: 0,
                 name: "",
+                nickname: "",
                 pwd: "",
                 phone: "",
                 email: "",

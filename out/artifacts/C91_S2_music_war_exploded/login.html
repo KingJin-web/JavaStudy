@@ -17,7 +17,7 @@
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="js/Popup.js"></script>
-    <script type="text/javascript" src="res/clipboard.js"></script>
+
 </head>
 <body youdao="bind">
 <div id="header" class="header">
@@ -73,7 +73,6 @@
 
 <script type="text/javascript">
 
-
     let vue = new Vue({
         el: "#login",
         data: {
@@ -89,7 +88,9 @@
                         pwd: this.pwd,
                     }
                 }).then((res) => {
-                    myAlert(res.data, "member.html", "登录成功")
+
+                    alertLayer(res.data, "member.html", "登录成功");
+                    // myAlert(res.data, "member.html", "登录成功")
                 });
             }
         }

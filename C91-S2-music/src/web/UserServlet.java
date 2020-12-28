@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/user.do")
 public class UserServlet extends BaseServlet {
@@ -98,15 +99,20 @@ public class UserServlet extends BaseServlet {
 
     public void changeUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         SqMember sqMember = new SqMember();
-        sqMember.setName(req.getParameter("name"));
+        String id = req.getParameter("id");
+
+        sqMember.setId(Integer.valueOf(id));
+        sqMember.setNickname(req.getParameter("nickname"));
         sqMember.setPhone(req.getParameter("phone"));
         sqMember.setEmail(req.getParameter("email"));
         sqMember.setQq(req.getParameter("qq"));
 
         try {
             biz.change(sqMember);
+            write(resp,"修改成功");
         } catch (BizException e) {
             e.printStackTrace();
+            write(resp,e.getMessage());
         }
     }
 }

@@ -1,12 +1,17 @@
 package common.util;
 
 import common.biz.BizException;
+import dao.UserDao;
 
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 public class Utils {
+
+    private static final UserDao userDao = new UserDao();
+
 
     /**
      * 判断传值是否为空 或空字符串
@@ -40,23 +45,42 @@ public class Utils {
     }
 
     public static void isQq(String qq) throws BizException {
-        if (qq.isEmpty() || qq == null) {
-            throw new BizException("请输入qq");
-        }
+        checkNull(qq,"请输入qq");
         if (!isNumeric(qq)) {
             throw new BizException("请输入合法的qq号码");
         }
     }
+
+
+    /**
+     * @param name
+     * @throws BizException
+     */
+    public static void nameIsUse(String name) throws BizException {
+        if (name.isEmpty() || name == null || name.equals(null)) {
+            throw new BizException("请输入用户名");
+        }
+        try {
+            if (userDao.selectNumByName(name) > 1) {
+                throw new BizException("用户名已经使用请换一个");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * 判断是否是qq号的方法
      */
     public static boolean isNumeric(String string) {
         if (string.length() >= 5 && string.length() <= 12) {
+            Pattern pattern = Pattern.compile("[0-9]+");
+            return pattern.matcher(string).matches();
+        } else {
             return false;
         }
-        Pattern pattern = Pattern.compile("[0-9]+");
-        return pattern.matcher(string).matches();
+
     }
 
 
