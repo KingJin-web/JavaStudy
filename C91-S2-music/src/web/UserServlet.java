@@ -100,13 +100,15 @@ public class UserServlet extends BaseServlet {
     public void queryUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         String name = String.valueOf(req.getSession().getAttribute("name"));
+        //如果session 为空 转为string 则是“null” 字符串 而不是 null
+        System.out.println(name);
+        if (name == "null" ||  name.equals("null")) {
+            write(resp, "请先登录 !");
 
-        try {
-            Utils.checkNull(name, "未知错误");
-            write(resp, biz.queryByName(name));
-        } catch (BizException e) {
-            write(resp, e.getMessage());
+            return;
         }
+        write(resp, biz.queryByName(name));
+
 
     }
 

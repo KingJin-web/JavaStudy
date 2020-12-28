@@ -167,12 +167,14 @@
         created() {
             var url = "user.do?op=queryUser"
             axios.get(url).then((res) => {
+                if (res.data === "请先登录 !"){
+                    gotoLogin();
+                }
                 this.user = res.data;
             });
         },
 
-
-    })
+    });
 </script>
 </body>
 </html>

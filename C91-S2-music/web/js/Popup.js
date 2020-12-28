@@ -1,27 +1,44 @@
-document.write("<script type='text/javascript' src='dist/mDialogMin.js'></script>");
-document.write('<link type="text/css" href="dist/dialog.css" rel="stylesheet">')
+// document.write("<script type='text/javascript' src='dist/mDialogMin.js'></script>");
+// document.write('<link type="text/css" href="dist/dialog.css" rel="stylesheet">')
 document.write("<script type='text/javascript' src='layer/layer.js'></script>");
 document.write("<script type='text/javascript' src='js/jquery-3.5.1.js'></script>");
 
+//
+// function myAlert(text) {
+//     Dialog.init('<p style=" margin:8px 0;width:100%;padding:11px 8px;font-size:15px; solid #999;">' + text + '</p>', {
+//         title: '提示',
+//         button: {
+//             确定: function () {
+//                 Dialog.close(this);
+//
+//             },
+//             取消: function () {
+//                 Dialog.close(this);
+//             }
+//         },
+//         time: 3000,
+//     });
+// }
 
-function myAlert(text) {
-    Dialog.init('<p style=" margin:8px 0;width:100%;padding:11px 8px;font-size:15px; solid #999;">' + text + '</p>', {
-        title: '提示',
-        button: {
-            确定: function () {
-                Dialog.close(this);
+// function myAlert(text, path, success) {
+//     Dialog.init('<p style=" margin:8px 0;width:100%;padding:11px 8px;font-size:15px; solid #999;">' + text + '</p>', {
+//         title: '提示',
+//         button: {
+//             确定: function () {
+//                 if (text === success) {
+//                     window.location.href = path;
+//                 }
+//                 Dialog.close(this);
+//             },
+//             取消: function () {
+//                 Dialog.close(this);
+//             }
+//         },
+//     });
+// }
 
-            },
-            取消: function () {
-                Dialog.close(this);
-            }
-        },
-        time: 3000,
-    });
-}
-
-function alertLogin(text) {
-    if (text === "登陆成功") {
+function alertMy(text) {
+    if (text.includes("成功")) {
         layer.alert(text, {
             icon: 1,
             skin: 'layer-ext-moon'
@@ -34,6 +51,24 @@ function alertLogin(text) {
     }
 }
 
+/**
+ * 如果没有登录
+ * 请先登录，跳转登录界面
+ * 3秒后自动跳转
+ */
+function gotoLogin() {
+    layer.confirm("请先登录 !", {
+        icon: 2,
+        shade: 1,
+        btn: ['确认'], //按钮
+        // window.location.href = "login.html";
+    }, function () {
+        window.location.href = "login.html";
+    })
+
+
+}
+
 
 /**
  * //https://layer.layui.com/
@@ -44,8 +79,8 @@ function alertLogin(text) {
  * @param path 跳转页面路径
  * @param success 成功的提示
  */
-function alertLayer(text, path, success) {
-    if (text === success) {
+function alertLayer(text, path) {
+    if (text.includes("成功")) {
         layer.confirm(text, {
             icon: 1,
             btn: ['确认'] //按钮
@@ -72,7 +107,8 @@ function alertSave(data) {
 }
 
 function alertSave2(text) {
-    if (text === "修改成功") {
+
+    if (text.includes("成功")) {
         layer.alert(text, {
             icon: 1,
             skin: 'layer-ext-moon'
@@ -120,22 +156,5 @@ function alertAdv() {
                 , target: '_blank'
             });
         }
-    });
-}
-
-function myAlert(text, path, success) {
-    Dialog.init('<p style=" margin:8px 0;width:100%;padding:11px 8px;font-size:15px; solid #999;">' + text + '</p>', {
-        title: '提示',
-        button: {
-            确定: function () {
-                if (text === success) {
-                    window.location.href = path;
-                }
-                Dialog.close(this);
-            },
-            取消: function () {
-                Dialog.close(this);
-            }
-        },
     });
 }

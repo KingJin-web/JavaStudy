@@ -107,7 +107,7 @@
                         name: this.name,
                     }
                 }).then((res) => {
-                    myAlert(res.data)
+                    alertMy(res.data)
                 })
             },
             register() {
@@ -120,7 +120,7 @@
                         vcode1: this.vcode
                     }
                 }).then((res) => {
-                    alertLayer(res.data, "login.html", "注册成功 !");
+                    alertLayer(res.data, "login.html");
                 })
             }
         }

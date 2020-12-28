@@ -96,19 +96,27 @@
             name: "",
             pwd: "",
             email: "",
-            vcode: ""
+            yzm: {
+                yzm1: "",
+                yzm2: "",
+            }
         },
         methods: {
             v_code() {
+                for (var i = 0; i < 6; i++) {
+                    this.yzm.yzm1 += Math.floor(Math.random() * 10);
+                }
                 let url = "user.do?op=setVcode";
                 axios.get(url, {
                     params: {
                         email: this.email,
-                        name: this.name,
+                        vcode: this.yzm.yzm1,
                     }
                 }).then((res) => {
                     myAlert(res.data)
                 })
+                this.yzm.yzm1 = "";
+
             },
             register() {
                 let url = "user.do?op=register";
@@ -117,10 +125,9 @@
                         name: this.name,
                         pwd: this.pwd,
                         email: this.email,
-                        vcode1: this.vcode
                     }
                 }).then((res) => {
-                    alertLayer(res.data, "login.html", "注册成功 !");
+                    alertLayer(res.data, "login.html", "注册成功");
                 })
             }
         }
