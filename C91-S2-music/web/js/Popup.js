@@ -91,22 +91,33 @@ function alertSave2(text) {
 function alertAdv() {
     layer.open({
         type: 1
-        ,title: false //不显示标题栏
-        ,closeBtn: false
-        ,area: '300px;'
-        ,shade: 0.8
-        ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
-        ,resize: false
-        ,btn: ['火速围观', '残忍拒绝']
-        ,btnAlign: 'c'
-        ,moveType: 1 //拖拽模式，0或者1
-        ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">' +
+        ,
+        title: false //不显示标题栏
+        ,
+        closeBtn: false
+        ,
+        area: '300px;'
+        ,
+        shade: 0.8
+        ,
+        id: 'LAY_layuipro' //设定一个id，防止重复弹出
+        ,
+        resize: false
+        ,
+        btn: ['火速围观', '残忍拒绝']
+        ,
+        btnAlign: 'c'
+        ,
+        moveType: 1 //拖拽模式，0或者1
+        ,
+        content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">' +
             '<h2>云服务器ECS </h2><br>云服务器12月钜惠，新用户低至0.55折， 1核2G轻量服务器首年96元（可优惠续费3次），助您轻松上云</div>'
-        ,success: function(layero){
+        ,
+        success: function (layero) {
             var btn = layero.find('.layui-layer-btn');
             btn.find('.layui-layer-btn0').attr({
                 href: 'https://www.aliyun.com/1111/new?userCode=t6jlywqr'
-                ,target: '_blank'
+                , target: '_blank'
             });
         }
     });

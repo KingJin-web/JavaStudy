@@ -77,7 +77,6 @@ public class UserServlet extends BaseServlet {
 
         try {
             Utils.checkNull(name, "未知错误");
-
             write(resp, biz.queryByName(name));
         } catch (BizException e) {
             write(resp, e.getMessage());
@@ -86,12 +85,17 @@ public class UserServlet extends BaseServlet {
     }
 
     public void setVcode(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String vcode = req.getParameter("vcode");
         String email = req.getParameter("email");
+        String name = req.getParameter("name");
+        int vcode = (int) ((Math.random() * 9 + 1) * 100000);//生成验证码
 
+        System.out.println(vcode);
+        HttpSession session = req.getSession();
+        session.setAttribute("vcode", vcode);
         try {
-            biz.SendMail(email, vcode);
+            biz.SendMail(email, name, vcode);
         } catch (BizException e) {
+            e.printStackTrace();
             write(resp, e.getMessage());
         }
         System.out.println(vcode + email);
@@ -109,10 +113,10 @@ public class UserServlet extends BaseServlet {
 
         try {
             biz.change(sqMember);
-            write(resp,"修改成功");
+            write(resp, "修改成功");
         } catch (BizException e) {
             e.printStackTrace();
-            write(resp,e.getMessage());
+            write(resp, e.getMessage());
         }
     }
 }

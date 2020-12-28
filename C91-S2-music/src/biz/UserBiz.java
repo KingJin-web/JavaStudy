@@ -2,9 +2,12 @@ package biz;
 
 import bean.SqMember;
 import common.biz.BizException;
+import common.util.EmailHelper;
 import common.util.Utils;
 import dao.UserDao;
 
+import javax.mail.MessagingException;
+import java.security.GeneralSecurityException;
 import java.sql.SQLException;
 
 public class UserBiz {
@@ -48,6 +51,7 @@ public class UserBiz {
 
     /**
      * 通过用户名查询用户信息
+     *
      * @param name
      * @return
      */
@@ -63,19 +67,29 @@ public class UserBiz {
         return sqMember;
     }
 
-    public void SendMail(String email, String vcode) throws BizException {
+    public void SendMail(String email, String name, int vcode) throws BizException {
         Utils.isEmail(email, "请输入合法邮箱");
+        Utils.nameIsUse(name);
+
+        EmailHelper emailHelper = new EmailHelper();
+        try {
+            emailHelper.email(email, vcode, name);
+        } catch (MessagingException | GeneralSecurityException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
      * 修改用户信息
+     *
      * @param sqMember
      */
     public void change(SqMember sqMember) throws BizException {
 
-        Utils.checkNull(sqMember.getNickname(),"请输入昵称");
+        Utils.checkNull(sqMember.getNickname(), "请输入昵称");
         Utils.isPhone(sqMember.getPhone());
-        Utils.isEmail(sqMember.getEmail(),"请输入合法有效");
+        Utils.isEmail(sqMember.getEmail(), "请输入合法有效");
         Utils.isQq(sqMember.getQq());
         try {
             userDao.updateById(sqMember);
