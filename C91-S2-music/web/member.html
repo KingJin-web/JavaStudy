@@ -14,7 +14,7 @@
     <script type="text/javascript" src="js/axios.js"></script>
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
-    <script type="text/javascript" src="res/clipboard.js"></script>
+    <script type="text/javascript" src="js/Popup.js"></script>
 </head>
 <body>
 <div id="main">
@@ -22,7 +22,6 @@
         <div class="warp">
             <div class="logo">
                 <h1>超高无损音乐</h1>
-
             </div>
             <ul class="menu">
                 <li><a href="https://www.sq688.com/" class="cur">首页</a></li>
@@ -191,7 +190,6 @@
             <span>湘ICP备2020019542号-1</span></a><br>
         </div>
     </div>
-
 </div>
 <script type="text/javascript">
     var na = new Vue({
@@ -215,10 +213,28 @@
             var url = "user.do?op=queryUser"
             axios.get(url).then((res) => {
                 this.user = res.data;
+                // layer.open({
+                //     type: 1,
+                //     title: false,
+                //     closeBtn: 0,
+                //     area: ['auto'],
+                //     skin: 'layui-layer-nobg', //没有背景色
+                //     shadeClose: true,
+                //     content: $('#tong')
+                // });
             });
+
         }
 
     })
+
 </script>
+<script type="text/javascript">
+    window.onload = function(){
+        console.log("广告")
+        alertAdv();
+    }
+</script>
+
 </body>
 </html>
