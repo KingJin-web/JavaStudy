@@ -104,14 +104,10 @@ public class UserServlet extends BaseServlet {
         System.out.println(name);
         if (name == "null" ||  name.equals("null")) {
             write(resp, "请先登录 !");
-
             return;
         }
         write(resp, biz.queryByName(name));
-
-
     }
-
 
     public void changeUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         SqMember sqMember = new SqMember();

@@ -1,145 +1,134 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Js弹出浮动窗口，支持鼠标拖动和关闭</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <script type="text/javascript">
-        /**
-         关于一些参数说明：
-         *bodycontent:要在窗口显示的内容，dom对象
-         *title:窗口标题，字符串类型
-         *removeable:窗口能否拖动，布尔类型
-         *注意：内容窗体的高度是height-30px，请计算好你要显示的内容的高度和宽度。弹出窗的id为"223238909"，所以你的页面不要再取值为"223238909"的id了，以防js执行出错*/
-        function createdialog(width, height, bodycontent, title, removeable) {
-            if (document.getElementById("www_jb51_net") == null) {
-                /*创建窗口的组成元素*/
-                var dialog = document.createElement("div");
-                var dialogtitlebar = document.createElement("div");
-                var dialogbody = document.createElement("div");
-                var dialogtitleimg = document.createElement("span");
-                var dialogtitle = document.createElement("span");
-                var dialogclose = document.createElement("span");
-                var closeaction = document.createElement("button");
-                /*为窗口设置一个id，id如此怪异是为了尽量避免与其他用户取的id相同而出错*/
-                dialog.id = "223238909";
-                /*组装对话框标题栏,按从里到外的顺序组装*/
-                dialogtitle.innerHTML = title;
-                dialogtitlebar.appendChild(dialogtitleimg);
-                dialogtitlebar.appendChild(dialogtitle);
-                dialogtitlebar.appendChild(dialogclose);
-                dialogclose.appendChild(closeaction);
-                /*组装对话框主体内容*/
-                if (bodycontent != null) {
-                    bodycontent.style.display = "block";
-                    dialogbody.appendChild(bodycontent);
-                }
-                /*组装成完整的对话框*/
-                dialog.appendChild(dialogtitlebar);
-                dialog.appendChild(dialogbody);
-                /*设置窗口组成元素的样式*/
-                var templeft, temptop, tempheight//窗口的位置（将窗口放在页面中间的辅助变量）
-                var dialogcssText, dialogbodycssText;//拼出dialog和dialogbody的样式字符串
-                templeft = (document.body.clientWidth - width) / 2;
-                temptop = (document.body.clientHeight - height) / 2;
-                tempheight = height - 30;
-                dialogcssText = "position:absolute;background:#65c294;padding:1px;border:4px;top:" + temptop + "px;left:" + templeft + "px;height:" + height + "px;width:" + width + "px;";
-                dialogbodycssText = "width:100%;background:#ffffff;" + "height:" + tempheight + "px;";
-                dialog.style.cssText = dialogcssText;
-                dialogtitlebar.style.cssText = "height:30px;width:100%;background:url(images/titlebar.png) repeat;cursor:move;";
-                dialogbody.style.cssText = dialogbodycssText;
-                dialogtitleimg.style.cssText = "float:left;height:20px;width:20px;background:url(images/40.gif);" + "display:block;margin:4px;line-height:20px;";
-                dialogtitle.style.cssText = "font-size:16px;float:left;display:block;margin:4px;line-height:20px;";
-                dialogclose.style.cssText = "float:right;display:block;margin:4px;line-height:20px;";
-                closeaction.style.cssText = "height:20px;width:24px;border-width:1px;" + "background-image:url(images/close.png);cursor:pointer;";
-                /*为窗口元素注册事件*/
-                var dialogleft = parseInt(dialog.style.left);
-                var dialogtop = parseInt(dialog.style.top);
-                var ismousedown = false;//标志鼠标是否按下
-                /*关闭按钮的事件*/
-                closeaction.onclick = function () {
-                    dialog.parentNode.removeChild(dialog);
-                }
-                /*实现窗口的移动，这段代码很典型，网上很多类似的代码*/
-                if (removeable == true) {
-                    var ismousedown = false;
-                    var dialogleft, dialogtop;
-                    var downX, downY;
-                    dialogleft = parseInt(dialog.style.left);
-                    dialogtop = parseInt(dialog.style.top);
-                    dialogtitlebar.onmousedown = function (e) {
-                        ismousedown = true;
-                        downX = e.clientX;
-                        downY = e.clientY;
-                    }
-                    document.onmousemove = function (e) {
-                        if (ismousedown) {
-                            dialog.style.top = e.clientY - downY + dialogtop + "px";
-                            dialog.style.left = e.clientX - downX + dialogleft + "px";
-                        }
-                    }
-                    /*松开鼠标时要重新计算当前窗口的位置*/
-                    document.onmouseup = function () {
-                        dialogleft = parseInt(dialog.style.left);
-                        dialogtop = parseInt(dialog.style.top);
-                        ismousedown = false;
-                    }
-                }
-                return dialog;
-            }//end if(if的结束)
-        }
-    </script>
-    <style>
-        table {
-            background: #dce0dd;
-        }
-
-        button {
-            font-size: 12px;
-            height: 23px;
-            background: #ece9d8;
-            border-width: 1px;
-        }
-
-        #linkurl, #linkname, #savelink {
-            width: 100px;
-        }
-    </style>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <script type='text/javascript' src='layui/layui.js'></script>
+    <script type="text/javascript" src="vue.js"></script>
 </head>
 <body>
-<!-- 显示窗口的地方 -->
-<div id="here"></div>
-<a id="clickhere" href="#">点击生成窗口</a>
-<!-- 要嵌入到窗口的内容 -->
-<div id="login" style="display:none;">
-    <form action="#" method="post" onSubmit="return false;">
-        <table width="400" height="95">
-            <tr>
-                <td width="78">链接文字</td>
-                <td width="168"><input name="link.name" type="text"/></td>
-                <td width="138" id="linktext"></td>
-            </tr>
-            <tr>
-                <td>链接地址</td>
-                <td><input name="link.url" type="text"/></td>
-                <td id="linkurl"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <button type="submit" style="float:right;">添加</button>
-                </td>
-                <td id="savelink"></td>
-            </tr>
-        </table>
-    </form>
-</div>
+<form class="layui-form" id="form" action="get">
+    <div class="layui-form-item">
+        <label class="layui-form-label">歌曲名</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" required lay-verify="required" placeholder="标题/歌曲名/专辑名" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">歌手名</label>
+        <div class="layui-input-block">
+            <input type="text" name="singer" required lay-verify="required" placeholder="标题/歌曲名/专辑名" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">歌曲类型</label>
+        <div class="layui-input-block">
+            <input type="radio" name="type" value="单曲" title="单曲">
+            <input type="radio" name="type" value="专辑" title="专辑" checked>
+            <input type="radio" name="type" value="合集" title="合集">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">资源类型</label>
+        <div class="layui-input-block">
+            <input type="radio" name="src_type" value="分轨" title="分轨">
+            <input type="radio" name="src_type" value="全轨" title="全轨" checked>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">资源格式</label>
+        <div class="layui-input-block">
+            <select name="format" lay-verify="required">
+                <option value=""></option>
+                <option value="WAV">WAV</option>
+                <option value="DSD">DSD</option>
+                <option value="FLAC">FLAC</option>
+                <option value="APE">APE</option>
+                <option value="MP3">MP3</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">详细介绍</label>
+        <div class="layui-input-block">
+            <textarea name="intro" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">下载地址</label>
+        <div class="layui-input-block">
+            <textarea name="down_url" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否公开</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="status" lay-skin="switch" lay-text="公开|私有" checked>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+
+</form>
+
+
 <script type="text/javascript">
-    var here = document.getElementById("here");
-    var login = document.getElementById("login");
-    var clickhere = document.getElementById("clickhere");
-    clickhere.onclick = function () {
-        here.appendChild(createdialog(400, 95 + 30, login, "欢迎光临脚本之家", true));
-    }
+    //Demo
+    layui.use('form', function() {
+        var form = layui.form;
+        /**
+         * {"name":"aa","singer":"aa","type":"合集","src_type":"分轨",
+         * "format":"MP3","intro":"aaa","desc":"aaaa","status":"on"}
+         *
+         member
+         create_time
+         status
+         */
+        //监听提交
+        form.on('submit(formDemo)', function(data) {
+            var input = JSON.stringify(data.field);
+            layer.msg(JSON.stringify(data.field));
+            console.log(input);
+            var vue = new Vue({
+                el: "#form",
+                data: {
+                    forms: {
+                        name: "",
+                        singer: "",
+                        tupe: "",
+                        src_type: "",
+                        format: "",
+                        intro: "",
+                        down_url: "",
+                        status: ""
+                    }
+                },
+                created() {
+                    this.forms = input;
+                    console.log(this.forms)
+                },
+                methods:{
+                    share(){
+
+                    }
+                }
+            });
+
+            return false;
+        });
+    });
 </script>
+
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 </body>
 </html>
-

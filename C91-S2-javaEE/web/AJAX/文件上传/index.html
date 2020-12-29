@@ -52,7 +52,6 @@
             processData: false,
             success: function (data) {
                 var arr = JSON.parse(data);
-
                 headimg.src = "../.." + arr.path;
                 alert(arr.msg);
             }
