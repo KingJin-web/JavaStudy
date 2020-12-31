@@ -72,13 +72,7 @@
             <div class="cts">
                 <form method="post" id="publish">
                     <div class="tb">
-                        <div class="tbr" style="display: none;">
-                            <div class="tbh">用户名</div>
-                            <div class="tbd">
-                                <input id="members" v-text="user.name" maxlength="200" name="member" value=""
-                                       class="txt">
-                            </div>
-                            <div class="clear"></div>
+                        <div class="tbr">
                             <div class="tbh">标题/歌曲名/专辑名</div>
                             <div class="tbd">
                                 <input id="title" placeholder="标题/歌曲名/专辑名" maxlength="200" name="title" value=""
@@ -89,27 +83,26 @@
                         <div class="tbr">
                             <div class="tbh">歌手</div>
                             <div class="tbd">
-                                <input id="singer" placeholder="请填写歌手,多歌手请填群星" maxlength="30" name="singer" value=""
-                                       class="txt">
+                                <label for="singer"></label><input id="singer" placeholder="请填写歌手,多歌手请填群星"
+                                                                   maxlength="30" name="singer" value=""
+                                                                   class="txt">
                             </div>
                             <div class="clear"></div>
                         </div>
                         <div class="tbr">
                             <div class="tbh">标签</div>
                             <div class="tbd">
-                                <input id="tags" placeholder="请填写分类标签(如周杰伦,无损,WAV),多个标签请用逗号分隔" maxlength="200"
-                                       name="tags"
-                                       value="" class="txt">
+                                <label for="tags"></label><input id="tags" placeholder="请填写分类标签(如周杰伦,无损,WAV),多个标签请用逗号分隔"
+                                                                 maxlength="200" name="tags" value="" class="txt">
                             </div>
                             <div class="clear"></div>
                         </div>
                         <div class="tbr">
                             <div class="tbh">类型</div>
                             <div class="tbd">
-                                <label class="lb"><input type="radio" name="category" checked="checked"
-                                                         value="单曲">单曲</label> <label class="lb"><input type="radio"
-                                                                                                        name="category"
-                                                                                                        value="专辑">专辑</label>
+                                <label class="lb">
+                                    <input type="radio" name="category" checked="checked" value="单曲">单曲</label>
+                                <label class="lb"><input type="radio" name="category" value="专辑">专辑</label>
                                 <label class="lb"><input type="radio" name="category" value="合集">合集</label>
                             </div>
                             <div class="clear"></div>
@@ -117,21 +110,21 @@
                         <div class="tbr">
                             <div class="tbh">资源类型</div>
                             <div class="tbd">
-                                <label class="lb"><input type="radio" name="clazz" checked="checked"
-                                                         value="分轨">分轨</label>
-                                <label class="lb"><input type="radio" name="clazz" value="全轨">全轨</label>
+                                <label class="lb">
+                                    <input type="radio" name="clazz" checked="checked" value="分轨">分轨</label>
+                                <label class="lb">
+                                    <input type="radio" name="clazz" value="全轨">全轨</label>
                             </div>
                             <div class="clear"></div>
                         </div>
                         <div class="tbr">
                             <div class="tbh">格式</div>
                             <div class="tbd">
-                                <label class="lb"><input type="radio" name="type" checked="checked"
-                                                         value="FLAC">FLAC</label> <label class="lb"><input type="radio"
-                                                                                                            name="type"
-                                                                                                            value="WAV">WAV</label>
-                                <label class="lb"><input type="radio" name="type" value="DSD">DSD</label> <label
-                                    class="lb"><input
+                                <label class="lb">
+                                    <input type="radio" name="type" checked="checked" value="FLAC">FLAC</label>
+                                <label class="lb">
+                                    <input type="radio" name="type" value="WAV">WAV</label><label class="lb"><input
+                                    type="radio" name="type" value="DSD">DSD</label> <label class="lb"><input
                                     type="radio" name="type" value="APE">APE</label>
                             </div>
                             <div class="clear"></div>
@@ -139,21 +132,24 @@
                         <div class="tbr">
                             <div class="tbh">详细介绍</div>
                             <div class="tbd">
-                            <textarea id="des" placeholder="请填写该分享的详细介绍信息,如专辑年份,专辑包含歌曲等" name="des"
-                                      class="txtarea"></textarea>
+                                <label for="des"></label>
+                                <textarea id="des" placeholder="请填写该分享的详细介绍信息,如专辑年份,专辑包含歌曲等" name="des"
+                                          class="txtarea"></textarea>
                             </div>
                             <div class="clear"></div>
                         </div>
                         <div class="tbr">
                             <div class="tbh">下载地址</div>
                             <div class="tbd">
+                                <label for="links"></label>
                                 <input id="links" placeholder="请输入下载地址或者网盘链接地址" name="links" value="" class="txt">
                             </div>
                             <div class="clear"></div>
                         </div>
                         <div class="tbr">
                             <div class="tbd">
-                                <input type="hidden" name="id" value=""> <input type="hidden" name="uid" value="">
+                                <input type="hidden" name="id">
+                                <input type="hidden" name="member" v-bind:value="user.name">
                                 <button type="button" class="btn-save" onclick="add()">发布</button>
                                 <button type="button" class="btn-back">返回</button>
                             </div>
@@ -216,9 +212,7 @@
             data: $("#publish").serialize(),
             success: function (result) {
                 console.log(result);//打印服务端返回的数据(调试用)
-                if (result === "修改成功") {
-                    alert(result)
-                }
+                alertLayer(result,"my.html")
             },
             error: function () {
                 alert("异常！");

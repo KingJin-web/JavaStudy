@@ -128,17 +128,31 @@ public class UserServlet extends BaseServlet {
     }
 
     //http://localhost:8080/C91_S2_music_war_exploded/user.do?op=userShare&title=
-// 标题%2F歌曲名%2F专辑名&=singer歌手&tags=标签
-// &category=单曲&clazz=分轨&type=FLAC&des=详细介绍&
-// links=下载地址&id=&uid=
     public void userShare(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         SqShare sqShare = new SqShare();
         sqShare.setMember(req.getParameter("member"));
-        sqShare.setName(req.getParameter("title"));
-        sqShare.setSingers(req.getParameter("singer"));
-        sqShare.setTags(req.getParameter("tags"));
-
+        sqShare.setName(req.getParameter("title"));//标题/歌曲名/专辑名
+        sqShare.setSingers(req.getParameter("singer"));//歌手, 群星
+        sqShare.setTags(req.getParameter("tags"));//请填写分类标签(如周杰伦,无损,WAV)
+        sqShare.setType(req.getParameter("category"));//类型: 单曲,专辑,合集
+        sqShare.setSrcType(req.getParameter("clazz"));//资源类型:分轨,全轨
+        sqShare.setFormat(req.getParameter("type"));//格式: FLAC,WAV,DSD,APE
+        sqShare.setIntro(req.getParameter("des"));//详细介绍
+        sqShare.setDownUrl(req.getParameter("links"));//下载地址
         System.out.println(sqShare);
-        write(resp, "修改成功");
+        try {
+            biz.addShare(sqShare);
+            write(resp, "修改成功 !");
+        } catch (BizException e) {
+            e.printStackTrace();
+            write(resp, e.getMessage());
+        }
+
     }
+
+    public void queryShare(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+    }
+
+
 }
