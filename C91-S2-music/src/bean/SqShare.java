@@ -89,6 +89,25 @@ public class SqShare {
         return intro;
     }
 
+    @Override
+    public String toString() {
+        return "SqShare{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", singers='" + singers + '\'' +
+                ", type='" + type + '\'' +
+                ", tags='" + tags + '\'' +
+                ", srcType='" + srcType + '\'' +
+                ", format='" + format + '\'' +
+                ", intro='" + intro + '\'' +
+                ", heat=" + heat +
+                ", downUrl='" + downUrl + '\'' +
+                ", member='" + member + '\'' +
+                ", createTime=" + createTime +
+                ", status='" + status + '\'' +
+                '}';
+    }
+
     public void setIntro(String intro) {
         this.intro = intro == null ? null : intro.trim();
     }

@@ -3,13 +3,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="res/push.js"></script>
-    <script type="text/javascript">
-        if (/Android|webOS|iPhone|iPod|iPad|Windows Phone|BlackBerry|Mobile/i
-            .test(navigator.userAgent)) {
-            var url = window.location.pathname + window.location.search;
-            window.location.href = 'https://m.sq688.com' + url;
-        }
-    </script>
     <link rel="shortcut icon" type="image/ico" href="https://www.wuzhaoqi.top/web/favicon.ico">
     <meta name="applicable-device" content="pc">
     <meta name="mobile-agent" content="format=html5;url=https://m.sq688.com/my">
@@ -23,6 +16,8 @@
     <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="js/axios.js"></script>
     <script type="text/javascript" src="js/Popup.js"></script>
+
+
 </head>
 <body>
 
@@ -89,7 +84,10 @@
         <div class="m-right">
             <div class="cts">
                 <div class="add">
-                    <button class="btn-save" onclick="alertShare()">分享音乐</button>
+                    <button class="btn-save" onclick="function gotoShare() {
+                       window.location.href = 'myshares.html';
+                    }
+                    gotoShare()">分享音乐</button>
                 </div>
                 <table class="shr">
                     <tbody>
@@ -143,6 +141,7 @@
 
 
 <script type="text/javascript">
+
     var na = new Vue({
         el: "#main",
         data: {
@@ -173,4 +172,5 @@
     })
 </script>
 </body>
+
 </html>

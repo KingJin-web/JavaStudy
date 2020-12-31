@@ -7,21 +7,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="layui/css/layui.css" media="all">
-    <script type='text/javascript' src='layui/layui.js'></script>
-    <script type="text/javascript" src="vue.js"></script>
+    <script type="text/javascript" src="layui/layui.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/axios.js"></script>
+    <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
 </head>
-<body>
-<form class="layui-form" id="form" action="get">
+<body v-model="">
+<form class="layui-form" id="form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+            <input type="text" name="member" readonly="readonly"  autocomplete="on" class="layui-input">
+        </div>
+    </div>
     <div class="layui-form-item">
         <label class="layui-form-label">歌曲名</label>
         <div class="layui-input-block">
-            <input type="text" name="name" required lay-verify="required" placeholder="标题/歌曲名/专辑名" autocomplete="off" class="layui-input">
+            <input type="text" name="name" required  placeholder="标题/歌曲名/专辑名" autocomplete="off"
+                   class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">歌手名</label>
         <div class="layui-input-block">
-            <input type="text" name="singer" required lay-verify="required" placeholder="标题/歌曲名/专辑名" autocomplete="off" class="layui-input">
+            <input type="text" name="singer" required  placeholder="标题/歌曲名/专辑名" autocomplete="off"
+                   class="layui-input">
         </div>
     </div>
 
@@ -29,15 +39,30 @@
         <label class="layui-form-label">歌曲类型</label>
         <div class="layui-input-block">
             <input type="radio" name="type" value="单曲" title="单曲">
-            <input type="radio" name="type" value="专辑" title="专辑" checked>
+            <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i>
+                <div>单曲</div>
+            </div>
+            <input type="radio" name="type" value="专辑" title="专辑" checked="">
+            <div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i>
+                <div>专辑</div>
+            </div>
             <input type="radio" name="type" value="合集" title="合集">
+            <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i>
+                <div>合集</div>
+            </div>
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">资源类型</label>
         <div class="layui-input-block">
             <input type="radio" name="src_type" value="分轨" title="分轨">
-            <input type="radio" name="src_type" value="全轨" title="全轨" checked>
+            <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i>
+                <div>分轨</div>
+            </div>
+            <input type="radio" name="src_type" value="全轨" title="全轨" checked="">
+            <div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i>
+                <div>全轨</div>
+            </div>
         </div>
     </div>
     <div class="layui-form-item">
@@ -51,6 +76,19 @@
                 <option value="APE">APE</option>
                 <option value="MP3">MP3</option>
             </select>
+            <div class="layui-unselect layui-form-select">
+                <div class="layui-select-title"><input type="text" placeholder="请选择" value="" readonly=""
+                                                       class="layui-input layui-unselect"><i class="layui-edge"></i>
+                </div>
+                <dl class="layui-anim layui-anim-upbit">
+                    <dd lay-value="" class="layui-select-tips">请选择</dd>
+                    <dd lay-value="WAV" class="">WAV</dd>
+                    <dd lay-value="DSD" class="">DSD</dd>
+                    <dd lay-value="FLAC" class="">FLAC</dd>
+                    <dd lay-value="APE" class="">APE</dd>
+                    <dd lay-value="MP3" class="">MP3</dd>
+                </dl>
+            </div>
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
@@ -69,64 +107,99 @@
     <div class="layui-form-item">
         <label class="layui-form-label">是否公开</label>
         <div class="layui-input-block">
-            <input type="checkbox" name="status" lay-skin="switch" lay-text="公开|私有" checked>
+            <input type="checkbox" name="status" lay-skin="switch" lay-text="公开|私有" checked="">
+            <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>公开</em><i></i>
+            </div>
         </div>
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button class="layui-btn" lay-submit="" lay-filter="demo1" onclick="login()">立即提交</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
-
 </form>
 
 
 <script type="text/javascript">
-    //Demo
-    layui.use('form', function() {
-        var form = layui.form;
-        /**
-         * {"name":"aa","singer":"aa","type":"合集","src_type":"分轨",
-         * "format":"MP3","intro":"aaa","desc":"aaaa","status":"on"}
-         *
-         member
-         create_time
-         status
-         */
-        //监听提交
-        form.on('submit(formDemo)', function(data) {
-            var input = JSON.stringify(data.field);
-            layer.msg(JSON.stringify(data.field));
-            console.log(input);
-            var vue = new Vue({
-                el: "#form",
-                data: {
-                    forms: {
-                        name: "",
-                        singer: "",
-                        tupe: "",
-                        src_type: "",
-                        format: "",
-                        intro: "",
-                        down_url: "",
-                        status: ""
-                    }
-                },
-                created() {
-                    this.forms = input;
-                    console.log(this.forms)
-                },
-                methods:{
-                    share(){
-
-                    }
-                }
-            });
+    var form;
+    layui.use(["form"], function () {
+        form = layui.form;
+        var input;
+        form.on("submit(demo1)", function (data) {
+            input = JSON.stringify(data.field);
 
             return false;
         });
     });
+
+    function login() {
+        const url = "user.do?op=userShare";
+        $.ajax({
+            //几个参数需要注意一下
+            type: "get",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: url,//url
+            data: $("#form").serialize(),
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据(调试用)
+                if (result === "修改成功") {
+                    alert(result)
+                }
+            },
+            error: function () {
+                alert("异常！");
+            }
+        });
+        na.user.name = "king"
+        var vue = new Vue({
+            el: "#form",
+            data: {member: na.user.name = "king"}
+        })
+
+
+// var vue = new Vue({
+//     el: "#form",
+//     data: {
+//         forms: {
+//             name: "",
+//             singer: "",
+//             tupe: "",
+//             src_type: "",
+//             format: "",
+//             intro: "",
+//             down_url: "",
+//             status: ""
+//         }
+//     },
+//     created() {
+//         this.forms = input;
+//         console.log(this.forms)
+//     },
+//     methods: {
+//         share() {
+//             const url = "user.do?op=userShare";
+//             axios.get(url, {
+//                 params: {
+//                     name: this.forms.name,
+//                     singer: this.forms.singer,
+//                     tupe: this.forms.type,
+//                     src_type: this.forms.src_type,
+//                     format: this.forms.format,
+//                     intro: this.forms.intro,
+//                     down_url: this.forms.down_url,
+//                     status: this.forms.status
+//                 }
+//             }).then((res) => {
+//                 alert(res.data)
+//             });
+//         }
+//     }
+// });
+
+    }
+
+
 </script>
 
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->

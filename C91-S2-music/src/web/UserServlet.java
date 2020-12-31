@@ -1,9 +1,9 @@
 package web;
 
 import bean.SqMember;
+import bean.SqShare;
 import biz.UserBiz;
 import common.biz.BizException;
-import common.util.Utils;
 import common.web.BaseServlet;
 
 import javax.servlet.ServletException;
@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 
 @WebServlet("/user.do")
 public class UserServlet extends BaseServlet {
@@ -102,7 +101,7 @@ public class UserServlet extends BaseServlet {
         String name = String.valueOf(req.getSession().getAttribute("name"));
         //如果session 为空 转为string 则是“null” 字符串 而不是 null
         System.out.println(name);
-        if (name == "null" ||  name.equals("null")) {
+        if (name == "null" || name.equals("null")) {
             write(resp, "请先登录 !");
             return;
         }
@@ -126,5 +125,20 @@ public class UserServlet extends BaseServlet {
             e.printStackTrace();
             write(resp, e.getMessage());
         }
+    }
+
+    //http://localhost:8080/C91_S2_music_war_exploded/user.do?op=userShare&title=
+// 标题%2F歌曲名%2F专辑名&=singer歌手&tags=标签
+// &category=单曲&clazz=分轨&type=FLAC&des=详细介绍&
+// links=下载地址&id=&uid=
+    public void userShare(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        SqShare sqShare = new SqShare();
+        sqShare.setMember(req.getParameter("member"));
+        sqShare.setName(req.getParameter("title"));
+        sqShare.setSingers(req.getParameter("singer"));
+        sqShare.setTags(req.getParameter("tags"));
+
+        System.out.println(sqShare);
+        write(resp, "修改成功");
     }
 }
