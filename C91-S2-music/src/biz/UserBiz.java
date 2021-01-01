@@ -10,6 +10,7 @@ import dao.UserDao;
 import javax.mail.MessagingException;
 import java.security.GeneralSecurityException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserBiz {
     private final UserDao userDao = new UserDao();
@@ -119,5 +120,14 @@ public class UserBiz {
             e.printStackTrace();
         }
 
+    }
+
+    public List<SqShare> queryShareByName(String name) {
+        try {
+            return userDao.selectShareByUserName(name);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

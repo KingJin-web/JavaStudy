@@ -23,5 +23,7 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="lib (7)" level="project" />
     <orderEntry type="library" name="lib (8)" level="project" />
+    <orderEntry type="library" name="lib (6)" level="project" />
+    <orderEntry type="library" name="vue" level="application" />
   </component>
 </module>

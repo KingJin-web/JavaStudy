@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="res/push.js"></script>
+<script type="text/javascript">
+if(/Android|webOS|iPhone|iPod|iPad|Windows Phone|BlackBerry|Mobile/i.test(navigator.userAgent)) {var url = window.location.pathname+window.location.search;window.location.href = 'https://m.sq688.com'+url;}
+</script>
+<link rel="shortcut icon" type="image/ico" href="https://www.sq688.com/favicon.ico">
+<meta name="applicable-device" content="pc">
+<meta name="mobile-agent" content="format=html5;url=https://m.sq688.com/detail/3.html">
+<link rel="alternate" media="only screen and(max-width: 800px)" href="https://m.sq688.com/detail/3.html">
+<title>无损音乐下载_FLAC_WAV_APE_SQ688_超高无损音乐</title>
+<meta name="keywords" content="周杰伦,无损音乐下载,WAV,FLAC,APE,SQ688,超高无损音乐">
+<meta name="description" content="周杰伦（Jay Chou），
+1979年1月18日出生在台湾省新北市，华语男歌手、词曲创作人、演员、制作人、导演、编剧、监制。2000年发行首张个人专辑《Jay》。2002年发行的专辑《范特西》奠定其融合中西方音乐的风格。2003年成为美国《时代周刊》的封面人物 。2004年获得世界音乐大奖中国最畅销艺人奖 。2005年凭借动作片《头文字D》获得台湾电影金马奖、香港电影金像奖最佳新人奖。2006年起连续三年获得世界音乐大奖中国最畅销艺人奖。2007年自编自导的文艺片《不能说的秘密》获得台湾电影金马奖年度台湾杰出电影奖；同年获得第18届金曲奖最佳单曲制作人奖 。">
+<link rel="stylesheet" type="text/css" href="res/main.css">
+<link rel="stylesheet" type="text/css" href="res/font-awesome.css">
+</head>
+<body>
+	<div id="header" class="header">
+		<div class="warp">
+			<div class="logo">
+				<h1>超高无损音乐</h1>
+			</div>
+			
+			<div class="users">
+				<a href="https://www.sq688.com/login"><i class="fa fa-sign-in"></i> 登录</a> / <a href="https://www.sq688.com/register"><i class="fa fa-registered"></i> 注册</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+	</div>
+	<div class="detail">
+		<div class="swarp">
+			
+
+			<!--right-->
+			<div class="srt">
+				<div class="ww">
+					<div id="details" class="avt">
+						<img :src="'/C91-S2-XM'+list[0].head"  class="avt ">
+						<div class="good">
+							<a href="javascript:void(0);" title="喜欢"><i class="fa fa-heart"></i> <span id="like">{{list[0].likes}}</span></a> 
+							<a title="歌曲" class="rt"><i class="fa fa-music"></i> {{list[0].total}}</a>
+						</div>
+					</div>
+					<div class="det">
+						<h2>{{list[0].name}}</h2>
+						<p>
+							<span>分类:{{list[0].category}}</span>
+						</p>
+						<p>
+							<span>地区:{{list[0].nation}}</span>
+						</p>
+						<p>
+							<span>出生:{{list[0].birthday}}</span>
+						</p>
+						<p>
+							<span>简介:</span>
+						</p>
+						<p class="des">{{list[0].intro}}</p>
+					</div>
+
+					<div class="clear"></div>
+				</div>
+
+				<div class="song">
+					<div class="head">
+						<i class="leline"></i>{{list[0].name}} 无损歌曲列表 (陆续收集中)
+					</div>
+					<table class="songlist" border="0" cellpadding="0" cellspacing="0">
+						<tbody>
+							<tr>
+								<th style="width: 40%; padding-left: 8px;">歌曲名称</th>
+								<th>歌手</th>
+								<th>类型</th>
+								<th>大小</th>
+								<th>热度</th>
+								<th>收录</th>
+								<th>操作</th>
+							</tr>
+							<tr v-for="s in listsong">
+								<td style="padding-left: 8px;">
+									<a :href=" 'download.html?name='+(s.singer)+'#'+s.name" 
+									target="_blank" class="st">{{s.name}}</a>
+								</td>
+								<td>{{s.singer}}</td>
+								<td>
+									<span class="songstype">{{s.type}}</span>
+								</td>
+								<td>{{s.size}}</td>
+								<td>{{s.heat}}</td>
+								<td>{{s.intime}}</td>
+								<td>
+									<a :href=" 'download.html?name='+(s.singer)+'#'+s.name"
+									 target="_blank" class="dw"><i class="fa fa-download"></i>下载</a>
+								</td>
+							</tr>	
+						</tbody>
+					</table>
+					<input type="hidden" id="id" value="3">
+				</div>
+
+
+
+				<!--相关专辑-->
+
+				
+				
+
+				<div class="song">
+					<div class="head">
+						<i class="leline"></i>网友评论
+					</div>					
+					<template >
+					<div class="comment-list" v-for="s in listly">
+						<div class="items">
+							<div class="i-left">
+								<div class="avt2"></div>
+								<h3>{{s.name}}</h3>
+							</div>
+							<div class="i-right">
+								<h4>发表于{{s.ly_time}}</h4>
+								<div class="msg">{{s.content}}</div>
+							</div>
+						</div>
+		
+					</div>
+					</template>
+
+				</div>
+			</div>
+		
+		
+		
+		</div>
+		
+		
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript">
+	var v=new Vue({
+		el:".detail",
+		data:{
+			list:[],
+			listsong:[],
+			listly:[]
+		
+		},
+		created(){
+			axios.get("detail.s?op=querydetail&name="+location.hash.substring(1))
+			.then(res=>{
+				this.list=res.data;
+			});
+			axios.get("detail.s?op=querysongs&name="+location.hash.substring(1))
+			.then(res=>{
+				this.listsong=res.data;
+			});
+			axios.get("detail.s?op=queryly").then(res=>{
+				this.listly=res.data;
+			});
+		}
+		
+	});
+	
+	
+	</script>
+	<div class="footer">
+		<div class="warp">
+			Copyright 2015-2018 SQ688.com 超高无损音乐<br>本站所有数据均系网友搜集自互联网后分享,本站服务器不存储任何音乐文件,也无意侵犯您的版权,如若任何人声称是任何音乐的版权所有人,请联系sqshangwu@gmail.com,本站会尽快删除,<br>郑重声明本站旨在无损音乐交流分享,不与任何淘宝店铺或机构合作参与任何形式的获利行为,敬请网友注意谨防受骗! <br> 桂ICP备13001859号-4
+			<script type="text/javascript" src="res/z_stat.php"></script>
+			<script src="res/core.php" charset="utf-8" type="text/javascript"></script>
+			<a href="https://www.cnzz.com/stat/website.php?web_id=1277751974" target="_blank" title="站长统计">站长统计</a> <br> 本站唯一QQ群(892306409)欢迎各大音乐爱好者加入 <a target="_blank" href="https://shang.qq.com/wpa/qunwpa?idkey=40edf9935a8deb7a8eeb6e93853111156fb280203fb799c7d11471aea22304fb"> <img border="0" src="res/group.png" alt="超高无损音乐|SQ688" title="超高无损音乐|SQ688"></a>
+		</div>
+	</div>
+	<!--页面脚本-->
+
+</body>
+</html>

@@ -17,6 +17,7 @@
     <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="js/axios.js"></script>
     <script type="text/javascript" src="js/Popup.js"></script>
+
 </head>
 <body>
 <div id="main">
@@ -226,41 +227,3 @@
 </script>
 
 </html>
-// var vue = new Vue({
-//     el: "#form",
-//     data: {
-//         forms: {
-//             name: "",
-//             singer: "",
-//             tupe: "",
-//             src_type: "",
-//             format: "",
-//             intro: "",
-//             down_url: "",
-//             status: ""
-//         }
-//     },
-//     created() {
-//         this.forms = input;
-//         console.log(this.forms)
-//     },
-//     methods: {
-//         share() {
-//             const url = "user.do?op=userShare";
-//             axios.get(url, {
-//                 params: {
-//                     name: this.forms.name,
-//                     singer: this.forms.singer,
-//                     tupe: this.forms.type,
-//                     src_type: this.forms.src_type,
-//                     format: this.forms.format,
-//                     intro: this.forms.intro,
-//                     down_url: this.forms.down_url,
-//                     status: this.forms.status
-//                 }
-//             }).then((res) => {
-//                 alert(res.data)
-//             });
-//         }
-//     }
-// });

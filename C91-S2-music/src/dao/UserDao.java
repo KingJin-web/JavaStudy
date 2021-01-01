@@ -7,6 +7,7 @@ import common.util.Utils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserDao {
 
@@ -86,5 +87,10 @@ public class UserDao {
                 sqShare.getMember()
         );
 
+    }
+
+    public List<SqShare> selectShareByUserName(String name) throws SQLException {
+        String sql = "select * from sq_share where member =?";
+        return DBHelper.selectListBean(sql, SqShare.class, name);
     }
 }
